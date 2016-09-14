@@ -1,0 +1,38 @@
+Use case: Name of the Use Case.
+Context: Brief description of the Use Case.
+Actors: List of actors of the Use Case.
+Main Success Scenario: The step-by-step description, such as:
+1. Step 1
+1.1. Step 1.1
+2. Step 2
+3. Step 3
+
+
+Extensions: Possible alternatives to the steps you may think of (e.g., what happens if something
+goes wrong at this step), such as:
+1a. Instead of Step 1
+3a. Instead of Step 3
+3b. Other alternative to Step 3
+
+
+Use case: Swipe Card (Jake M)
+
+
+
+
+Use Case: Bill ChocAn (Jake B)
+
+
+
+
+Use Case: Send Reports (Amber)
+
+
+
+
+Use Case: Send Directory (Nate)
+
+
+
+
+Use Case: Add Members (Jake M)
