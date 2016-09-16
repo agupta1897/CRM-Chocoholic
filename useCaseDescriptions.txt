@@ -16,11 +16,35 @@ goes wrong at this step), such as:
 
 
 Use case: Swipe Card (Jake M)
+Context: This use case is used when the provider swipes the members card
+Actors: Provider, Member, System
+Main Success Scenario: 
+1. The number is looked up in the system, If the number is valid, the word “Validated” appears on the one-line display.
 
-
+Extensions:
+1a. If the number is not valid than “Invalid number” is displayed
+1b. If the member doesn’t have a current membership “Member suspended” is displayed
 
 
 Use Case: Bill ChocAn (Jake B)
+Context: This use case is used by the provider to bill ChocAn after a health care service has been provided to a member.
+Actors: Provider, System
+Main Success Scenario:
+1. The provider passes the member’s card through the card reader or keys in the member number.
+2. If the entry is valid, the provider enters the date the service was performed and the code corresponding to the service.
+3. The software displays the name of the service to be verified that it is the correct service by the provider.
+3.1. The provider can add comments about the service provided if so desired.
+4. The provider tells the software that it is the right service.
+5. The software writes various information provided to a disc.
+6. The software looks up and displays the fee to be paid to the provider.
+7. The provider fills out a form with various information including the fee to be paid.
+8. At the end of the week, the provider totals the fees for that week.
+
+Extensions:
+2a. If the number is invalid, “Invalid number” is displayed.
+2b. If the member is suspended, “Member suspended” is displayed.
+3a. If the service number entered doesn’t exist, an error message is printed.
+4a. If the service number is for the wrong service, the provider says that it is the wrong service.
 
 
 
@@ -31,8 +55,21 @@ Use Case: Send Reports (Amber)
 
 
 Use Case: Send Directory (Nate)
+Context: This use case is used to send the provider directory as an email attachment to the provider.
+Actors: Provider, System
+Main Success Scenario:
+1. The provider requests that the software give a Provider Directory.
+2. The system gathers an alphabetically ordered list of service names and corresponding service codes and fees.
+3. The system sends the Provider Directory to the provider’s email as an attachment.
 
 
-
-
-Use Case: Add Members (Jake M)
+Use Case: Manage Members (Jake M)
+Context: This use case is used when new members are added, members are deleted, and update member records. Similar things can happen with providers.
+Actors: Operators
+Main Success Scenario: 
+1. The operator adds a new member
+2. The operator deletes a member who has resigned
+3. The operator updates member records
+4. The operator adds a new provider
+5. The operator deletes a provider who has resigned
+6. The operator updates provider records
