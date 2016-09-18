@@ -33,9 +33,9 @@ Use Case: Send Reports (Amber)
 Context: This use case is used to send the list of services provided in the current week to the members via emails as requested by the ChocAn Manager or on Friday midnight.
 Actors: Member, Manager, ChocAn Data Center
 Main Success Scenario:
-The Manager requests the Data center to run individual reports.
-The system gathers a list of services provided to the members, sorted in the order of date of service provided and corresponding Provider’s name and Date of service.
-The system then sends this list to the member’s email as an attachment.
+1. The Manager requests the Data center to run individual reports.
+2. The system gathers a list of services provided to the members, sorted in the order of date of service provided and corresponding Provider’s name and Date of service.
+3. The system then sends this list to the member’s email as an attachment.
  
 Extensions:
 1a. At midnight on Friday, the main accounting procedure is automatically run at the ChocAn Data Center. 
@@ -45,18 +45,18 @@ Use Case: Send Directory (Nate)
 Context: This use case is used to send the provider directory as an email attachment to the provider.
 Actors: Provider, System
 Main Success Scenario:
-The provider requests that the software give a Provider Directory.
-The system gathers an alphabetically ordered list of service names and corresponding service codes and fees.
-The system sends the Provider Directory to the provider’s email as an attachment.
+1. The provider requests that the software give a Provider Directory.
+2. The system gathers an alphabetically ordered list of service names and corresponding service codes and fees.
+3. The system sends the Provider Directory to the provider’s email as an attachment.
 
 
 Use Case: Manage Members (Jake M)
 Context: This use case is used when new members are added, members are deleted, and update member records. Similar things can happen with providers.
 Actors: Operators
 Main Success Scenario: 
-The operator adds a new member
-The operator deletes a member who has resigned
-The operator updates member records
-The operator adds a new provider
-The operator deletes a provider who has resigned
-The operator updates provider records
+1. The operator adds a new member
+2. The operator deletes a member who has resigned
+3. The operator updates member records
+4. The operator adds a new provider
+5. The operator deletes a provider who has resigned
+6. The operator updates provider records
