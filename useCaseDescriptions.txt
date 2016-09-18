@@ -3,11 +3,13 @@ Context: This use case is used when the provider swipes the members card
 Actors: Provider, Member, System
 Main Success Scenario: 
 1. The number is looked up in the system. 
-2. If the number is valid, the word “Validated” appears on the one-line display.
+2. If the number is valid, the word “Validated” is displayed.
 
 Extensions:
 2a. If the number is not valid than “Invalid number” is displayed
 2b. If the member doesn’t have a current membership “Member suspended” is displayed
+
+
 
 Use Case: Bill ChocAn (Jake B)
 Context: This use case is used by the provider to bill ChocAn after a health care service has been provided to a member.
@@ -28,17 +30,21 @@ Extensions:
 2b. If the member is suspended, “Member suspended” is displayed.
 3a. If the service number entered doesn’t exist, an error message is printed.
 4a. If the service number is for the wrong service, the provider says that it is the wrong service.
+
+
 	
 Use Case: Send Reports (Amber)
 Context: This use case is used to send the list of services provided in the current week to the members via emails as requested by the ChocAn Manager or on Friday midnight.
 Actors: Member, Manager, ChocAn Data Center
 Main Success Scenario:
-1. At midnight on Friday, the main accounting procedure is automatically run at the ChocAn Data Center. 
-2. The system gathers a list of services provided to the members, sorted in the order of date of service provided and corresponding Provider’s name and Date of service.
-3. The system then sends this list to the member’s email as an attachment.
+1. Report(s) are requested.
+2. System checks which reports are requested.
+3. The system gathers and sorts requested information.
  
 Extensions:
-1a. The Manager requests the Data center to run individual reports.
+3a. All reports are requested automatically, then each report is individually sent 
+3b. Reports are requested manually, then each report is sent to the manager.
+
 
 
 Use Case: Send Directory (Nate)
@@ -50,13 +56,18 @@ Main Success Scenario:
 3. The system sends the Provider Directory to the provider’s email as an attachment.
 
 
+
 Use Case: Manage Members (Jake M)
 Context: This use case is used when new members are added, members are deleted, and update member records. Similar things can happen with providers.
 Actors: Operators
 Main Success Scenario: 
-1. The operator adds a new member
-2. The operator deletes a member who has resigned
-3. The operator updates member records
-4. The operator adds a new provider
-5. The operator deletes a provider who has resigned
-6. The operator updates provider records
+1. The Operator manages a  member
+2. The Operator manages a provider
+
+Extensions: 
+1a. The Operator adds a new member
+1b. The Operator deletes a member who has resigned
+1c. The Operator updates member records
+2a. The Operator adds a new provider
+2b. The Operator deletes a provider who has resigned
+2c. The Operator updates provider records
