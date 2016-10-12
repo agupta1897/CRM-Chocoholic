@@ -1,13 +1,8 @@
 Use case: Swipe Card (Jake M)
 Context: This use case is used when the provider swipes the members card
-Actors: Provider, Member, System
+Actors: Provider, Member
 Main Success Scenario: 
-1. The number is looked up in the system. 
-2. If the number is valid, the word “Validated” is displayed.
-
-Extensions:
-2a. If the number is not valid than “Invalid number” is displayed
-2b. If the member doesn’t have a current membership “Member suspended” is displayed
+1. The number is looked up in the system.
 
 
 
@@ -25,25 +20,22 @@ Main Success Scenario:
 7. The provider fills out a form with various information including the fee to be paid.
 8. At the end of the week, the provider totals the fees for that week.
 
-Extensions:
-2a. If the number is invalid, “Invalid number” is displayed.
-2b. If the member is suspended, “Member suspended” is displayed.
-3a. If the service number entered doesn’t exist, an error message is printed.
-4a. If the service number is for the wrong service, the provider says that it is the wrong service.
-
-
 	
 Use Case: Send Reports (Amber)
-Context: This use case is used to send the list of services provided in the current week to the members via emails as requested by the ChocAn Manager or on Friday midnight.
-Actors: Member, Manager, ChocAn Data Center
+Context: This use case is used to send the weekly reports to members, providers and manager via emails on Friday midnight.
+Actors: Member, Provider, Manager, ChocAn Data Center.
 Main Success Scenario:
-1. Report(s) are requested.
-2. System checks which reports are requested.
-3. The system gathers and sorts requested information.
+1. At midnight on Friday, the main accounting procedure is automatically run at the ChocAn Data Center.
+2. The system prepares the member, provider and financial reports and sends them to the respective recipients via emails.
  
-Extensions:
-3a. All reports are requested automatically, then each report is individually sent 
-3b. Reports are requested manually, then each report is sent to the manager.
+Use Case: Request Reports (Amber)
+Context: This use case is used to represent the manager’s ability to request individual reports from the ChocAn Data Center at any time.
+Actors: Manager, ChocAn Data Center.
+Main Success Scenario:
+ 
+1. The Manager requests the Data center to run individual reports.
+2. The system prepares individual reports as requested by the Manager.
+3. The system then sends this report to the manager’s email as an attachment.
 
 
 
@@ -52,22 +44,33 @@ Context: This use case is used to send the provider directory as an email attach
 Actors: Provider, System
 Main Success Scenario:
 1. The provider requests that the software give a Provider Directory.
-2. The system gathers an alphabetically ordered list of service names and corresponding service codes and fees.
-3. The system sends the Provider Directory to the provider’s email as an attachment.
+2. The system sends the Provider Directory to the provider’s email as an attachment.
 
+
+
+Use Case: Manage (Jake M)
+Context: This use case is for management of members or providers
+Actors: Operator
+Main Success Scenario: 
+1. The operator manages a  member
+2. The operator manages a provider
 
 
 Use Case: Manage Members (Jake M)
-Context: This use case is used when new members are added, members are deleted, and update member records. Similar things can happen with providers.
-Actors: Operators
-Main Success Scenario: 
-1. The Operator manages a  member
-2. The Operator manages a provider
+Context: The use case is used to manage members
+Actors: Operator 
+Main Success Scenario:
+1. The operator adds a new member
+2. The operator deletes a member who has resigned
+3. The operator updates member records
 
-Extensions: 
-1a. The Operator adds a new member
-1b. The Operator deletes a member who has resigned
-1c. The Operator updates member records
-2a. The Operator adds a new provider
-2b. The Operator deletes a provider who has resigned
-2c. The Operator updates provider records
+
+
+Use Case: Manage Provider (Jake M)
+Context: The use case is used to manage providers
+Actors: Operator 
+Main Success Scenario:
+1. The operator adds a  new provider
+2. The operator deletes a provider who has resigned
+3. The operator updates provider records
+
