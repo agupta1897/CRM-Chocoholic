@@ -13,18 +13,21 @@ public class ChocAn {
         Scanner scan = new Scanner(System.in);
         String role = scan.next();
         if ("Provider".equals(role)){
-            System.out.println("You chose Provider");
-            ProviderRole p = new ProviderRole();
-            p.providerTerminal();
+            System.out.println("You chose " + role);
+            ProviderRole.providerTerminal();
         }
         else if ("Manager".equals(role)) {
-            System.out.println("You chose Manager");
+            System.out.println("You chose " + role);
+            ManagerRole.managerTerminal();
         }
         else if ("Operator".equals(role)) {
-            System.out.println("You chose Operator");
+            System.out.println("You chose " + role);
+            OperatorRole.operatorTerminal();
         }
-        else if ("Close".equals(role))
+        else if ("Close".equals(role)){
+            scan.close();
             return;
+        }
         else {
             System.out.println("Error: must enter 'Provider', 'Manager', or 'Operator'");
             roleChoose();
