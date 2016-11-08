@@ -3,6 +3,7 @@ package cs200fall2016team9;
 import java.util.Scanner; 
 
 public class ChocAn {
+    
     public static void main(String[] args) {
         roleChoose();
     }
@@ -13,6 +14,8 @@ public class ChocAn {
         String role = scan.next();
         if ("Provider".equals(role)){
             System.out.println("You chose Provider");
+            ProviderRole p = new ProviderRole();
+            p.providerTerminal();
         }
         else if ("Manager".equals(role)) {
             System.out.println("You chose Manager");
