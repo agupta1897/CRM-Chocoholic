@@ -1,4 +1,4 @@
-package cs200fall2016team9;
+/*package cs200fall2016team9;
 
 import java.io.*;
 
@@ -48,4 +48,4 @@ public class MemberReport {
 		//Also, remove spacer
 		
 	}
-}
+}*/
