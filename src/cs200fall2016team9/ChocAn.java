@@ -15,14 +15,17 @@ public class ChocAn {
         if ("Provider".equals(role)){
             System.out.println("You chose " + role);
             ProviderRole.providerTerminal();
+            roleChoose();
         }
         else if ("Manager".equals(role)) {
             System.out.println("You chose " + role);
             ManagerRole.managerTerminal();
+            roleChoose();
         }
         else if ("Operator".equals(role)) {
             System.out.println("You chose " + role);
             OperatorRole.operatorTerminal();
+            roleChoose();
         }
         else if ("Close".equals(role)){
             scan.close();

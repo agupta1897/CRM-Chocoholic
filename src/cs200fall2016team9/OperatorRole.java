@@ -8,7 +8,6 @@ public class OperatorRole {
         Scanner scan = new Scanner(System.in);
         String ans = scan.next();
         manageDatabase(ans);
-        scan.close();
     }
 
     private static void manageDatabase(String ans) {
