@@ -2,6 +2,9 @@ package cs200fall2016team9;
 
 import java.util.Scanner;
 
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+
 /**
  * This is the ProviderRole Class. It is accessed from the ChocAn.java.
  * It simulates the Provider Terminal, the Provider is asked question
@@ -20,10 +23,6 @@ public class ProviderRole {
             System.out.println("Must be a 9 digit number. Enter valid Provider number.");
             terminalId = scan.nextInt();
         }
-        providerEnterVisitInfo(terminalId,scan);
-    }
-    
-    private static void providerEnterVisitInfo (int providerId, Scanner scan){
         System.out.println("Swipe card or key in Member number.");
         int memberId = scan.nextInt();
         //makes sure the number is 9 digits
@@ -31,12 +30,16 @@ public class ProviderRole {
             System.out.println("Must be a 9 digit number. Enter valid Member number.");
             memberId = scan.nextInt();
         }
-        
+
         //String status = verifyMember(memberID);
         //System.out.println(status);
-        
+
+        billVisit(terminalId,scan);
+    }//close providerTerminal function
+    
+    private static void billVisit (int providerId, Scanner scan) {
         System.out.println("Time to bill, re-swipe card or key in Member number.");
-        memberId = scan.nextInt();
+        int memberId = scan.nextInt();
         //makes sure the number is 9 digits
         while((memberId <= 99999999) || (memberId >= 1000000000)) {
             System.out.println("Must be a 9 digit number. Enter valid Member number.");
@@ -44,7 +47,7 @@ public class ProviderRole {
         }
         //verify the member and set "status"
         String status = verifyMember(memberId);
-        //makes sure the number is validated
+        //makes sure the status is validated and nothing else
         while(!"Validated".equals(status)) {
             System.out.println("Must have a valid status. Enter valid Member number.");
             memberId = scan.nextInt();
@@ -52,6 +55,8 @@ public class ProviderRole {
         }
         if ("Validated".equals(status))
             System.out.println(status);
+        //gets the current date and time in the proper format and stores it as a String
+        String currentDateAndTime = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());       
         System.out.println("Enter date the service was provided. Format must be MM-DD-YYYY.");
         String date = scan.next();
         //makes sure the date is long enough
@@ -60,11 +65,10 @@ public class ProviderRole {
             date = scan.next();
         }
         //makes sure the date is the proper format
-        while((date.charAt(0) < 48 || date.charAt(0) > 50) || (date.charAt(1) < 48 || date.charAt(1) > 50) || date.charAt(2) != 45 || 
-                (date.charAt(3) < 48 || date.charAt(3) > 51) || (date.charAt(4) < 48 || 
-                date.charAt(4) > 57) || date.charAt(5) != 45 || (date.charAt(6) < 48 || 
-                date.charAt(6) > 57) || (date.charAt(7) < 48 || date.charAt(7) > 57) || 
-                (date.charAt(8) < 48 || date.charAt(8) > 57) || (date.charAt(6) < 48 || date.charAt(6) > 57)) {
+        //makes sure the Month is less than 13 and Day is less than 32, doesn't check year. 
+        while((date.charAt(0) < 48 || date.charAt(0) > 50) || (date.charAt(1) < 48 || date.charAt(1) > 50) 
+            || date.charAt(2) != 45 || (date.charAt(3) < 48 || date.charAt(3) > 51) || (date.charAt(3) == 51 
+            && date.charAt(4) > 49) || (date.charAt(4) < 48 || date.charAt(4) > 57) || date.charAt(5) != 45) {
             System.out.println("Error: Format must be MM-DD-YYYY");
             date = scan.next();
         }
@@ -80,6 +84,7 @@ public class ProviderRole {
             requestDirectory();
         System.out.println("Enter the service code:");
         int serviceCode = scan.nextInt();
+        //makes sure the serviceCode is 6 digits
         while(serviceCode <= 99999 || serviceCode >= 1000000) {
             System.out.println("Must be a 6 digit number. Enter valid Service Code");
             serviceCode = scan.nextInt();
@@ -110,21 +115,21 @@ public class ProviderRole {
         //make the comment empty if they say "No"
         else 
             comment = "";
-        //submitVisitInfo();
+        submitVisitInfo();
         System.out.println("Do you want to stay in Provider Role?");
         ans = scan.next();
-        //make sre "No" or "Yes" was entered
+        //make sure "No" or "Yes" was entered
         while (!"No".equals(ans) && !"Yes".equals(ans)) {
             System.out.println("Error: Must enter 'Yes' or 'No'.");
             ans = scan.next();
         }
         //if "Yes" restart the providerTerminal function at the top
         if ("Yes".equals(ans)) 
-            providerEnterVisitInfo(providerId,scan);
+            billVisit(providerId,scan);
         //if "No" then return to ChocAn.java
         else
             System.out.println("Returning to the main menu.");
-    }
+    }//close billVisit function
     
     private static void requestDirectory() {
        
@@ -133,7 +138,7 @@ public class ProviderRole {
         //pDir.sendDirectory();
         
         System.out.println("It has been sent!");
-    }
+    }//close requestDirectory function
 
     private static String verifyMember(int id) {
         
@@ -141,11 +146,12 @@ public class ProviderRole {
         //m = new MemberDatabase();
         //String Status = m.lookUpMember(id);
         
+        //temp to allow program to run without the database
         String status = "Validated";
         return status;
-    }
+    }//close verifyMember function
     
     private static void submitVisitInfo() {
         
-    }
-}
+    }//close submitVisitInfo function
+}//close ProviderRole Class
