@@ -16,29 +16,33 @@ import java.util.Scanner;
 public class ChocAn {
     
     public static void main(String[] args) {
+        System.out.println("Welcome to ChocAn!");
+        System.out.println("Operating notes: Always make the first letter capital. \nMost responses are one word. If asked a question without options enter 'Yes' or 'No'.\n");
         roleChoose();
     }
 
     private static void roleChoose() {
-        System.out.println("Do you want Provider, Manager, or Operator Role?");
+        System.out.println("Main Menu:");
+        System.out.println("What Role? Options:");
+        System.out.println("  'Provider' to go to Provider terminal");
+        System.out.println("  'Manager' to go to Manager terminal");
+        System.out.println("  'Operator' to go to Operator terminal");
+        System.out.println("  'Close' to stop the program");
         Scanner scan = new Scanner(System.in);
         String role = scan.next();
         if ("Provider".equals(role)){
-            System.out.println("You chose " + role);
             //go to ProviderRole.java
             ProviderRole.providerTerminal();
             //return to top of func
             roleChoose();
         }
         else if ("Manager".equals(role)) {
-            System.out.println("You chose " + role);
             //go to ManagerRole.java
             ManagerRole.managerTerminal();
             //return to top of function
             roleChoose();
         }
         else if ("Operator".equals(role)) {
-            System.out.println("You chose " + role);
             //go to Operator.java
             OperatorRole.operatorTerminal();
             //return to top of function

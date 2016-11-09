@@ -19,7 +19,13 @@ public class ManagerRole {
 
     private static void getReport(String report) {
         String ans;
-        System.out.println("What type of report do you want?");
+        System.out.println("Manager Terminal");
+        System.out.println("What type of report do you want? Options:");
+        System.out.println("  'Member' to get a Member report/s");
+        System.out.println("  'Provider' to get Provider report/s");
+        System.out.println("  'Summary' to get Summary report");
+        System.out.println("  'EFT' to get EFT report");
+        System.out.println("  'Return' to return to main menu");
         Scanner scan = new Scanner(System.in);
         report = scan.next();
         if ("Member".equals(report)) {
@@ -126,6 +132,9 @@ public class ManagerRole {
             else 
                 System.out.println("Returning to the main menu");
         }//close EFT if statement
+        //to go back to ChocAn.java
+        else if ("Return".equals(report))
+            return;
         else {
         	//print this if the input wasn't a key word and restart function
             System.out.println("You must enter 'Member', 'Provider', 'Summary' or 'EFT'.");
