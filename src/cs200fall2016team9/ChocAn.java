@@ -2,6 +2,17 @@ package cs200fall2016team9;
 
 import java.util.Scanner; 
 
+/**
+ * 
+ * This is the beginning of the program. It ask the user what role they want to be in
+ * depending on their answer it will go to ProviderRole.java, ManagerRole.java, or 
+ * OperatorRole.java. If the user wishes to close the program they must type "Close".
+ * If they input something other than "Provider", "Manager", "Operator", or 
+ * "Close" the program reminds them what must be inputed.
+ * 
+ * @author Jake Mizzell
+ *
+ */
 public class ChocAn {
     
     public static void main(String[] args) {
