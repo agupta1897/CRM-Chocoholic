@@ -4,7 +4,7 @@ public class Member extends DatabaseEntry {
 	
 	private String memberStatus;
 	
-	void Member(){
+	Member(){
 	}
 	
 	void setStatus(String newStatus){
