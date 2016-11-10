@@ -50,7 +50,7 @@ public class ProviderReport {
 		fstream.newLine();
 		//Create instance of provider directory for service fee
 		fstream.write(db2.visit.getFee);
-		
+		//Alpha Beta Charlie Ocelot
 		//Develop this better
 		//Also, remove spacer
 		
