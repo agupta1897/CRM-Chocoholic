@@ -19,7 +19,7 @@ public class ChocAn {
         System.out.println("Welcome to ChocAn!");
         System.out.println("Operating notes: Always make the first letter capital. \nMost responses are one word. If asked a question without options enter 'Yes' or 'No'.\n");
         roleChoose();
-    }
+    }//close main function
 
     private static void roleChoose() {
         System.out.println("Main Menu:");
@@ -60,5 +60,6 @@ public class ChocAn {
             roleChoose();
         }
         scan.close();
-    }
-}
+    }//close roleChoose function
+    
+}//close ChocAn Class

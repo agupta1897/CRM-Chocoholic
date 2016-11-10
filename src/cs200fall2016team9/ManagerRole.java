@@ -12,6 +12,7 @@ import java.util.Scanner;
 * 
 */
 public class ManagerRole {
+    
     public static void managerTerminal() {
         //go to getReport function, initially pass in empty string
     	getReport("");
@@ -36,10 +37,7 @@ public class ManagerRole {
         	System.out.println("Do you want to run all " + " reports?");
         	ans = scan.next();
         	//makes sure "No" or "Yes" was entered
-        	while (!"No".equals(ans) && !"Yes".equals(ans)) {
-            	System.out.println("Error: Must enter 'Yes' or 'No'.");
-            	ans = scan.next();
-       		}
+        	while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
        		//get all member reports if "Yes"
        		if ("Yes".equals(ans)) {
 
@@ -53,10 +51,7 @@ public class ManagerRole {
        		System.out.println("Do you want a different type of report?");
        		ans = scan.next();
        		//makes sure "No" or "Yes" was entered
-       		while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+       		while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" then restart getReport function
        		if ("Yes".equals(ans))
        		    getReport("");
@@ -72,10 +67,7 @@ public class ManagerRole {
             System.out.println("Do you want to run all " + report + " reports?");
         	ans = scan.next();
         	//makes sure "No" or "Yes" was entered
-        	while (!"No".equals(ans) && !"Yes".equals(ans)) {
-            	System.out.println("Error: Must enter 'Yes' or 'No'.");
-            	ans = scan.next();
-       		}
+        	while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
        		//if "Yes" then run Provider reports
        		if ("Yes".equals(ans)) {
 
@@ -89,10 +81,7 @@ public class ManagerRole {
        		System.out.println("Do you want a different type of report?");
             ans = scan.next();
             //makes sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" restart getReport function
             if ("Yes".equals(ans))
                 getReport("");
@@ -105,10 +94,7 @@ public class ManagerRole {
             System.out.println("Do you want a different type of report?");
             ans = scan.next();
             //makes sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" restart getReport function
             if ("Yes".equals(ans))
                 getReport("");
@@ -121,10 +107,7 @@ public class ManagerRole {
             System.out.println("Do you want a different type of report?");
             ans = scan.next();
             //makes sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" restart getReport function
             if ("Yes".equals(ans))
                 getReport("");
@@ -148,11 +131,8 @@ public class ManagerRole {
         if ("Member".equals(report)) {
             System.out.println("Please enter " + report + " number: ");
             int id = scan.nextInt();
-            //makes sure the id is proper length
-            while((id <= 99999999) || (id >= 1000000000)) {
-                System.out.println("Must be a 9 digit number. Enter valid " + report + " number.");
-                id = scan.nextInt();
-            }
+            //makes sure the id is 9 digits
+            while((id <= 99999999) || (id >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); id = scan.nextInt();}
             
             //mR.memberReport(id);
             
@@ -160,10 +140,7 @@ public class ManagerRole {
             System.out.println("Do you want more " + report + " reports?");
             ans = scan.next();
             //makes sure "No" or "Yes" is entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" restart getSingleReport function
             if ("Yes".equals(ans)) {
                 getSingleReport(report,scan);
@@ -174,11 +151,8 @@ public class ManagerRole {
         else {
             System.out.println("Please enter " + report + " number: ");
             int id = scan.nextInt();
-            //makes sure the id is proper length
-            while((id <= 99999999) || (id >= 1000000000)) {
-                System.out.println("Must be a 9 digit number. Enter valid " + report + " number.");
-                id = scan.nextInt();
-            }
+            //makes sure the id is 9 digits
+            while((id <= 99999999) || (id >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); id = scan.nextInt();}
             
             //pR.providerReport(id);
 
@@ -186,14 +160,12 @@ public class ManagerRole {
             System.out.println("Do you want more " + report + " reports?");
             ans = scan.next();
             //makes sure "No" or "Yes" is entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" restart getSingleReport function
             if ("Yes".equals(ans)) {
                 getSingleReport(report,scan);
             }
         } //close else for Provider Reports
     } //close getSingleReport function
+    
 } //close ManagerRole Class

@@ -12,6 +12,7 @@ import java.util.Scanner;
  *
  */
 public class OperatorRole {
+    
     public static void operatorTerminal() {
     	//manage the databse, initially pass in empty string
         manageDatabase("");

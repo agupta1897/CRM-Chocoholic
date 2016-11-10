@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
  *
  */
 public class ProviderRole {
+    
     public static void providerTerminal() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Provider Terminal:");
@@ -45,28 +46,17 @@ public class ProviderRole {
         System.out.println("Please enter your Provider number.");
         int terminalId = scan.nextInt();
         //makes sure the number is 9 digits
-        while((terminalId <= 99999999) || (terminalId >= 1000000000)) {
-            System.out.println("Must be a 9 digit number. Enter valid Provider number.");
-            terminalId = scan.nextInt();
-        }
+        while((terminalId <= 99999999) || (terminalId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Provider number."); terminalId = scan.nextInt();}
         System.out.println("Swipe card or key in Member number.");
         int memberId = scan.nextInt();
         //makes sure the number is 9 digits
-        while((memberId <= 99999999) || (memberId >= 1000000000)) {
-            System.out.println("Must be a 9 digit number. Enter valid Member number.");
-            memberId = scan.nextInt();
-        }
-        
+        while((memberId <= 99999999) || (memberId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); memberId = scan.nextInt();}
         String status = verifyMember(memberId);
         System.out.println(status);
-        
         System.out.println("Are you ready to bill visit?");
         String ans = scan.next();
         //makes sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) {
-            System.out.println("Error: Must enter 'Yes' or 'No'.");
-            ans = scan.next();
-        }
+        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
         //if "Yes" proceed to billVisit function
         if ("Yes".equals(ans)) 
             billVisit(terminalId,scan);
@@ -74,10 +64,7 @@ public class ProviderRole {
             System.out.println("Do you want to stay in Provider role?");
             ans = scan.next();
             //make sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" go to providerTerminal function
             if ("Yes".equals(ans))
                 providerTerminal();
@@ -99,17 +86,11 @@ public class ProviderRole {
             providerId = scan.nextInt();
         }
         //make sure the number is 9 digits
-        while((providerId <= 99999999) || (providerId >= 1000000000)) {
-            System.out.println("Must be a 9 digit number. Enter valid Provider number.");
-            providerId = scan.nextInt();
-        }
+        while((providerId <= 99999999) || (providerId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Provider number."); providerId = scan.nextInt();}
         System.out.println("Time to bill, re-swipe card or key in Member number.");
         int memberId = scan.nextInt();
         //makes sure the number is 9 digits
-        while((memberId <= 99999999) || (memberId >= 1000000000)) {
-            System.out.println("Must be a 9 digit number. Enter valid Member number.");
-            memberId = scan.nextInt();
-        }
+        while((memberId <= 99999999) || (memberId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); memberId = scan.nextInt();}
         //verify the member and set "status"
         String status = verifyMember(memberId);
         //makes sure the status is validated and nothing else
@@ -139,10 +120,7 @@ public class ProviderRole {
         System.out.println("Do you want the provider directory sent to you?");
         String ans = scan.next();
         //makes sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) {
-            System.out.println("Error: Must enter 'Yes' or 'No'.");
-            ans = scan.next();
-        }
+        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
         //Send Provider Directory if "Yes" is entered
         if ("Yes".equals(ans)) {
             
@@ -153,10 +131,7 @@ public class ProviderRole {
         System.out.println("Enter the service code:");
         int serviceCode = scan.nextInt();
         //makes sure the serviceCode is 6 digits
-        while(serviceCode <= 99999 || serviceCode >= 1000000) {
-            System.out.println("Must be a 6 digit number. Enter valid Service Code");
-            serviceCode = scan.nextInt();
-        }
+        while(serviceCode <= 99999 || serviceCode >= 1000000) { System.out.println("Must be a 6 digit number. Enter valid Service Code"); serviceCode = scan.nextInt();}
         
         //String serviceName = pDir.serviceLookUp(serviceCode);
         //System.out.println("Is " + serviceName + " the correct service?");
@@ -165,10 +140,7 @@ public class ProviderRole {
         System.out.println("Comments?");
         ans = scan.next();
         //make sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) {
-            System.out.println("Error: Must enter 'Yes' or 'No'.");
-            ans = scan.next();
-        }
+        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
         String comment;
         //get the entire line, use newline as delimiter
         Scanner scanLine = new Scanner(System.in);
@@ -185,10 +157,7 @@ public class ProviderRole {
         System.out.println("Do you want to bill another visit?");
         ans = scan.next();
         //make sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) {
-            System.out.println("Error: Must enter 'Yes' or 'No'.");
-            ans = scan.next();
-        }
+        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
         //if "Yes" restart the providerTerminal function at the top
         if ("Yes".equals(ans)) 
             billVisit(providerId,scan);
@@ -197,10 +166,7 @@ public class ProviderRole {
             System.out.println("Do you want to stay in Provider role?");
             ans = scan.next();
             //make sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) {
-                System.out.println("Error: Must enter 'Yes' or 'No'.");
-                ans = scan.next();
-            }
+            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
             //if "Yes" go to providerTerminal function
             if ("Yes".equals(ans))
                 providerTerminal();
@@ -220,10 +186,7 @@ public class ProviderRole {
         System.out.println("It has been sent! Do you want to stay in Provider Role?");
         String ans = scan.next();
         //make sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) {
-            System.out.println("Error: Must enter 'Yes' or 'No'.");
-            ans = scan.next();
-        }
+        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
         //if "Yes" go to providerTerminal function
         if ("Yes".equals(ans))
             providerTerminal();
@@ -247,4 +210,5 @@ public class ProviderRole {
     private static void submitVisitInfo() {
         
     }//close submitVisitInfo function
+    
 }//close ProviderRole Class
