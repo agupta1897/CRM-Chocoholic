@@ -19,12 +19,12 @@ public class ProviderRole {
         Scanner scan = new Scanner(System.in);
         System.out.println("Provider Terminal:");
         System.out.println("What do you want to do? Options:");
-        System.out.println("  'New' to allow member to receive health care services");
+        System.out.println("  'Verify' to verify member during visit");
         System.out.println("  'Bill' to bill a visit");
         System.out.println("  'Request' to request a directory");
         System.out.println("  'Return' to return to main menu");
         String ans = scan.next();
-        if ("New".equals(ans))
+        if ("Verify".equals(ans))
             startVisit(scan);
         else if ("Bill".equals(ans))
             billVisit(0,scan);
