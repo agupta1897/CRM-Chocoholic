@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 public class ProviderRole {
     
     public static void providerTerminal(JFrame frame) {
+        //determine where to go
         Object [] options  = {"Verify Member for vist", "Bill Member for visit", "Request Provider Directory", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //for "Verify Member for Visit"
@@ -34,10 +35,14 @@ public class ProviderRole {
         //if the exit button is pressed
         else if (ans == -1)
             System.exit(0);
+        else 
+            System.out.println("Something went wrong in providerTerminal()");
     }//close providerTerminal function
     
     private static void startVisit(JFrame frame) {
         int terminalId = 0, memberId = 0;
+        
+        //get terminalId
         String temp = JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed
         if (temp == null) 
@@ -55,6 +60,8 @@ public class ProviderRole {
             try { terminalId = Integer.parseInt(temp);
             } catch (Exception e){}
         }
+        
+        //get memberId
         temp = JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed
         if (temp == null) 
@@ -72,8 +79,12 @@ public class ProviderRole {
             try { memberId = Integer.parseInt(temp);
             } catch (Exception e) {}
         }
+        
+        //get status
         String status = verifyMember(memberId);
         JOptionPane.showMessageDialog(frame, status, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
+        
+        //determine where to go
         Object [] options = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame,"Are you ready to Bill?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Yes" proceed to billVisit function
@@ -88,15 +99,18 @@ public class ProviderRole {
         //if the exit button is pressed
         else if (ans == -1)
             System.exit(0);
+        else 
+            System.out.println("Something went wrong in startVisit()");
     }//close startVisit function
     
     private static void billVisit (int providerId, JFrame frame) {
         String temp;
         int memberId = 0, serviceCode = 0;
+        
         //TODO ProviderDirectory pDir;
         //pDir = new ProviderDirectory();
         
-        //if you didn't come form the startVisit function get providerId for later
+        //if you didn't come from the startVisit function get providerId
         if (providerId == 0) {
             temp = JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
@@ -105,17 +119,19 @@ public class ProviderRole {
             //try to parse the string
             try { providerId = Integer.parseInt(temp);
             } catch (Exception e){}
-        }
-        //make sure the number is 9 digits
-        while((providerId <= 99999999) || (providerId >= 1000000000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
-            //exits if "cancel" or "exit" is pressed
-            if (temp == null)
-                System.exit(0);
-            //try to parse the string
-            try { providerId = Integer.parseInt(temp);
-            } catch (Exception e){}
-        }
+            //make sure the number is 9 digits
+            while((providerId <= 99999999) || (providerId >= 1000000000)) { 
+                temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
+                //exits if "cancel" or "exit" is pressed
+                if (temp == null)
+                    System.exit(0);
+                //try to parse the string
+                try { providerId = Integer.parseInt(temp);
+                } catch (Exception e){}
+            }//close while
+        }//close if statement
+        
+        //get memberId
         temp = JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed
         if (temp == null) 
@@ -132,7 +148,8 @@ public class ProviderRole {
             //try to parse the string
             try { memberId = Integer.parseInt(temp);
             } catch (Exception e) {}
-        }
+        }//close while
+        
         //verify the member and set "status"
         String status = verifyMember(memberId);
         //makes sure the status is validated and nothing else
@@ -142,9 +159,11 @@ public class ProviderRole {
         }
         if ("Validated".equals(status))
             JOptionPane.showMessageDialog(frame, status, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
+        
         //gets the current date and time in the proper format and stores it as a String
         String currentDateAndTime = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
         String date = JOptionPane.showInputDialog(frame,"Enter date the service was provided. Format must be MM-DD-YYYY.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+        
         //makes sure date is long enough, Month is less than 13, Day is less than 32, and year is numbers 
         while(date.length() != 10 || (date.charAt(0) < 48 || date.charAt(0) > 50) || (date.charAt(1) < 48 || date.charAt(1) > 50) 
             || date.charAt(2) != 45 || (date.charAt(3) < 48 || date.charAt(3) > 51) || (date.charAt(3) == 51 
@@ -152,7 +171,9 @@ public class ProviderRole {
             (date.charAt(6) < 48 || date.charAt(6) > 57) || (date.charAt(7) < 48 || date.charAt(7) > 57) || 
             (date.charAt(8) < 48 || date.charAt(8) > 57) || (date.charAt(9) < 48 || date.charAt(9) > 57)) {
             date = JOptionPane.showInputDialog(frame,"Error: Format must be MM-DD-YYYY","ChocAn - Provider",JOptionPane.ERROR_MESSAGE);
-        }
+        }//close while
+        
+        //ask if they want the Provider Directory
         int ans = JOptionPane.showConfirmDialog(frame, "Do you want the Provider Directory sent to you?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
         //Send Provider Directory if "Yes" is entered
         if (ans == 0) {
@@ -161,8 +182,13 @@ public class ProviderRole {
             
             JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         }
+        //continue with the function if "No"
+        //if the exit button is pressed quit the program
         else if (ans == -1)
             System.exit(0);
+        else 
+            System.out.println("Something went wrong in billVisit()");
+        //get service code
         temp = JOptionPane.showInputDialog(frame,"Enter the service code:", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed
         if (temp == null)
@@ -179,7 +205,8 @@ public class ProviderRole {
             //try to parse the string
             try { serviceCode = Integer.parseInt(temp);
             } catch (Exception e) {}
-        }
+        }//close while
+        
         // TODO String serviceName = pDir.serviceLookUp(serviceCode);
         //System.out.println("Is " + serviceName + " the correct service?");
         
@@ -195,7 +222,12 @@ public class ProviderRole {
         //if the exit button is pressed
         else if (ans == -1) 
             System.exit(0);
+        else 
+            System.out.println("Something went wrong in billVisit()");
+        
         submitVisitInfo();
+        
+        //determine where to go
         Object [] options  = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
         ans = JOptionPane.showOptionDialog(frame, "Do you want to bill another visit?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Yes"
@@ -211,6 +243,8 @@ public class ProviderRole {
         //if the exit button is pressed
         else if (ans == -1) 
             System.exit(0);
+        else 
+            System.out.println("Something went wrong in billVisit()");
     }//close billVisit function
     
     //function to send directory
@@ -221,6 +255,7 @@ public class ProviderRole {
         //pDir.sendDirectory();
         
         JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
+        //return to providerTerminal function
         providerTerminal(frame);
     }//close requestDirectory function
     
@@ -231,12 +266,14 @@ public class ProviderRole {
         //m = new MemberDatabase();
         //String Status = m.lookUpMember(id);
         
-        //temp to allow program to run without the database
+        //temporary to allow program to run without the database
         String status = "Validated";
         return status;
     }//close verifyMember function
     
     private static void submitVisitInfo() {
+        
+        //function to submit the info obtained in billVisit function
         
     }//close submitVisitInfo function
     
