@@ -37,12 +37,41 @@ public class ProviderRole {
     }//close providerTerminal function
     
     private static void startVisit(JFrame frame) {
-        int terminalId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
+        int terminalId = 0, memberId = 0;
+        String temp = JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { terminalId = Integer.parseInt(temp);
+        } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((terminalId <= 99999999) || (terminalId >= 1000000000)) { terminalId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
-        int memberId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
+        while((terminalId <= 99999999) || (terminalId >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
+          //makes sure "cancel" or the exit button wasn't pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { terminalId = Integer.parseInt(temp);
+            } catch (Exception e){}
+        }
+        temp = JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { memberId = Integer.parseInt(temp);
+        } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((memberId <= 99999999) || (memberId >= 1000000000)) { memberId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
+        while((memberId <= 99999999) || (memberId >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { memberId = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
         String status = verifyMember(memberId);
         JOptionPane.showMessageDialog(frame, status, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         Object [] options = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
@@ -62,19 +91,48 @@ public class ProviderRole {
     }//close startVisit function
     
     private static void billVisit (int providerId, JFrame frame) {
-        
+        String temp;
+        int memberId = 0, serviceCode = 0;
         //TODO ProviderDirectory pDir;
         //pDir = new ProviderDirectory();
         
         //if you didn't come form the startVisit function get providerId for later
         if (providerId == 0) {
-            providerId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
+            temp = JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null)
+                System.exit(0);
+            //try to parse the string
+            try { providerId = Integer.parseInt(temp);
+            } catch (Exception e){}
         }
         //make sure the number is 9 digits
-        while((providerId <= 99999999) || (providerId >= 1000000000)) { providerId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
-        int memberId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
+        while((providerId <= 99999999) || (providerId >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null)
+                System.exit(0);
+            //try to parse the string
+            try { providerId = Integer.parseInt(temp);
+            } catch (Exception e){}
+        }
+        temp = JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { memberId = Integer.parseInt(temp);
+        } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((memberId <= 99999999) || (memberId >= 1000000000)) { memberId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
+        while((memberId <= 99999999) || (memberId >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { memberId = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
         //verify the member and set "status"
         String status = verifyMember(memberId);
         //makes sure the status is validated and nothing else
@@ -105,10 +163,23 @@ public class ProviderRole {
         }
         else if (ans == -1)
             System.exit(0);
-        int serviceCode = Integer.parseInt(JOptionPane.showInputDialog("Enter the service code:"));
+        temp = JOptionPane.showInputDialog(frame,"Enter the service code:", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null)
+            System.exit(0);
+        //try to parse the string
+        try { serviceCode = Integer.parseInt(temp);
+        } catch (Exception e) {}
         //makes sure the serviceCode is 6 digits
-        while(serviceCode <= 99999 || serviceCode >= 1000000) { serviceCode = Integer.parseInt(JOptionPane.showInputDialog("Must be a 6 digit number. Enter valid service code"));}
-        
+        while(serviceCode <= 99999 || serviceCode >= 1000000) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number. Enter valid service code", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null)
+                System.exit(0);
+            //try to parse the string
+            try { serviceCode = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
         // TODO String serviceName = pDir.serviceLookUp(serviceCode);
         //System.out.println("Is " + serviceName + " the correct service?");
         

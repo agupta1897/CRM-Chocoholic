@@ -90,10 +90,26 @@ public class OperatorRole {
     }//close addMember function
     
     private static void deleteMember(String item, JFrame frame) {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(frame,"Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE));
+        String temp;
+        int id = 0;
+        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { id = Integer.parseInt(temp);
+        } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE));}
-
+        while((id <= 99999999) || (id >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
+        
         //TODO
         
         JOptionPane.showMessageDialog(frame, item + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -120,10 +136,26 @@ public class OperatorRole {
     }//close deleteMember function
     
     private static void updateMember(String item, JFrame frame) {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE));
+        String temp;
+        int id = 0;
+        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { id = Integer.parseInt(temp);
+        } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE));}
-
+        while((id <= 99999999) || (id >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
+        
         //TODO
         
         JOptionPane.showMessageDialog(frame, item + " updated!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -201,10 +233,26 @@ public class OperatorRole {
     }//close addProvider function
     
     private static void deleteProvider(String item, JFrame frame) {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(frame,"Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE));
+        String temp;
+        int id = 0;
+        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { id = Integer.parseInt(temp);
+        } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE));}
-
+        while((id <= 99999999) || (id >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
+        
         //TODO
         
         JOptionPane.showMessageDialog(frame, item + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -231,10 +279,26 @@ public class OperatorRole {
     }//close deleteProvider function
     
     private static void updateProvider(String item, JFrame frame) {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE));
+        String temp;
+        int id = 0;
+        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { id = Integer.parseInt(temp);
+        } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE));}
-
+        while((id <= 99999999) || (id >= 1000000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
+        
         //TODO
         
         JOptionPane.showMessageDialog(frame, item + " updated!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -284,6 +348,7 @@ public class OperatorRole {
     }//close manageDirectory function
     
     private static void addService(String item, JFrame frame) {
+        
         //TODO
         
         JOptionPane.showMessageDialog(frame, item + " added!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -310,10 +375,26 @@ public class OperatorRole {
     }//close addService function
     
     private static void deleteService(String item, JFrame frame) {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter the " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE));
-        //makes sure the number is 9 digits
-        while((id <= 99999) || (id >= 1000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Must be 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE));}
-
+        String temp;
+        int id = 0;
+        temp = JOptionPane.showInputDialog(frame, "Please enter the " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { id = Integer.parseInt(temp);
+        } catch (Exception e){}
+        //makes sure the number is 6 digits
+        while((id <= 99999) || (id >= 1000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
+        
         //TODO
         
         JOptionPane.showMessageDialog(frame, item + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -340,10 +421,26 @@ public class OperatorRole {
     }//close deleteService function
     
     private static void updateService(String item, JFrame frame) {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE));
-        //makes sure the number is 9 digits
-        while((id <= 99999) || (id >= 1000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Must be 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE));}
-
+        String temp;
+        int id = 0;
+        temp = JOptionPane.showInputDialog(frame, "Please enter the " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null) 
+            System.exit(0);
+        //try to parse the string
+        try { id = Integer.parseInt(temp);
+        } catch (Exception e){}
+        //makes sure the number is 6 digits
+        while((id <= 99999) || (id >= 1000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e) {}
+        }
+        
         //TODO
         
         JOptionPane.showMessageDialog(frame, item + " updated!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);

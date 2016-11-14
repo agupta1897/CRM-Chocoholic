@@ -87,11 +87,27 @@ public class ManagerRole {
     
     //used to get a single member/provider report
     private static void getSingleReport(String report, JFrame frame) {
+        String temp;
+        int id = 0;
         int ans;
         if ("Member".equals(report)) {
-            int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter the " + report + " Number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE));
-            //makes sure the id is 9 digits
-            while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
+            temp = JOptionPane.showInputDialog(frame, "Please enter the " + report + " number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e){}
+            //makes sure the number is 9 digits
+            while((id <= 99999999) || (id >= 1000000000)) { 
+                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + report + " number.", "ChocAn - Manager", JOptionPane.ERROR_MESSAGE);
+                //exits if "cancel" or "exit" is pressed
+                if (temp == null) 
+                    System.exit(0);
+                //try to parse the string
+                try { id = Integer.parseInt(temp);
+                } catch (Exception e) {}
+            }
             
             //TODO mR.memberReport(id);
             
@@ -113,9 +129,23 @@ public class ManagerRole {
         }
         //for Provider Reports
         else {
-            int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter the " + report + " Number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE));
-            //makes sure the id is 9 digits
-            while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
+            temp = JOptionPane.showInputDialog(frame, "Please enter the " + report + " number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE);
+            //exits if "cancel" or "exit" is pressed
+            if (temp == null) 
+                System.exit(0);
+            //try to parse the string
+            try { id = Integer.parseInt(temp);
+            } catch (Exception e){}
+            //makes sure the number is 9 digits
+            while((id <= 99999999) || (id >= 1000000000)) { 
+                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + report + " number.", "ChocAn - Manager", JOptionPane.ERROR_MESSAGE);
+                //exits if "cancel" or "exit" is pressed
+                if (temp == null) 
+                    System.exit(0);
+                //try to parse the string
+                try { id = Integer.parseInt(temp);
+                } catch (Exception e) {}
+            }
             
             //TODO mR.memberReport(id);
             
