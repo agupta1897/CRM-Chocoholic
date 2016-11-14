@@ -1,6 +1,7 @@
 package cs200fall2016team9;
 
-import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
@@ -15,190 +16,147 @@ import java.text.SimpleDateFormat;
  */
 public class ProviderRole {
     
-    public static void providerTerminal() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Provider Terminal:");
-        System.out.println("What do you want to do? Options:");
-        System.out.println("  'Verify' to verify member during visit");
-        System.out.println("  'Bill' to bill a visit");
-        System.out.println("  'Request' to request a directory");
-        System.out.println("  'Return' to return to main menu");
-        String ans = scan.next();
-        if ("Verify".equals(ans))
-            startVisit(scan);
-        else if ("Bill".equals(ans))
-            billVisit(0,scan);
-        else if ("Request".equals(ans))
-            requestDirectory(scan);
-        //to return to ChocAn.java
-        else if ("Return".equals(ans))
+    public static void providerTerminal(JFrame frame) {
+        Object [] options  = {"Verify Member for vist", "Bill Member for visit", "Request Provider Directory", "Return to Main Menu"};
+        int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        //for "Verify Member for Visit"
+        if (ans == 0)
+            startVisit(frame);
+        //for "Bill Member for visit"
+        else if (ans == 1)
+            billVisit(0,frame);
+        //for "Request Provider Directory"
+        else if (ans == 2)
+            requestDirectory(frame);
+        //for "Return to main Menu, to return to ChocAn.java
+        else if (ans == 3)
             return;
-        else {
-            System.out.println("You must enter 'New', 'Bill', 'Request'. Enter 'Return' to go to main menu");
-            providerTerminal();
-        }
-        
-        
-        
+        //if the exit button is pressed
+        else if (ans == -1)
+            System.exit(0);
     }//close providerTerminal function
     
-    private static void startVisit(Scanner scan) {
-        System.out.println("Please enter your Provider number.");
-        int terminalId = scan.nextInt();
+    private static void startVisit(JFrame frame) {
+        int terminalId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
         //makes sure the number is 9 digits
-        while((terminalId <= 99999999) || (terminalId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Provider number."); terminalId = scan.nextInt();}
-        System.out.println("Swipe card or key in Member number.");
-        int memberId = scan.nextInt();
+        while((terminalId <= 99999999) || (terminalId >= 1000000000)) { terminalId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
+        int memberId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
         //makes sure the number is 9 digits
-        while((memberId <= 99999999) || (memberId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); memberId = scan.nextInt();}
+        while((memberId <= 99999999) || (memberId >= 1000000000)) { memberId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
         String status = verifyMember(memberId);
-        System.out.println(status);
-        System.out.println("Are you ready to bill visit?");
-        String ans = scan.next();
-        //makes sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
+        JOptionPane.showMessageDialog(frame, status, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
+        Object [] options = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
+        int ans = JOptionPane.showOptionDialog(frame,"Are you ready to Bill?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Yes" proceed to billVisit function
-        if ("Yes".equals(ans)) 
-            billVisit(terminalId,scan);
-        else {
-            System.out.println("Do you want to stay in Provider role?");
-            ans = scan.next();
-            //make sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-            //if "Yes" go to providerTerminal function
-            if ("Yes".equals(ans))
-                providerTerminal();
-            //if "No" go to ChocAn.java
-            else 
-                System.out.println("Returning to the main menu.");
-        }
-        //if "No" return to main menu;
+        if (ans == 0) 
+            billVisit(terminalId,frame);
+        //if "No, but stay Provider"
+        else if (ans == 1)
+            providerTerminal(frame);
+        //if "No, return to main menu"
+        else if (ans == 2) 
+            return;
+        //if the exit button is pressed
+        else if (ans == -1)
+            System.exit(0);
     }//close startVisit function
     
-    private static void billVisit (int providerId, Scanner scan) {
+    private static void billVisit (int providerId, JFrame frame) {
         
-        //ProviderDirectory pDir;
+        //TODO ProviderDirectory pDir;
         //pDir = new ProviderDirectory();
         
         //if you didn't come form the startVisit function get providerId for later
         if (providerId == 0) {
-            System.out.println("Please enter your Provider number.");
-            providerId = scan.nextInt();
+            providerId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Provider Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
         }
         //make sure the number is 9 digits
-        while((providerId <= 99999999) || (providerId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Provider number."); providerId = scan.nextInt();}
-        System.out.println("Time to bill, re-swipe card or key in Member number.");
-        int memberId = scan.nextInt();
+        while((providerId <= 99999999) || (providerId >= 1000000000)) { providerId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter valid Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
+        int memberId = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter your Member Number.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE));
         //makes sure the number is 9 digits
-        while((memberId <= 99999999) || (memberId >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); memberId = scan.nextInt();}
+        while((memberId <= 99999999) || (memberId >= 1000000000)) { memberId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
         //verify the member and set "status"
         String status = verifyMember(memberId);
         //makes sure the status is validated and nothing else
         while(!"Validated".equals(status)) {
-            System.out.println("Must have a valid status. Enter valid Member number.");
-            memberId = scan.nextInt();
+            memberId = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must have a 'Validated' status. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));
             status = verifyMember(memberId);
         }
         if ("Validated".equals(status))
-            System.out.println(status);
+            JOptionPane.showMessageDialog(frame, status, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         //gets the current date and time in the proper format and stores it as a String
-        String currentDateAndTime = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());       
-        System.out.println("Enter date the service was provided. Format must be MM-DD-YYYY.");
-        String date = scan.next();
-        //makes sure the date is long enough
-        while (date.length() != 10) {
-            System.out.println("Error: Format must be MM-DD-YYYY");
-            date = scan.next();
-        }
-        //makes sure the Month is less than 13 and Day is less than 32, doesn't check year. 
-        while((date.charAt(0) < 48 || date.charAt(0) > 50) || (date.charAt(1) < 48 || date.charAt(1) > 50) 
+        String currentDateAndTime = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
+        String date = JOptionPane.showInputDialog(frame,"Enter date the service was provided. Format must be MM-DD-YYYY.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+        //makes sure date is long enough, Month is less than 13, Day is less than 32, and year is numbers 
+        while(date.length() != 10 || (date.charAt(0) < 48 || date.charAt(0) > 50) || (date.charAt(1) < 48 || date.charAt(1) > 50) 
             || date.charAt(2) != 45 || (date.charAt(3) < 48 || date.charAt(3) > 51) || (date.charAt(3) == 51 
-            && date.charAt(4) > 49) || (date.charAt(4) < 48 || date.charAt(4) > 57) || date.charAt(5) != 45) {
-            System.out.println("Error: Format must be MM-DD-YYYY");
-            date = scan.next();
+            && date.charAt(4) > 49) || (date.charAt(4) < 48 || date.charAt(4) > 57) || date.charAt(5) != 45 || 
+            (date.charAt(6) < 48 || date.charAt(6) > 57) || (date.charAt(7) < 48 || date.charAt(7) > 57) || 
+            (date.charAt(8) < 48 || date.charAt(8) > 57) || (date.charAt(9) < 48 || date.charAt(9) > 57)) {
+            date = JOptionPane.showInputDialog(frame,"Error: Format must be MM-DD-YYYY","ChocAn - Provider",JOptionPane.ERROR_MESSAGE);
         }
-        System.out.println("Do you want the provider directory sent to you?");
-        String ans = scan.next();
-        //makes sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
+        int ans = JOptionPane.showConfirmDialog(frame, "Do you want the Provider Directory sent to you?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
         //Send Provider Directory if "Yes" is entered
-        if ("Yes".equals(ans)) {
+        if (ans == 0) {
             
-            //pDir.sendDirectory();
+            //TODO pDir.sendDirectory();
             
-            System.out.println("It has been sent!");
+            JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         }
-        System.out.println("Enter the service code:");
-        int serviceCode = scan.nextInt();
+        else if (ans == -1)
+            System.exit(0);
+        int serviceCode = Integer.parseInt(JOptionPane.showInputDialog("Enter the service code:"));
         //makes sure the serviceCode is 6 digits
-        while(serviceCode <= 99999 || serviceCode >= 1000000) { System.out.println("Must be a 6 digit number. Enter valid Service Code"); serviceCode = scan.nextInt();}
+        while(serviceCode <= 99999 || serviceCode >= 1000000) { serviceCode = Integer.parseInt(JOptionPane.showInputDialog("Must be a 6 digit number. Enter valid service code"));}
         
-        //String serviceName = pDir.serviceLookUp(serviceCode);
+        // TODO String serviceName = pDir.serviceLookUp(serviceCode);
         //System.out.println("Is " + serviceName + " the correct service?");
         
         //ask if Provider wants to enter comments
-        System.out.println("Comments?");
-        ans = scan.next();
-        //make sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
+        ans = JOptionPane.showConfirmDialog(frame, "Do you wish to enter comments?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
         String comment;
-        //get the entire line, use newline as delimiter
-        Scanner scanLine = new Scanner(System.in);
-        scanLine.useDelimiter("\n");
         //allow them to enter the comment if Yes
-        if ("Yes".equals(ans)) {
-            System.out.println("Enter comment: ");
-            comment = scanLine.next();
-        }
+        if (ans == 0)
+            comment = JOptionPane.showInputDialog("Enter comment");
         //make the comment empty if they say "No"
-        else 
+        else if (ans == 1) 
             comment = "";
+        //if the exit button is pressed
+        else if (ans == -1) 
+            System.exit(0);
         submitVisitInfo();
-        System.out.println("Do you want to bill another visit?");
-        ans = scan.next();
-        //make sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-        //if "Yes" restart the providerTerminal function at the top
-        if ("Yes".equals(ans)) 
-            billVisit(providerId,scan);
-        //if "No" then ask if they want to stay in ProviderRole.java
-        else {
-            System.out.println("Do you want to stay in Provider role?");
-            ans = scan.next();
-            //make sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-            //if "Yes" go to providerTerminal function
-            if ("Yes".equals(ans))
-                providerTerminal();
-            //if "No" go to ChocAn.java
-            else 
-                System.out.println("Returning to the main menu.");
+        Object [] options  = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
+        ans = JOptionPane.showOptionDialog(frame, "Do you want to bill another visit?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        //if "Yes"
+        if (ans == 0)
+            billVisit(providerId,frame);
+        //if "No but stay Provider"
+        else if (ans == 1) {
+            providerTerminal(frame);
         }
+        //if "No, return to Main Menu"
+        else if (ans == 2) 
+            return;
+        //if the exit button is pressed
+        else if (ans == -1) 
+            System.exit(0);
     }//close billVisit function
     
     //function to send directory
-    private static void requestDirectory(Scanner scan) {
+    private static void requestDirectory(JFrame frame) {
        
-        //ProviderDirectory pDir;
+        //TODO ProviderDirectory pDir;
         //pDir = new ProviderDirectory();
         //pDir.sendDirectory();
         
-        System.out.println("It has been sent! Do you want to stay in Provider Role?");
-        String ans = scan.next();
-        //make sure "No" or "Yes" was entered
-        while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-        //if "Yes" go to providerTerminal function
-        if ("Yes".equals(ans))
-            providerTerminal();
-        //if "No" go to ChocAn.java
-        else 
-            System.out.println("Returning to the main menu.");
+        JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
+        providerTerminal(frame);
     }//close requestDirectory function
     
     //function to verify Member
     private static String verifyMember(int id) {
         
-        //MemberDatabase m;
+        //TODO MemberDatabase m;
         //m = new MemberDatabase();
         //String Status = m.lookUpMember(id);
         

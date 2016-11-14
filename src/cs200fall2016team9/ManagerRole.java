@@ -1,6 +1,7 @@
 package cs200fall2016team9;
 
-import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
 * This ManagerRole class is called from ChocAn.java when someone wants
@@ -13,158 +14,126 @@ import java.util.Scanner;
 */
 public class ManagerRole {
     
-    public static void managerTerminal() {
+    public static void managerTerminal(JFrame frame) {
         //go to getReport function, initially pass in empty string
-    	getReport("");
+    	getReport(frame);
     }
 
-    private static void getReport(String report) {
-        String ans;
-        System.out.println("Manager Terminal");
-        System.out.println("What type of report do you want? Options:");
-        System.out.println("  'Member' to get a Member report/s");
-        System.out.println("  'Provider' to get Provider report/s");
-        System.out.println("  'Summary' to get Summary report");
-        System.out.println("  'EFT' to get EFT report");
-        System.out.println("  'Return' to return to main menu");
-        Scanner scan = new Scanner(System.in);
-        report = scan.next();
-        if ("Member".equals(report)) {
-
-        	//MemberReport mR;
+    private static void getReport(JFrame frame) {
+        String report;
+        Object [] options  = {"Get Member Report/s", "Get Provider report/s", "Get Summary report", "Get EFT Report", "Return to Main Menu"};
+        int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Manager", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        //if "Get Member Reports" is chosen
+        if (ans == 0) {
+            report = "Member";
+            
+        	//TODO MemberReport mR;
         	//mR = new MemberReport;
-
-        	System.out.println("Do you want to run all " + " reports?");
-        	ans = scan.next();
-        	//makes sure "No" or "Yes" was entered
-        	while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
+            
+            ans = JOptionPane.showConfirmDialog(frame, "Do you want to run all Member reports?", "ChocAn - Manager", JOptionPane.YES_NO_OPTION);
        		//get all member reports if "Yes"
-       		if ("Yes".equals(ans)) {
+       		if (ans == 0) {
 
-        		//mR.memberReport(report);
+        		//TODO mR.memberReport(report);
             	
-            	System.out.println("Getting all " + report + " reports!");
+            	JOptionPane.showMessageDialog(frame, "Getting all Member reports!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
+            	getReport(frame);
        		}
        		//if "No" then go to getSingleReport
-       		else
-       		    getSingleReport(report,scan);
-       		System.out.println("Do you want a different type of report?");
-       		ans = scan.next();
-       		//makes sure "No" or "Yes" was entered
-       		while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-            //if "Yes" then restart getReport function
-       		if ("Yes".equals(ans))
-       		    getReport("");
-       		//if "No" then return to the ChocAn.java
-       		else 
-       		    System.out.println("Returning to the main menu");
+       		else if (ans == 1)
+       		    getSingleReport(report,frame);
+       		//if exit is pressed
+       		else if (ans == -1)
+       		    System.exit(0);
         }//close Member if statement
-        else if ("Provider".equals(report)) {
-
-        	//ProviderReport pR;
+        //if "Get Provider Reports" is chosen
+        else if (ans == 1) {
+            report = "Provider";
+            
+        	//TODO ProviderReport pR;
         	//pR = new ProviderReport;
 
-            System.out.println("Do you want to run all " + report + " reports?");
-        	ans = scan.next();
-        	//makes sure "No" or "Yes" was entered
-        	while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
+            ans = JOptionPane.showConfirmDialog(frame, "Do you want to run all Provider reports?", "ChocAn - Manager", JOptionPane.YES_NO_OPTION);
        		//if "Yes" then run Provider reports
-       		if ("Yes".equals(ans)) {
+       		if (ans == 0) {
 
-        		//pR.providerReport(report);
+        		//TODO pR.providerReport(report);
 
-            	System.out.println("Getting all " + report + " reports!");
+       		 JOptionPane.showMessageDialog(frame, "Getting all Provider reports!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
+       		 getReport(frame);
        		}
        		//if "No" then go to getSingleReport function
-       		else
-       			getSingleReport(report,scan);
-       		System.out.println("Do you want a different type of report?");
-            ans = scan.next();
-            //makes sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-            //if "Yes" restart getReport function
-            if ("Yes".equals(ans))
-                getReport("");
-            //if "No" go back to ChocAn.java
-            else 
-                System.out.println("Returning to the main menu");
+       		else if (ans == 1)
+       			getSingleReport(report,frame);
+       		//if exit is pressed
+       		else if (ans == -1)
+       		    System.exit(0);
        	}//close Provider if statement
-        else if ("Summary".equals(report)) {
-            System.out.println("Getting " + report + " report");
-            System.out.println("Do you want a different type of report?");
-            ans = scan.next();
-            //makes sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-            //if "Yes" restart getReport function
-            if ("Yes".equals(ans))
-                getReport("");
-            //if "No" go back to ChocAn.java
-            else 
-                System.out.println("Returning to the main menu");
+        //if "Get Summary Reports" is chosen
+        else if (ans == 2) {
+            JOptionPane.showMessageDialog(frame, "Getting Summary Report!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
+            getReport(frame);
         }//close Summary if statement
-        else if ("EFT".equals(report)) {
-            System.out.println("Getting " + report + " report");
-            System.out.println("Do you want a different type of report?");
-            ans = scan.next();
-            //makes sure "No" or "Yes" was entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
-            //if "Yes" restart getReport function
-            if ("Yes".equals(ans))
-                getReport("");
-            //if "No" go back to ChocAn.java
-            else 
-                System.out.println("Returning to the main menu");
+        else if (ans == 3) {
+            JOptionPane.showMessageDialog(frame, "Getting EFT Report!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
+            getReport(frame);
         }//close EFT if statement
         //to go back to ChocAn.java
-        else if ("Return".equals(report))
+        else if (ans == 4)
             return;
-        else {
-        	//print this if the input wasn't a key word and restart function
-            System.out.println("You must enter 'Member', 'Provider', 'Summary' or 'EFT'.");
-            getReport(report);
-        }
+        else if (ans == -1)
+            System.exit(0);
     }//close getReport function
     
     //used to get a single member/provider report
-    private static void getSingleReport(String report, Scanner scan) {
-        String ans;
+    private static void getSingleReport(String report, JFrame frame) {
+        int ans;
         if ("Member".equals(report)) {
-            System.out.println("Please enter " + report + " number: ");
-            int id = scan.nextInt();
+            int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter the " + report + " Number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE));
             //makes sure the id is 9 digits
-            while((id <= 99999999) || (id >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); id = scan.nextInt();}
+            while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Member number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
             
-            //mR.memberReport(id);
+            //TODO mR.memberReport(id);
             
-            System.out.println("Getting " + report + " report for " + report + " ID: " + id + ".");
-            System.out.println("Do you want more " + report + " reports?");
-            ans = scan.next();
-            //makes sure "No" or "Yes" is entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
+            JOptionPane.showMessageDialog(frame, "Getting " + report + " report for " + report + " ID: " + id + ".", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
+            Object [] options = {"Yes", "No, but stay in Manager role", "No return to Main Menu"};
+            ans = JOptionPane.showOptionDialog(frame, "Do you want more " + report + " reports?", "ChocAn - Manager", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             //if "Yes" restart getSingleReport function
-            if ("Yes".equals(ans)) {
-                getSingleReport(report,scan);
+            if (ans == 0) {
+                getSingleReport(report,frame);
             }
-            //if "No" return to getReport function
+            //if "No, but..." is chosen
+            else if (ans == 1)
+                managerTerminal(frame);
+            //if "No return..." is chosen
+            else if (ans == 2)
+                return;
+            else if (ans == -1)
+                System.exit(0);
         }
         //for Provider Reports
         else {
-            System.out.println("Please enter " + report + " number: ");
-            int id = scan.nextInt();
+            int id = Integer.parseInt(JOptionPane.showInputDialog(frame, "Please enter the " + report + " Number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE));
             //makes sure the id is 9 digits
-            while((id <= 99999999) || (id >= 1000000000)) { System.out.println("Must be a 9 digit number. Enter valid Member number."); id = scan.nextInt();}
+            while((id <= 99999999) || (id >= 1000000000)) { id = Integer.parseInt(JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild Provider number.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE));}
             
-            //pR.providerReport(id);
-
-            System.out.println("Getting " + report + " report for " + report + " ID: " + id + ".");
-            System.out.println("Do you want more " + report + " reports?");
-            ans = scan.next();
-            //makes sure "No" or "Yes" is entered
-            while (!"No".equals(ans) && !"Yes".equals(ans)) { System.out.println("Error: Must enter 'Yes' or 'No'."); ans = scan.next();}
+            //TODO mR.memberReport(id);
+            
+            JOptionPane.showMessageDialog(frame, "Getting " + report + " report for " + report + " ID: " + id + ".", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
+            Object [] options = {"Yes", "No, but stay in Manager role", "No return to Main Menu"};
+            ans = JOptionPane.showOptionDialog(frame, "Do you want more " + report + " reports?", "ChocAn - Manager", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             //if "Yes" restart getSingleReport function
-            if ("Yes".equals(ans)) {
-                getSingleReport(report,scan);
+            if (ans == 0) {
+                getSingleReport(report,frame);
             }
+            //if "No, but..." is chosen
+            else if (ans == 1)
+                managerTerminal(frame);
+            //if "No return..." is chosen
+            else if (ans == 2)
+                return;
+            else if (ans == -1)
+                System.exit(0);
         } //close else for Provider Reports
     } //close getSingleReport function
     

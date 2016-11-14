@@ -1,6 +1,7 @@
 package cs200fall2016team9;
 
-import java.util.Scanner; 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane; 
 
 /**
  * 
@@ -14,52 +15,41 @@ import java.util.Scanner;
  *
  */
 public class ChocAn {
-    
     public static void main(String[] args) {
-        System.out.println("Welcome to ChocAn!");
-        System.out.println("Operating notes: Always make the first letter capital. \nMost responses are one word. If asked a question without options enter 'Yes' or 'No'.\n");
-        roleChoose();
+        JFrame frame = new JFrame();
+        roleChoose(frame);
     }//close main function
 
-    private static void roleChoose() {
-        System.out.println("Main Menu:");
-        System.out.println("What Role? Options:");
-        System.out.println("  'Provider' to go to Provider terminal");
-        System.out.println("  'Manager' to go to Manager terminal");
-        System.out.println("  'Operator' to go to Operator terminal");
-        System.out.println("  'Close' to stop the program");
-        Scanner scan = new Scanner(System.in);
-        String role = scan.next();
-        if ("Provider".equals(role)){
+    private static void roleChoose(JFrame frame) {
+        //JFrame frame = new JFrame();
+        Object [] options = {"Provider", "Manager", "Operator"};
+        int role = JOptionPane.showOptionDialog(frame, "What Role?", "ChocAn - Main Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        //System.out.println(role);
+        //for Provider
+        if (role == 0){
             //go to ProviderRole.java
-            ProviderRole.providerTerminal();
-            //return to top of func
-            roleChoose();
+            ProviderRole.providerTerminal(frame);
+            //return to top of function
+            roleChoose(frame);
         }
-        else if ("Manager".equals(role)) {
+        //for Manager
+        else if (role == 1) {
             //go to ManagerRole.java
-            ManagerRole.managerTerminal();
+            ManagerRole.managerTerminal(frame);
             //return to top of function
-            roleChoose();
+            roleChoose(frame);
         }
-        else if ("Operator".equals(role)) {
+        //for Operator
+        else if (role == 2) {
             //go to Operator.java
-            OperatorRole.operatorTerminal();
+            OperatorRole.operatorTerminal(frame);
             //return to top of function
-            roleChoose();
+            roleChoose(frame);
         }
-        //if "Close" is entered the function stops
-        else if ("Close".equals(role)){
-            scan.close();
+        //if the exit button is pressed the function stops
+        else if (role == -1)
             return;
-        }
-        else {
-            //if one of the 4 options wasn't entered, print this
-            System.out.println("Error: must enter 'Provider', 'Manager', or 'Operator'");
-            //return to top of function
-            roleChoose();
-        }
-        scan.close();
+       
     }//close roleChoose function
     
 }//close ChocAn Class
