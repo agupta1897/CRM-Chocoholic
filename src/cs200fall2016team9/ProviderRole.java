@@ -210,20 +210,18 @@ public class ProviderRole {
         
         //ask if Provider wants to enter comments
         ans = JOptionPane.showConfirmDialog(frame, "Do you wish to enter comments?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
-        String comment;
+        String comment = "";
         //allow them to enter the comment if Yes
         if (ans == 0)
             comment = JOptionPane.showInputDialog("Enter comment");
-        //make the comment empty if they say "No"
-        else if (ans == 1) 
-            comment = "";
+        //keep the comment empty if they say "No"
         //if the exit button is pressed
         else if (ans == -1) 
             System.exit(0);
         else 
             System.out.println("Something went wrong in billVisit()");
         
-        submitVisitInfo();
+        submitVisitInfo(providerId,memberId,currentDateAndTime,date,serviceCode,comment);
         
         //determine where to go
         Object [] options  = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
@@ -268,10 +266,11 @@ public class ProviderRole {
         String status = "Validated";
         return status;
     }//close verifyMember function
-    
-    private static void submitVisitInfo() {
+  
+    //function to submit the info obtained in billVisit function
+    private static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
         
-        //function to submit the info obtained in billVisit function
+        //TODO
         
     }//close submitVisitInfo function
     
