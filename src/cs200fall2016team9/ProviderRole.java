@@ -186,8 +186,6 @@ public class ProviderRole {
         //if the exit button is pressed quit the program
         else if (ans == -1)
             System.exit(0);
-        else 
-            System.out.println("Something went wrong in billVisit()");
         //get service code
         temp = JOptionPane.showInputDialog(frame,"Enter the service code:", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed

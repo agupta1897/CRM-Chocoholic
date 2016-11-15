@@ -22,7 +22,7 @@ public class ManagerRole {
     private static void getReport(JFrame frame) {
         String report;
         //determine where to go
-        Object [] options  = {"Get Member Report/s", "Get Provider report/s", "Get Summary report", "Get EFT Report", "Return to Main Menu"};
+        Object [] options  = {"Get Member report/s", "Get Provider report/s", "Get Summary report", "Get EFT report", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Manager", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Get Member Reports" is chosen
         if (ans == 0) {
