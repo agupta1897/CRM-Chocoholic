@@ -8,22 +8,8 @@ import java.util.Scanner;
  * @author Jake Bailey
  *
  */
-public class Member extends DatabaseEntry {
-	
-	private String memberStatus;
-	
-	Member(){
-	}
-	
-	void setStatus(String newStatus){
-		memberStatus=newStatus;
-	}
-	
-	String getStatus(){
-		return memberStatus;
-	}
-	
-	void addNewMember(){
+public class Provider {
+	void addNewProvider(){
 		/*Scanner sc = new Scanner(System.in);
 		System.out.println("What's the name?");
 		String name = sc.next();
