@@ -1,8 +1,12 @@
-/*package cs200fall2016team9;
+package cs200fall2016team9;
 
 import java.io.*;
 
-public class ProviderReport {
+/**
+ * @author Sean Martin
+ */
+
+/*public class ProviderReport {
 	
 	ProviderReport(){
 	}

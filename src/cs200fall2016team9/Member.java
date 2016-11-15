@@ -1,5 +1,10 @@
 package cs200fall2016team9;
 
+/**
+ * 
+ * @author Jake Bailey
+ *
+ */
 public class Member extends DatabaseEntry {
 	
 	private String memberStatus;
