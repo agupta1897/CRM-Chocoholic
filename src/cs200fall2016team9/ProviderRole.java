@@ -215,6 +215,8 @@ public class ProviderRole {
         if (ans == 0)
             comment = JOptionPane.showInputDialog("Enter comment");
         //keep the comment empty if they say "No"
+        else if (ans == 1)
+            comment = "";
         //if the exit button is pressed
         else if (ans == -1) 
             System.exit(0);
