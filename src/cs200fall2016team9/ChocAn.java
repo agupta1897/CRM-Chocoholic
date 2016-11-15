@@ -19,7 +19,7 @@ public class ChocAn {
         roleChoose(frame);
     }//close main function
 
-    private static void roleChoose(JFrame frame) {
+    public static void roleChoose(JFrame frame) {
         //determine where to go
         Object [] options = {"Provider", "Manager", "Operator"};
         int role = JOptionPane.showOptionDialog(frame, "What Role?", "ChocAn - Main Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
