@@ -31,7 +31,7 @@ public class OperatorRole {
         	manageProvider("Provider",frame);
         //if "Manage the Provider Directory" is chosen
         else if (ans == 2)
-            manageDirectory("service",frame);
+            manageDirectory("Service",frame);
         //if "Return..." is chosen
         else if (ans == 3)
             return;
@@ -43,7 +43,7 @@ public class OperatorRole {
 
     private static void manageMember(String item,JFrame frame) {
         //determine where to go
-        Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
+        Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
@@ -54,7 +54,7 @@ public class OperatorRole {
         //if "Update..." is chosen
         else if (ans == 2) {//get id
             int id = 0;
-            String temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+            String temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -90,9 +90,12 @@ public class OperatorRole {
         int id = 0, zip = 0;
         //get name
         String name = JOptionPane.showInputDialog(frame, "Enter new " + item + " name:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        
+        //exits if "cancel" or "exit" is pressed
+        if (name == null)
+            System.exit(0);
         //get id
         String temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " number:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
         if (temp == null) 
             System.exit(0);
         //try to parse the string
@@ -111,21 +114,35 @@ public class OperatorRole {
         
         //get address
         String address = JOptionPane.showInputDialog(frame, "Enter new " + item + " address:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //make sure exit wasn't pressed
+        if (address == null)
+            System.exit(0);
         //get city
         String city = JOptionPane.showInputDialog(frame, "Enter new " + item + " city:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //make sure exit wasn't pressed
+        if (city == null)
+            System.exit(0);
         //get state
         String state = JOptionPane.showInputDialog(frame, "Enter new " + item + " State:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        
+        //make sure exit wasn't pressed
+        if (state == null)
+            System.exit(0);
+        //make sure state is the right format
+        while (state.length() != 2 || (state.charAt(0) < 65 || state.charAt(0) > 90) || (state.charAt(1) < 65 || state.charAt(1) > 90)){
+            state = JOptionPane.showInputDialog(frame,"Error: Format must be 2 letter State abbreviation","ChocAn - Operator",JOptionPane.ERROR_MESSAGE);
+            if (state == null)
+                System.exit(0);
+        }
         //get zip
-        temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " number:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " zip code:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
         if (temp == null) 
             System.exit(0);
         //try to parse the string
         try { zip = Integer.parseInt(temp);
         } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((zip <= 9999) || (id >= 100000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " xip.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+        while((zip <= 9999) || (zip >= 100000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -138,7 +155,7 @@ public class OperatorRole {
         
         JOptionPane.showMessageDialog(frame, item + " added!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
-        Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
+        Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
@@ -189,7 +206,7 @@ public class OperatorRole {
         
         JOptionPane.showMessageDialog(frame, item + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
-        Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
+        Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add.." is chosen
         if (ans == 0)
@@ -218,7 +235,7 @@ public class OperatorRole {
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
             //get id
-            temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -238,14 +255,14 @@ public class OperatorRole {
         }
         
         //TODO look up info using id
-        String newName = "", newAddress = "", newCity = "", newState = "", newZip = "";
-        int newId = 0;
+        String newName = "", newAddress = "", newCity = "", newState = "";
+        int newId = 0, newZip = 0;
         String name = "Bob";
         id = 123456789;
         String address = "12 fred St";
         String city = "Nor";
         String state = "AL";
-        String zip = "35475";
+        int zip = 35475;
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 6) {
@@ -264,7 +281,7 @@ public class OperatorRole {
 			    //if "ID"
         	    case 1:
 			        //get new ID:
-			        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+			        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
 			        //exits if "cancel" or "exit" is pressed
 			        if (temp == null) 
 			            System.exit(0);
@@ -311,17 +328,37 @@ public class OperatorRole {
 			        //get new state
 			        newState = JOptionPane.showInputDialog(frame, "Enter the new state: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
 			        if (newState == null)
-			            System.exit(0);
+                        System.exit(0);
+			      //make sure state is the right format
+			        while (newState.length() != 2 || (newState.charAt(0) < 65 || newState.charAt(0) > 90) || (newState.charAt(1) < 65 || newState.charAt(1) > 90)){
+			            newState = JOptionPane.showInputDialog(frame,"Error: Format must be 2 letter State abbreviation","ChocAn - Operator",JOptionPane.ERROR_MESSAGE);
+			            if (newState == null)
+	                        System.exit(0);
+			        }
+			        
 			        //TODO update state in database
 			        
 			        JOptionPane.showMessageDialog(frame, item + " state updated from " + state + " to " + newState + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "Zip"
         	    case 5:
-			      //get new address
-			       newZip = JOptionPane.showInputDialog(frame, "Enter the new zip: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-			        if (newZip == null)
+			      //get new zip
+			       temp = JOptionPane.showInputDialog(frame, "Enter the new zip code: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+			        if (temp == null)
 			            System.exit(0);
+			        //try to parse the string
+			        try { newZip = Integer.parseInt(temp);
+			        } catch (Exception e){}
+			        //makes sure the number is 9 digits
+			        while((newZip <= 9999) || (newZip >= 100000)) { 
+			            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+			            //exits if "cancel" or "exit" is pressed
+			            if (temp == null) 
+			                System.exit(0);
+			            //try to parse the string
+			            try { newZip = Integer.parseInt(temp);
+			            } catch (Exception e) {}
+			        }//close while
 			        
 			        //TODO update zip in database
 			        
@@ -384,7 +421,7 @@ public class OperatorRole {
         //if "Update..." is chosen
         else if (ans == 2) {
             int id = 0;
-            String temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+            String temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -420,9 +457,12 @@ public class OperatorRole {
         int id = 0, zip = 0;
         //get name
         String name = JOptionPane.showInputDialog(frame, "Enter new " + item + " name:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        
+        //exits if "cancel" or "exit" is pressed
+        if (name == null) 
+            System.exit(0);
         //get id
         String temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " number:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
         if (temp == null) 
             System.exit(0);
         //try to parse the string
@@ -441,21 +481,30 @@ public class OperatorRole {
         
         //get address
         String address = JOptionPane.showInputDialog(frame, "Enter new " + item + " address:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (address == null)
+            System.exit(0);
         //get city
-        String city = JOptionPane.showInputDialog(frame, "Enter new " + item + " city:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        String city = JOptionPane.showInputDialog(frame, "Enter new " + item + " City:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (city == null)
+            System.exit(0);
         //get state
         String state = JOptionPane.showInputDialog(frame, "Enter new " + item + " State:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        
+        //exits if "cancel" or "exit" is pressed
+        if (state == null)
+            System.exit(0);
         //get zip
-        temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " number:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " zip code:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
         if (temp == null) 
             System.exit(0);
         //try to parse the string
         try { zip = Integer.parseInt(temp);
         } catch (Exception e){}
         //makes sure the number is 9 digits
-        while((zip <= 9999) || (id >= 100000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " xip.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+        while((zip <= 9999) || (zip >= 100000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -497,7 +546,7 @@ public class OperatorRole {
         int id = 0;
         
         //get id
-        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed
         if (temp == null) 
             System.exit(0);
@@ -548,7 +597,7 @@ public class OperatorRole {
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
             //get id
-            temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -568,14 +617,14 @@ public class OperatorRole {
         }
         
         //TODO look up info using id
-        String newName = "", newAddress = "", newCity = "", newState = "", newZip = "";
-        int newId = 0;
+        String newName = "", newAddress = "", newCity = "", newState = "";
+        int newId = 0, newZip = 0;
         String name = "Bob";
         id = 123456789;
         String address = "12 fred St";
         String city = "Nor";
         String state = "AL";
-        String zip = "35475";
+        int zip = 35475;
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 6) {
@@ -584,6 +633,7 @@ public class OperatorRole {
                 case 0:
                     //get new name
                     newName = JOptionPane.showInputDialog(frame, "Enter the new name: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
                     if (newName == null)
                         System.exit(0);
                     
@@ -594,7 +644,7 @@ public class OperatorRole {
                 //if "ID"
                 case 1:
                     //get new ID:
-                    temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
                     //exits if "cancel" or "exit" is pressed
                     if (temp == null) 
                         System.exit(0);
@@ -620,6 +670,7 @@ public class OperatorRole {
                 case 2:
                     //get new address
                     newAddress = JOptionPane.showInputDialog(frame, "Enter the new address: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
                     if (newAddress == null)
                         System.exit(0);
                     //TODO update address in database
@@ -630,6 +681,7 @@ public class OperatorRole {
                 case 3:
                     //get new city
                     newCity = JOptionPane.showInputDialog(frame, "Enter the new city: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
                     if (newCity == null)
                         System.exit(0);
                     //TODO update city in database
@@ -640,6 +692,7 @@ public class OperatorRole {
                 case 4:
                     //get new state
                     newState = JOptionPane.showInputDialog(frame, "Enter the new state: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
                     if (newState == null)
                         System.exit(0);
                     //TODO update state in database
@@ -648,14 +701,27 @@ public class OperatorRole {
                     break;
                 //if "Zip"
                 case 5:
-                  //get new address
-                   newZip = JOptionPane.showInputDialog(frame, "Enter the new zip: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-                    if (newZip == null)
-                        System.exit(0);
-                    
+                    //get new zip
+                    temp = JOptionPane.showInputDialog(frame, "Enter the new zip code: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
+                    if (temp == null)
+                         System.exit(0);
+                     //try to parse the string
+                     try { newZip = Integer.parseInt(temp);
+                     } catch (Exception e){}
+                     //makes sure the number is 9 digits
+                     while((newZip <= 9999) || (newZip >= 100000)) { 
+                         temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                         //exits if "cancel" or "exit" is pressed
+                         if (temp == null) 
+                             System.exit(0);
+                         //try to parse the string
+                         try { newZip = Integer.parseInt(temp);
+                         } catch (Exception e) {}
+                     }//close while
                     //TODO update zip in database
                     
-                    JOptionPane.showMessageDialog(frame, item + " zip updated from " + zip + " to " + newZip + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, item + " zip code updated from " + zip + " to " + newZip + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if exit button is pressed
                 default: 
@@ -715,7 +781,7 @@ public class OperatorRole {
             int id = 0;
             
             //get id
-            temp = JOptionPane.showInputDialog(frame, "Please enter the " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame, "Please enter the " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -748,12 +814,16 @@ public class OperatorRole {
     }//close manageDirectory function
     
     private static void addService(String item, JFrame frame) {
-        int id = 0, zip = 0;
+        int id = 0;
+        double fee = 0;
         //get name
         String name = JOptionPane.showInputDialog(frame, "Enter new " + item + " name:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        
+        //exits if "cancel" or "exit" is pressed
+        if (name == null)
+            System.exit(0);
         //get id
         String temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " number:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
         if (temp == null) 
             System.exit(0);
         //try to parse the string
@@ -770,30 +840,14 @@ public class OperatorRole {
             } catch (Exception e) {}
         }//close while
         
-        //get address
-        String address = JOptionPane.showInputDialog(frame, "Enter new " + item + " address:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        //get city
-        String city = JOptionPane.showInputDialog(frame, "Enter new " + item + " city:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        //get state
-        String state = JOptionPane.showInputDialog(frame, "Enter new " + item + " State:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        
-        //get zip code
-        temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " number:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
-        if (temp == null) 
+        //get fee
+        temp = JOptionPane.showInputDialog(frame, "Enter the new " + item + " fee:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        //exits if "cancel" or "exit" is pressed
+        if (temp == null)
             System.exit(0);
         //try to parse the string
-        try { zip = Integer.parseInt(temp);
-        } catch (Exception e){}
-        //makes sure the number is 9 digits
-        while((zip <= 9999) || (id >= 100000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " xip.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
-            //exits if "cancel" or "exit" is pressed
-            if (temp == null) 
-                System.exit(0);
-            //try to parse the string
-            try { zip = Integer.parseInt(temp);
-            } catch (Exception e) {}
-        }//close while
+        try { fee = Double.parseDouble(temp);
+        } catch (Exception e){}       
        
         //TODO
         
@@ -828,7 +882,7 @@ public class OperatorRole {
         int id = 0;
         
         //get id
-        temp = JOptionPane.showInputDialog(frame, "Please enter the " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+        temp = JOptionPane.showInputDialog(frame, "Please enter the " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed
         if (temp == null) 
             System.exit(0);
@@ -875,6 +929,7 @@ public class OperatorRole {
     
     private static void updateService(String item, int id, JFrame frame) {
         String temp;
+        //if you don't come from manageMember function the id will be 0
     	if (id == 0) {
             //get id
             temp = JOptionPane.showInputDialog(frame, "Please enter the " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
@@ -910,6 +965,7 @@ public class OperatorRole {
                 case 0:
                     //get new name
                     newName = JOptionPane.showInputDialog(frame, "Enter the new name: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
                     if (newName == null)
                         System.exit(0);
                     
@@ -920,7 +976,7 @@ public class OperatorRole {
                 //if "ID"
                 case 1:
                     //get new ID:
-                    temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " Number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    temp = JOptionPane.showInputDialog(frame, "Please enter " + item + " number.", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
                     //exits if "cancel" or "exit" is pressed
                     if (temp == null) 
                         System.exit(0);
@@ -945,7 +1001,8 @@ public class OperatorRole {
                 //if "fee"
                 case 2:
                     //get new fee
-                    temp = JOptionPane.showInputDialog(frame, "Enter the new address: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    temp = JOptionPane.showInputDialog(frame, "Enter the new fee: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
                     if (temp == null)
                         System.exit(0);
                     //try to parse the string
@@ -954,16 +1011,16 @@ public class OperatorRole {
                     
                     //TODO update fee in database
                     
-                    JOptionPane.showMessageDialog(frame, item + " address updated from " + fee + " to " + newFee + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, item + " fee updated from " + fee + " to " + newFee + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if exit button is pressed
                 default: 
                     System.exit(0);
             }//end switch
             //get the new values;
-/*            newName = "Flex";
-            newId = 654321;
-            newFee = 2;*/
+//            newName = "Flex";
+//            newId = 654321;
+//            newFee = 2;
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Fee: " + newFee, "Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while

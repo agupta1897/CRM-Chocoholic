@@ -163,7 +163,9 @@ public class ProviderRole {
         //gets the current date and time in the proper format and stores it as a String
         String currentDateAndTime = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
         String date = JOptionPane.showInputDialog(frame,"Enter date the service was provided. Format must be MM-DD-YYYY.", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
-        
+        //exits if "cancel" or "exit" is pressed
+        if (date == null) 
+            System.exit(0);
         //makes sure date is long enough, Month is less than 13, Day is less than 32, and year is numbers 
         while(date.length() != 10 || (date.charAt(0) < 48 || date.charAt(0) > 50) || (date.charAt(1) < 48 || date.charAt(1) > 50) 
             || date.charAt(2) != 45 || (date.charAt(3) < 48 || date.charAt(3) > 51) || (date.charAt(3) == 51 
