@@ -153,7 +153,7 @@ public class OperatorRole {
         
         //TODO
         
-        JOptionPane.showMessageDialog(frame, item + " added!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zip, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -515,7 +515,7 @@ public class OperatorRole {
 
         //TODO
         
-        JOptionPane.showMessageDialog(frame, item + " added!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zip, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -829,9 +829,9 @@ public class OperatorRole {
         //try to parse the string
         try { id = Integer.parseInt(temp);
         } catch (Exception e){}
-        //makes sure the number is 9 digits
-        while((id <= 99999999) || (id >= 1000000000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+        //makes sure the number is 6 digits
+        while((id <= 99999) || (id >= 1000000)) { 
+            temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -851,7 +851,7 @@ public class OperatorRole {
        
         //TODO
         
-        JOptionPane.showMessageDialog(frame, item + " added!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nFee: " + fee, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -983,9 +983,9 @@ public class OperatorRole {
                     //try to parse the string
                     try { newId = Integer.parseInt(temp);
                     } catch (Exception e){}
-                    //makes sure the number is 9 digits
-                    while((newId <= 99999999) || (newId >= 1000000000)) { 
-                        temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                    //makes sure the number is 6 digits
+                    while((newId <= 99999) || (newId >= 1000000)) { 
+                        temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                         //exits if "cancel" or "exit" is pressed
                         if (temp == null) 
                             System.exit(0);

@@ -214,8 +214,18 @@ public class ProviderRole {
         ans = JOptionPane.showConfirmDialog(frame, "Do you wish to enter comments?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
         String comment = "";
         //allow them to enter the comment if Yes
-        if (ans == 0)
-            comment = JOptionPane.showInputDialog("Enter comment");
+        if (ans == 0) {
+            comment = JOptionPane.showInputDialog(frame,"Enter comment","ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+            //if "exit" or "cancel" is pressed
+            if (comment == null)
+                System.exit(0);
+            while (comment.length() > 25) {
+                comment = JOptionPane.showInputDialog(frame,"Comment must be less than 25 characters.", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
+                //if "exit" or "cancel" is pressed
+                if (comment == null)
+                    System.exit(0);
+            }
+        }
         //keep the comment empty if they say "No"
         else if (ans == 1)
             comment = "";
@@ -225,7 +235,7 @@ public class ProviderRole {
         else 
             System.out.println("Something went wrong in billVisit()");
         
-        submitVisitInfo(providerId,memberId,currentDateAndTime,date,serviceCode,comment);
+        submitVisitInfo(frame,providerId,memberId,currentDateAndTime,date,serviceCode,comment);
         
         //determine where to go
         Object [] options  = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
@@ -272,8 +282,14 @@ public class ProviderRole {
     }//close verifyMember function
   
     //function to submit the info obtained in billVisit function
-    private static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
+    private static void submitVisitInfo(JFrame frame, int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
         
+        //TODO get the fee
+        
+        double fee = 100;
+        //print out the info that is written to the disk plus the Fee
+        JOptionPane.showMessageDialog(frame, "Member billed!\nProvider ID: " + providerId + "\nMember ID: " + memberId + "\nCurrent Date and Time: " + 
+                currentDateAndTime + "\nDate of service: " + date + "\nService code: " + serviceCode + "\nComment: " + comment + "\nFee: " + fee, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         //TODO
         
     }//close submitVisitInfo function
