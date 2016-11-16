@@ -46,7 +46,7 @@ public class ChocAn {
         }
         //if the exit button is pressed the function stops
         else if (role == -1)
-            return;
+            System.exit(0);
         else 
             System.out.println("Something went wrong in roleChoose()");
     }//close roleChoose function

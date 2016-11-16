@@ -36,7 +36,7 @@ public class ProviderRole {
         else if (ans == -1)
             System.exit(0);
         else 
-            System.out.println("Something went wrong in providerTerminal()");
+            System.out.println("Something wnt wrong in providerTerminal()");
     }//close providerTerminal function
     
     private static void startVisit(JFrame frame) {

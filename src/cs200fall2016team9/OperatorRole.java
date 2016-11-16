@@ -35,6 +35,7 @@ public class OperatorRole {
         //if "Return..." is chosen
         else if (ans == 3)
             return;
+        //if exit is pressed
         else if (ans == -1)
         	System.exit(0);
         else 
@@ -382,7 +383,6 @@ public class OperatorRole {
         //TODO
         
         //determine where to go
-        System.out.println("options");
         Object [] options = {"Add a " + item, "Remove a " + item, "Update another " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
