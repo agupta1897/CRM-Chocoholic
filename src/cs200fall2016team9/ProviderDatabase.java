@@ -15,7 +15,9 @@ public class ProviderDatabase extends Database {
 	@Override
 	void addEntry() {
 		// TODO Auto-generated method stub
-
+		// Create an instance of member.
+		// Add entry
+		// Overload Database
 	}
 
 	@Override
@@ -29,8 +31,4 @@ public class ProviderDatabase extends Database {
 
 	}
 	
-	void lookUpProvider(int id) {
-		// TODO
-	
-	}
 }
