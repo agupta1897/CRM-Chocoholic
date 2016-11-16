@@ -29,8 +29,4 @@ public class ProviderDatabase extends Database {
 
 	}
 	
-	void lookUpProvider(int id) {
-		// TODO
-	
-	}
 }
