@@ -2,6 +2,12 @@ package cs200fall2016team9;
 
 import java.util.HashMap;
 
+/**
+ * 
+ * @author Nate Wade
+ *
+ */
+
 public class ProviderDatabase extends Database {
 
 	private HashMap<Integer, Provider> map = new HashMap<Integer, Provider>();
