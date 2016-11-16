@@ -104,7 +104,7 @@ public class OperatorRole {
         } catch (Exception e){}
         
         //makes sure the number is 9 digits
-        while((id <= 99999999) || (id >= 1000000000) || DatabaseEntry.serchCode(item,id)) { 
+        while((id <= 99999999) || (id >= 1000000000) || DatabaseEntry.searchCode(item,id)) { 
             temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
