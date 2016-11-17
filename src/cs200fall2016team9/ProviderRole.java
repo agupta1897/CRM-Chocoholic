@@ -104,7 +104,7 @@ public class ProviderRole {
     }//close startVisit function
     
     private static void billVisit (int providerId, JFrame frame) {
-        String temp;
+        String temp, serviceName = "";
         int memberId = 0, serviceCode = 0;
         
         //TODO ProviderDirectory pDir;
@@ -196,6 +196,38 @@ public class ProviderRole {
         //try to parse the string
         try { serviceCode = Integer.parseInt(temp);
         } catch (Exception e) {}
+        //if the serviceCode is 6 digits display the service name
+        if (serviceCode > 99999 && serviceCode < 1000000) {
+            //TODO look up service name
+            serviceName = "Apple";
+            ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
+            //if exit is pressed
+            if (ans == -1) 
+                System.exit(0);
+            //if no
+            while (ans == 1) {
+                temp = JOptionPane.showInputDialog(frame,"Enter the service code: ", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+                //exits if "cancel" or "exit" is pressed
+                if (temp == null)
+                    System.exit(0);
+                //try to parse the string
+                try { serviceCode = Integer.parseInt(temp);
+                } catch (Exception e) {}
+                //TODO get service name
+                serviceName  = "Bob";
+                //if it's the right length
+                if (serviceCode > 99999 && serviceCode < 1000000) {
+                    ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
+                    //if exit is pressed
+                    if (ans == -1) 
+                        System.exit(0);
+                }//close if
+                //cause loop to end
+                else 
+                    ans = 0;
+            }//close while
+        }//close if
+            
         //makes sure the serviceCode is 6 digits
         while(serviceCode <= 99999 || serviceCode >= 1000000) { 
             temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number. Enter valid service code", "ChocAn - Provider", JOptionPane.ERROR_MESSAGE);
@@ -205,6 +237,37 @@ public class ProviderRole {
             //try to parse the string
             try { serviceCode = Integer.parseInt(temp);
             } catch (Exception e) {}
+            //if the serviceCode is 6 digits display the service name
+            if (serviceCode > 99999 && serviceCode < 1000000) {
+                //TODO look up service fee
+                serviceName = "Charlie";
+                ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
+                //if exit is pressed
+                if (ans == -1) 
+                    System.exit(0);
+                //if no
+                while (ans == 1) {
+                    temp = JOptionPane.showInputDialog(frame,"Enter the service code: ", "ChocAn - Provider", JOptionPane.QUESTION_MESSAGE);
+                    //exits if "cancel" or "exit" is pressed
+                    if (temp == null)
+                        System.exit(0);
+                    //try to parse the string
+                    try { serviceCode = Integer.parseInt(temp);
+                    } catch (Exception e) {}
+                    //TODO get service name
+                    serviceName  = "Delta";
+                    //if serviceCode is 6 digits
+                    if (serviceCode > 99999 && serviceCode < 1000000) {
+                        ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
+                        //if exit is pressed
+                        if (ans == -1) 
+                            System.exit(0);
+                    }
+                    //cause loop to end
+                    else 
+                        ans = 0;
+                }//close while
+            }//close if
         }//close while
         
         // TODO String serviceName = pDir.serviceLookUp(serviceCode);
@@ -225,7 +288,7 @@ public class ProviderRole {
                 if (comment == null)
                     System.exit(0);
             }
-        }
+        } 
         //keep the comment empty if they say "No"
         else if (ans == 1)
             comment = "";
@@ -244,9 +307,8 @@ public class ProviderRole {
         if (ans == 0)
             billVisit(providerId,frame);
         //if "No but stay Provider"
-        else if (ans == 1) {
+        else if (ans == 1)
             providerTerminal(frame);
-        }
         //if "No, return to Main Menu"
         else if (ans == 2) 
             return;
@@ -275,6 +337,7 @@ public class ProviderRole {
         //TODO MemberDatabase m;
         //m = new MemberDatabase();
         //String Status = m.lookUpMember(id);
+        //get fee's if suspended
         
         //temporary to allow program to run without the database
         String status = "Validated";
