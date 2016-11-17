@@ -47,7 +47,7 @@ public abstract class DatabaseEntry {
 		return false;
 	}
 	
-	abstract void saveEntry();
+	abstract void saveEntry() throws IOException;
 	
 	protected String getName(){
 		return name;

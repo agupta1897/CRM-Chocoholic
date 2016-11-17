@@ -1,33 +1,44 @@
 package cs200fall2016team9;
 
 import java.io.*;
-import java.util.Scanner;
 
 /**
  * 
  * @author Jake Bailey
  *
  */
-public class Provider {
-	void addNewProvider(){
-		/*Scanner sc = new Scanner(System.in);
-		System.out.println("What's the name?");
-		String name = sc.next();
-		System.out.println("What's the number?");
-		int num = sc.nextInt();
-		System.out.println("What's the address?");
-		String address = sc.next();
-		System.out.println("What's the city?");
-		String city = sc.next();
-		System.out.println("What's the state?");
-		String state = sc.next();
-		System.out.println("What's the zip?");
-		int zip = sc.nextInt();
-		DatabaseEntry.setName(name);
-		DatabaseEntry.setNumber(num);
-		DatabaseEntry.setAddress(address);
-		DatabaseEntry.setCity(city);
-		DatabaseEntry.setState(state);
-		DatabaseEntry.setZIP(zip);*/
+
+public class Provider extends DatabaseEntry{
+	void addNewProvider(String name, int num, String address, String city, String state, int zip){
+		setName(name);
+		setNumber(num);
+		setAddress(address);
+		setCity(city);
+		setState(state);
+		setZIP(zip);
+		try {
+			saveEntry();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	void saveEntry() throws IOException{
+	File f = new File(Integer.toString(getNumber())+".txt");
+	BufferedWriter fstream = null;
+	fstream = new BufferedWriter(new FileWriter(f));
+	fstream.write(getName());
+	fstream.newLine();
+	fstream.write(getNumber());
+	fstream.newLine();
+	fstream.write(getAddress());
+	fstream.newLine();
+	fstream.write(getCity());
+	fstream.newLine();
+	fstream.write(getState());
+	fstream.newLine();
+	fstream.write(getZipCode());
+	fstream.close();
 	}
 }
