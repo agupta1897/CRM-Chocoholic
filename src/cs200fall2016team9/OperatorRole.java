@@ -207,7 +207,7 @@ public class OperatorRole {
         
         //TODO
         
-        JOptionPane.showMessageDialog(frame, item + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -260,12 +260,12 @@ public class OperatorRole {
         //TODO look up info using id
         String newName = "", newAddress = "", newCity = "", newState = "";
         int newId = 0, newZip = 0;
-        String name = "Bob";
+        String name = "John Doe";
         id = 123456789;
-        String address = "12 fred St";
-        String city = "Nor";
+        String address = "2001 Heaven St.";
+        String city = "Tuscaloosa";
         String state = "AL";
-        int zip = 35475;
+        int zip = 35404;
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 6) {
@@ -372,12 +372,12 @@ public class OperatorRole {
 			        System.exit(0);
         	}//end switch
         	//get the new values;
-/*            newName = "Bob";
-            newId = 987654321;
-            newAddress = "12 fred St";
-            newCity = "Nor";
+/*            newName = "Fred Stone";
+            newId = 123456789;
+            newAddress = "2001 Heaven St.";
+            newCity = "Tuscaloosa";
             newState = "AL";
-            newZip = "35475";*/
+            newZip = 35404;*/
         	Object [] options2 = {"Name: " + newName, "ID: " + newId, "Address: " + newAddress, "City: " + newCity, "State: " + newState, "Zip: " + newZip,"Done updating " + item};
         	ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while
@@ -568,7 +568,7 @@ public class OperatorRole {
         
         //TODO
         
-        JOptionPane.showMessageDialog(frame, item + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -621,10 +621,10 @@ public class OperatorRole {
         //TODO look up info using id
         String newName = "", newAddress = "", newCity = "", newState = "";
         int newId = 0, newZip = 0;
-        String name = "Bob";
-        id = 123456789;
-        String address = "12 fred St";
-        String city = "Nor";
+        String name = "Jane Doe";
+        id = 234567890;
+        String address = "1001 Shirley St";
+        String city = "Tuscaloosa";
         String state = "AL";
         int zip = 35475;
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
@@ -730,12 +730,12 @@ public class OperatorRole {
                     System.exit(0);
             }//end switch
             //get the new values;
-/*            newName = "Bob";
-            newId = 987654321;
-            newAddress = "12 fred St";
-            newCity = "Nor";
+/*            newName = "Fred Stone";
+            newId = 1234567891;
+            newAddress = "3001 Captial St.";
+            newCity = "Cottondale";
             newState = "AL";
-            newZip = "35475";*/
+            newZip = 35703;*/
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Address: " + newAddress, "City: " + newCity, "State: " + newState, "Zip: " + newZip,"Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while
@@ -904,7 +904,7 @@ public class OperatorRole {
         
         //TODO
         
-        JOptionPane.showMessageDialog(frame, item + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add.." is chosen
@@ -958,7 +958,7 @@ public class OperatorRole {
         double newFee = 0;
         String name = "Nutrition";
         id = 123456;
-        double fee = 1;
+        double fee = 50;
         Object [] options1 = {"Name: " + name, "ID: " + id, "Fee: " + fee};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 3) {
