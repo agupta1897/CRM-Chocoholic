@@ -4,3 +4,4 @@ John Doe
 Tuscaloosa
 AL
 35404
+Current
