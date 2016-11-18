@@ -1,6 +1,8 @@
 package cs200fall2016team9;
 
-import java.util.HashMap;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * 
@@ -10,25 +12,37 @@ import java.util.HashMap;
 
 public class ProviderDatabase extends Database {
 
-	private HashMap<Integer, Provider> map = new HashMap<Integer, Provider>();
-
 	@Override
-	void addEntry() {
-		// TODO Auto-generated method stub
-		// Create an instance of member.
-		// Add entry
-		// Overload Database
+	void addEntry(String name, int num, String address, String city, String state, int zip) {
+		Provider p = new Provider();
+		p.addNewProvider(name, num, address, city, state, zip);
+		try {
+			p.saveEntry();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	void removeEntry(int id) {
-		map.remove(id);
+		try {
+			Files.deleteIfExists(Paths.get(Integer.toString(id) + ".txt"));
+		} catch (Exception e) {
+
+		}
 	}
 
 	@Override
-	void updateEntry(int id) {
-		// TODO Auto-generated method stub
+	void updateEntry(int id, String name, String address, String city, String state, int zip) {
+		Provider p = new Provider();
+		p.addNewProvider(name, id, address, city, state, zip);
+		try {
+			removeEntry(id);
+			p.saveEntry();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
-	
+
 }

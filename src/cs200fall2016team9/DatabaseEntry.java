@@ -1,10 +1,13 @@
 package cs200fall2016team9;
 
+import java.io.*;
+
 /**
  * 
- * @author Sean Martin
+ * @author Jake Bailey
  *
  */
+
 public abstract class DatabaseEntry {
 	
 	private String name;
@@ -13,6 +16,38 @@ public abstract class DatabaseEntry {
 	private String city;
 	private String state;
 	private int zipCode;
+	
+	protected  boolean searchCode(String type, int code){
+		File f = new File("");
+		FileReader inF = null;
+		try {inF = new FileReader(f);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		BufferedReader in = new BufferedReader(inF);
+		String s = null;
+		int num = 0;
+		try {s = in.readLine();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		while(s != null){
+			try {s = in.readLine();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try{num = Integer.parseInt(s);
+			}catch(Exception e){}
+			if(num==code)
+				return true;
+		}
+		return false;
+	}
+	
+	abstract void saveEntry() throws IOException;
 	
 	protected String getName(){
 		return name;
