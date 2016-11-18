@@ -17,7 +17,7 @@ public abstract class DatabaseEntry {
 	private String state;
 	private int zipCode;
 	
-	protected  boolean searchCode(String type, int code){
+	protected static  boolean searchCode(String type, int code){
 		File f = new File("");
 		FileReader inF = null;
 		try {inF = new FileReader(f);
