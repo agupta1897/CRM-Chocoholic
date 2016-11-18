@@ -199,7 +199,7 @@ public class ProviderRole {
         //if the serviceCode is 6 digits display the service name
         if (serviceCode > 99999 && serviceCode < 1000000) {
             //TODO look up service name
-            serviceName = "Apple";
+            serviceName = "Dentist";
             ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
             //if exit is pressed
             if (ans == -1) 
