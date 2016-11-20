@@ -14,11 +14,17 @@ import javax.swing.JOptionPane;
  */
 public class OperatorRole {
     
+    /**
+     * Function to come from ChocAn.java
+     */
     public static void operatorTerminal() {
     	//manage the database
         manageDatabase();
     }
 
+    /**
+     * Function to see what the Operator wants
+     */
     private static void manageDatabase() {
         JFrame frame = null;
         //Determine where to go
@@ -43,6 +49,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageDatabase()");
     }//close manageDatabse function
 
+    /**
+     * Function to see if add, remove, or update Member info
+     * @param item will always be 'Member'
+     */
     private static void manageMember(String item) {
         JFrame frame = null;
         //determine where to go
@@ -89,6 +99,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageMember()");
     }//close manageMember function
     
+    /**
+     * Function to add a Member
+     * @param item will always be 'Member'
+     */
     private static void addMember(String item) {
         JFrame frame = null;
         int id = 0, zip = 0;
@@ -185,6 +199,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in addMember()");
     }//close addMember function
     
+    /**
+     * Function to delete Members
+     * @param item will always be 'Member"
+     */
     private static void deleteMember(String item) {
         JFrame frame = null;
         String temp;
@@ -237,6 +255,11 @@ public class OperatorRole {
             System.out.println("Something went wrong in deleteMember()");
     }//close deleteMember function
     
+    /**
+     * Function to update Members information
+     * @param item will always be 'Member'
+     * @param id the Members ID that you are updating
+     */
     private static void updateMember(String item, int id) {
         JFrame frame = null;
         String temp;
@@ -415,6 +438,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in updateMember()");
     }//close UpdateMember function
     
+    /**
+     * Function to see if add, remove, or update Providers information
+     * @param item will always be 'Provider'
+     */
     private static void manageProvider(String item) {
         JFrame frame = null;
         //determine where to go
@@ -461,6 +488,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageProvider()");
     }//close manageProvider function
     
+    /**
+     * Function to add a Provider
+     * @param item will always be 'Provider'
+     */
     private static void addProvider(String item) {
         JFrame frame = null;
         int id = 0, zip = 0;
@@ -550,6 +581,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in addProvider()");
     }//close addProvider function
     
+    /**
+     * Function to delete Providers
+     * @param item will always be 'Provider'
+     */
     private static void deleteProvider(String item) {
         JFrame frame = null;
         String temp;
@@ -602,6 +637,11 @@ public class OperatorRole {
             System.out.println("Something went wrong in deleteProvider()");
     }//close deleteProvider function
     
+    /**
+     * Function to update Providers information
+     * @param item will always be 'Provider'
+     * @param id the Providers ID you are updating
+     */
     private static void updateProvider(String item, int id) {
         JFrame frame = null;
         String temp;
@@ -776,6 +816,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in updateProvider()");
     }//close UpdateProvider function
     
+    /**
+     * Function to see if you want to add, remove, or update a Service's info
+     * @param item will always be 'Service'
+     */
     private static void manageDirectory (String item) {
         JFrame frame = null;
         //determine where to go
@@ -825,6 +869,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageDirectory()");
     }//close manageDirectory function
     
+    /**
+     * Function to add a service 
+     * @param item will alwasy be 'Service'
+     */
     private static void addService(String item) {
         JFrame frame = null;
         int id = 0;
@@ -890,6 +938,10 @@ public class OperatorRole {
             System.out.println("Something went wrong in addService()");
     }//close addService function
     
+    /**
+     * Function to delete a Service
+     * @param item will always be 'Service'
+     */
     private static void deleteService(String item) {
         JFrame frame = null;
         String temp;
@@ -941,6 +993,11 @@ public class OperatorRole {
             System.out.println("Something went wrong in deleteService()");
     }//close deleteService function
     
+    /**
+     * Function to update a Service's info
+     * @param item will always be 'Service'
+     * @param id the Service ID
+     */
     private static void updateService(String item, int id) {
         JFrame frame = null;
         String temp;

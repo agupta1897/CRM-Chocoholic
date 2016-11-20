@@ -14,11 +14,17 @@ import javax.swing.JOptionPane;
 */
 public class ManagerRole {
     
+    /**
+     * Function to come from ChocAn.java
+     */
     public static void managerTerminal() {
         //go to getReport function, initially pass in empty string
     	getReport();
     }
-
+    
+    /**
+     * Function to figure out what type of report the Manager wants
+     */
     private static void getReport() {
         JFrame frame = null;
         String report;
@@ -99,7 +105,10 @@ public class ManagerRole {
             System.out.println("Something went wrong in getReport()");
     }//close getReport function
     
-    //used to get a single member/provider report
+    /**
+     * Function used to get a single member/provider report
+     * @param report the type of report, either 'Member' or 'Provider'
+     */
     private static void getSingleReport(String report) {
         JFrame frame = null;
         String temp;

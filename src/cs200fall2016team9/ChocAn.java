@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane; 
 
 /**
- * 
  * This is the beginning of the program. It ask the user what role they want to be in
  * depending on their answer it will go to ProviderRole.java, ManagerRole.java, or 
  * OperatorRole.java. 
@@ -14,10 +13,18 @@ import javax.swing.JOptionPane;
  */
 public class ChocAn {
     
+    /**
+     * The start of the program
+     * @param args argument from the command line
+     */
     public static void main(String[] args) {
         roleChoose();
     }//close main function
 
+
+    /**
+     * Decides which Role to go in based off of the user selection
+     */
     public static void roleChoose() {
         JFrame frame = null;
         //determine where to go

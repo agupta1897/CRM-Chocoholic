@@ -16,6 +16,9 @@ import java.text.SimpleDateFormat;
  */
 public class ProviderRole {
     
+    /**
+     * Decides what function to go to based on the Providers choice
+     */
     public static void providerTerminal() {
         JFrame frame = null;
         //determine where to go
@@ -40,6 +43,9 @@ public class ProviderRole {
             System.out.println("Something wnt wrong in providerTerminal()");
     }//close providerTerminal function
     
+    /**
+     * If the Provider is wanting to verify the member before health care services are provided
+     */
     private static void startVisit() {
         JFrame frame = null;
         int terminalId = 0, memberId = 0;
@@ -105,6 +111,10 @@ public class ProviderRole {
             System.out.println("Something went wrong in startVisit()");
     }//close startVisit function
     
+    /**
+     * Function to handle the provider inputing information about the visit
+     * @param providerId the Provider ID
+     */
     private static void billVisit (int providerId) {
         JFrame frame = null;
         String temp, serviceName = "";
@@ -322,7 +332,9 @@ public class ProviderRole {
             System.out.println("Something went wrong in billVisit()");
     }//close billVisit function
     
-    //function to send directory
+    /**
+     * Function to send the Provider Directory if requested
+     */
     private static void requestDirectory() {
         JFrame frame = null;
         //TODO ProviderDirectory pDir;
@@ -334,7 +346,11 @@ public class ProviderRole {
         providerTerminal();
     }//close requestDirectory function
     
-    //function to verify Member
+    /**
+     * function to verify Member
+     * @param id the Member ID you are looking up
+     * @return the status of the member
+     */
     private static String verifyMember(int id) {
         
         //TODO MemberDatabase m;
@@ -347,7 +363,15 @@ public class ProviderRole {
         return status;
     }//close verifyMember function
   
-    //function to submit the info obtained in billVisit function
+    /**
+     * Function to add the info obtained in billVisit function to the database
+     * @param providerId the Provider ID
+     * @param memberId the Member ID
+     * @param currentDateAndTime the Current Date and Time when the info was inputted
+     * @param date the date the service was provided
+     * @param serviceCode the 6 digit code for the service provided
+     * @param comment comments that the Provider might have entered
+     */
     private static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
         JFrame frame = null;
         //TODO get the fee
