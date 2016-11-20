@@ -14,24 +14,25 @@ import javax.swing.JOptionPane;
  */
 public class OperatorRole {
     
-    public static void operatorTerminal(JFrame frame) {
+    public static void operatorTerminal() {
     	//manage the database
-        manageDatabase(frame);
+        manageDatabase();
     }
 
-    private static void manageDatabase(JFrame frame) {
+    private static void manageDatabase() {
+        JFrame frame = null;
         //Determine where to go
         Object [] options  = {"Manage a Member", "Manage a Provider", "Manage the Provider Directory", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Manage a Member" is chosen
         if (ans == 0)
-        	manageMember("Member",frame);
+        	manageMember("Member");
         //if "Manage a Provider" is chosen
         else if (ans == 1)
-        	manageProvider("Provider",frame);
+        	manageProvider("Provider");
         //if "Manage the Provider Directory" is chosen
         else if (ans == 2)
-            manageDirectory("Service",frame);
+            manageDirectory("Service");
         //if "Return..." is chosen
         else if (ans == 3)
             return;
@@ -42,16 +43,17 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageDatabase()");
     }//close manageDatabse function
 
-    private static void manageMember(String item,JFrame frame) {
+    private static void manageMember(String item) {
+        JFrame frame = null;
         //determine where to go
         Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addMember(item,frame);
+            addMember(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteMember(item,frame);
+            deleteMember(item);
         //if "Update..." is chosen
         else if (ans == 2) {//get id
             int id = 0;
@@ -72,11 +74,11 @@ public class OperatorRole {
                 try { id = Integer.parseInt(temp);
                 } catch (Exception e) {}
             }//close while
-            updateMember(item,id,frame);
+            updateMember(item,id);
         }
         //if "Back.." is chosen
         else if (ans == 3) 
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4)
             return;
@@ -87,7 +89,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageMember()");
     }//close manageMember function
     
-    private static void addMember(String item, JFrame frame) {
+    private static void addMember(String item) {
+        JFrame frame = null;
         int id = 0, zip = 0;
         //get name
         String name = JOptionPane.showInputDialog(frame, "Enter new " + item + " name:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
@@ -162,16 +165,16 @@ public class OperatorRole {
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addMember(item,frame);
+            addMember(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteMember(item,frame);
+            deleteMember(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateMember(item,0,frame);
+            updateMember(item,0);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4) 
             return;
@@ -182,7 +185,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in addMember()");
     }//close addMember function
     
-    private static void deleteMember(String item, JFrame frame) {
+    private static void deleteMember(String item) {
+        JFrame frame = null;
         String temp;
         int id = 0;
         
@@ -213,16 +217,16 @@ public class OperatorRole {
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add.." is chosen
         if (ans == 0)
-            addMember(item,frame);
+            addMember(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteMember(item,frame);
+            deleteMember(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateMember(item,0,frame);
+            updateMember(item,0);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Remove..." is chosen
         else if (ans == 4) 
             return;
@@ -233,7 +237,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in deleteMember()");
     }//close deleteMember function
     
-    private static void updateMember(String item, int id, JFrame frame) {
+    private static void updateMember(String item, int id) {
+        JFrame frame = null;
         String temp;
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
@@ -389,16 +394,16 @@ public class OperatorRole {
         ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addMember(item,frame);
+            addMember(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteMember(item,frame);
+            deleteMember(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateMember(item,0,frame);
+            updateMember(item,0);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4) {
             return;
@@ -410,16 +415,17 @@ public class OperatorRole {
             System.out.println("Something went wrong in updateMember()");
     }//close UpdateMember function
     
-    private static void manageProvider(String item, JFrame frame) {
+    private static void manageProvider(String item) {
+        JFrame frame = null;
         //determine where to go
         Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addProvider(item,frame);
+            addProvider(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteProvider(item,frame);
+            deleteProvider(item);
         //if "Update..." is chosen
         else if (ans == 2) {
             int id = 0;
@@ -440,11 +446,11 @@ public class OperatorRole {
                 try { id = Integer.parseInt(temp);
                 } catch (Exception e) {}
             }//close while
-            updateProvider(item,id,frame);
+            updateProvider(item,id);
         }
         //if "Back.." is chosen
         else if (ans == 3) 
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4)
             return;
@@ -455,7 +461,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageProvider()");
     }//close manageProvider function
     
-    private static void addProvider(String item, JFrame frame) {
+    private static void addProvider(String item) {
+        JFrame frame = null;
         int id = 0, zip = 0;
         //get name
         String name = JOptionPane.showInputDialog(frame, "Enter new " + item + " name:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
@@ -523,16 +530,16 @@ public class OperatorRole {
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addProvider(item,frame);
+            addProvider(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteProvider(item,frame);
+            deleteProvider(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateProvider(item,0,frame);
+            updateProvider(item,0);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4) 
             return;
@@ -543,7 +550,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in addProvider()");
     }//close addProvider function
     
-    private static void deleteProvider(String item, JFrame frame) {
+    private static void deleteProvider(String item) {
+        JFrame frame = null;
         String temp;
         int id = 0;
         
@@ -574,16 +582,16 @@ public class OperatorRole {
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add.." is chosen
         if (ans == 0)
-            addProvider(item,frame);
+            addProvider(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteProvider(item,frame);
+            deleteProvider(item);
         //if "Update..." is chosen
         else if (ans == 2) 
-            updateProvider(item,0,frame);
+            updateProvider(item,0);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Remove..." is chosen
         else if (ans == 4) 
             return;
@@ -594,7 +602,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in deleteProvider()");
     }//close deleteProvider function
     
-    private static void updateProvider(String item, int id, JFrame frame) {
+    private static void updateProvider(String item, int id) {
+        JFrame frame = null;
         String temp;
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
@@ -747,16 +756,16 @@ public class OperatorRole {
         ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addProvider(item,frame);
+            addProvider(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteProvider(item,frame);
+            deleteProvider(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateProvider(item,id,frame);
+            updateProvider(item,id);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4) 
             return;
@@ -767,16 +776,17 @@ public class OperatorRole {
             System.out.println("Something went wrong in updateProvider()");
     }//close UpdateProvider function
     
-    private static void manageDirectory (String item, JFrame frame) {
+    private static void manageDirectory (String item) {
+        JFrame frame = null;
         //determine where to go
         Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addService(item,frame);
+            addService(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteService(item,frame);
+            deleteService(item);
         //if "Update..." is chosen
         else if (ans == 2) {
             String temp;
@@ -800,11 +810,11 @@ public class OperatorRole {
                 try { id = Integer.parseInt(temp);
                 } catch (Exception e) {}
             }//close while
-            updateService(item,id,frame);
+            updateService(item,id);
         }
         //if "Back.." is chosen
         else if (ans == 3) 
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4)
             return;
@@ -815,7 +825,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in manageDirectory()");
     }//close manageDirectory function
     
-    private static void addService(String item, JFrame frame) {
+    private static void addService(String item) {
+        JFrame frame = null;
         int id = 0;
         double fee = 0;
         //get name
@@ -859,16 +870,16 @@ public class OperatorRole {
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addService(item,frame);
+            addService(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteService(item,frame);
+            deleteService(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateService(item,0,frame);
+            updateService(item,0);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4) 
             return;
@@ -879,7 +890,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in addService()");
     }//close addService function
     
-    private static void deleteService(String item, JFrame frame) {
+    private static void deleteService(String item) {
+        JFrame frame = null;
         String temp;
         int id = 0;
         
@@ -909,16 +921,16 @@ public class OperatorRole {
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add.." is chosen
         if (ans == 0)
-            addService(item,frame);
+            addService(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteService(item,frame);
+            deleteService(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateService(item,0,frame);
+            updateService(item,0);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Remove..." is chosen
         else if (ans == 4) 
             return;
@@ -929,7 +941,8 @@ public class OperatorRole {
             System.out.println("Something went wrong in deleteService()");
     }//close deleteService function
     
-    private static void updateService(String item, int id, JFrame frame) {
+    private static void updateService(String item, int id) {
+        JFrame frame = null;
         String temp;
         //if you don't come from manageMember function the id will be 0
     	if (id == 0) {
@@ -1034,16 +1047,16 @@ public class OperatorRole {
         ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Add..." is chosen
         if (ans == 0)
-            addService(item,frame);
+            addService(item);
         //if "Remove..." is chosen
         else if (ans == 1)
-            deleteService(item,frame);
+            deleteService(item);
         //if "Update..." is chosen
         else if (ans == 2)
-            updateService(item,id,frame);
+            updateService(item,id);
         //if "Back..." is chosen
         else if (ans == 3)
-            operatorTerminal(frame);
+            operatorTerminal();
         //if "Return..." is chosen
         else if (ans == 4) 
             return;

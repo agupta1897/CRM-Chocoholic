@@ -16,19 +16,20 @@ import java.text.SimpleDateFormat;
  */
 public class ProviderRole {
     
-    public static void providerTerminal(JFrame frame) {
+    public static void providerTerminal() {
+        JFrame frame = null;
         //determine where to go
         Object [] options  = {"Verify Member for vist", "Bill Member for visit", "Request Provider Directory", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do yo want to do?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //for "Verify Member for Visit"
         if (ans == 0)
-            startVisit(frame);
+            startVisit();
         //for "Bill Member for visit"
         else if (ans == 1)
-            billVisit(0,frame);
+            billVisit(0);
         //for "Request Provider Directory"
         else if (ans == 2)
-            requestDirectory(frame);
+            requestDirectory();
         //for "Return to main Menu, to return to ChocAn.java
         else if (ans == 3)
             return;
@@ -39,7 +40,8 @@ public class ProviderRole {
             System.out.println("Something wnt wrong in providerTerminal()");
     }//close providerTerminal function
     
-    private static void startVisit(JFrame frame) {
+    private static void startVisit() {
+        JFrame frame = null;
         int terminalId = 0, memberId = 0;
         
         //get terminalId
@@ -89,10 +91,10 @@ public class ProviderRole {
         int ans = JOptionPane.showOptionDialog(frame,"Are you ready to Bill?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Yes" proceed to billVisit function
         if (ans == 0) 
-            billVisit(terminalId,frame);
+            billVisit(terminalId);
         //if "No, but stay Provider"
         else if (ans == 1)
-            providerTerminal(frame);
+            providerTerminal();
         //if "No, return to main menu"
         else if (ans == 2) 
             return;
@@ -103,7 +105,8 @@ public class ProviderRole {
             System.out.println("Something went wrong in startVisit()");
     }//close startVisit function
     
-    private static void billVisit (int providerId, JFrame frame) {
+    private static void billVisit (int providerId) {
+        JFrame frame = null;
         String temp, serviceName = "";
         int memberId = 0, serviceCode = 0;
         
@@ -298,17 +301,17 @@ public class ProviderRole {
         else 
             System.out.println("Something went wrong in billVisit()");
         
-        submitVisitInfo(frame,providerId,memberId,currentDateAndTime,date,serviceCode,comment);
+        submitVisitInfo(providerId,memberId,currentDateAndTime,date,serviceCode,comment);
         
         //determine where to go
         Object [] options  = {"Yes", "No, but stay in Provider Role", "No, return to Main Menu"};
         ans = JOptionPane.showOptionDialog(frame, "Do you want to bill another visit?", "ChocAn - Provider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //if "Yes"
         if (ans == 0)
-            billVisit(providerId,frame);
+            billVisit(providerId);
         //if "No but stay Provider"
         else if (ans == 1)
-            providerTerminal(frame);
+            providerTerminal();
         //if "No, return to Main Menu"
         else if (ans == 2) 
             return;
@@ -320,15 +323,15 @@ public class ProviderRole {
     }//close billVisit function
     
     //function to send directory
-    private static void requestDirectory(JFrame frame) {
-       
+    private static void requestDirectory() {
+        JFrame frame = null;
         //TODO ProviderDirectory pDir;
         //pDir = new ProviderDirectory();
         //pDir.sendDirectory();
         
         JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         //return to providerTerminal function
-        providerTerminal(frame);
+        providerTerminal();
     }//close requestDirectory function
     
     //function to verify Member
@@ -345,8 +348,8 @@ public class ProviderRole {
     }//close verifyMember function
   
     //function to submit the info obtained in billVisit function
-    private static void submitVisitInfo(JFrame frame, int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
-        
+    private static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
+        JFrame frame = null;
         //TODO get the fee
         
         double fee = 100;

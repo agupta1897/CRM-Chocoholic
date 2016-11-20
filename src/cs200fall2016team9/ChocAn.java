@@ -15,34 +15,34 @@ import javax.swing.JOptionPane;
 public class ChocAn {
     
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        roleChoose(frame);
+        roleChoose();
     }//close main function
 
-    public static void roleChoose(JFrame frame) {
+    public static void roleChoose() {
+        JFrame frame = null;
         //determine where to go
         Object [] options = {"Provider", "Manager", "Operator"};
         int role = JOptionPane.showOptionDialog(frame, "What Role?", "ChocAn - Main Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         //for Provider
         if (role == 0){
             //go to ProviderRole.java
-            ProviderRole.providerTerminal(frame);
+            ProviderRole.providerTerminal();
             //return to top of function
-            roleChoose(frame);
+            roleChoose();
         }
         //for Manager
         else if (role == 1) {
             //go to ManagerRole.java
-            ManagerRole.managerTerminal(frame);
+            ManagerRole.managerTerminal();
             //return to top of function
-            roleChoose(frame);
+            roleChoose();
         }
         //for Operator
         else if (role == 2) {
             //go to Operator.java
-            OperatorRole.operatorTerminal(frame);
+            OperatorRole.operatorTerminal();
             //return to top of function
-            roleChoose(frame);
+            roleChoose();
         }
         //if the exit button is pressed the function stops
         else if (role == -1)

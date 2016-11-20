@@ -14,12 +14,13 @@ import javax.swing.JOptionPane;
 */
 public class ManagerRole {
     
-    public static void managerTerminal(JFrame frame) {
+    public static void managerTerminal() {
         //go to getReport function, initially pass in empty string
-    	getReport(frame);
+    	getReport();
     }
 
-    private static void getReport(JFrame frame) {
+    private static void getReport() {
+        JFrame frame = null;
         String report;
         //determine where to go
         Object [] options  = {"Get Member report/s", "Get Provider report/s", "Get Summary report", "Get EFT report", "Return to Main Menu"};
@@ -40,11 +41,11 @@ public class ManagerRole {
             	
             	JOptionPane.showMessageDialog(frame, "Getting all Member reports!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             	//return to getReport function
-            	getReport(frame);
+            	getReport();
        		}
        		//if "No" then go to getSingleReport function
        		else if (ans == 1)
-       		    getSingleReport(report,frame);
+       		    getSingleReport(report);
        		//if exit is pressed
        		else if (ans == -1)
        		    System.exit(0);
@@ -67,11 +68,11 @@ public class ManagerRole {
 
        		 JOptionPane.showMessageDialog(frame, "Getting all Provider reports!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
        		 //return to getReport function
-       		 getReport(frame);
+       		 getReport();
        		}
        		//if "No" then go to getSingleReport function
        		else if (ans == 1)
-       			getSingleReport(report,frame);
+       			getSingleReport(report);
        		//if exit is pressed
        		else if (ans == -1)
        		    System.exit(0);
@@ -82,12 +83,12 @@ public class ManagerRole {
         else if (ans == 2) {
             JOptionPane.showMessageDialog(frame, "Getting Summary Report!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             //return to getReport function
-            getReport(frame);
+            getReport();
         }//close Summary if statement
         else if (ans == 3) {
             JOptionPane.showMessageDialog(frame, "Getting EFT Report!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             //return to get report function
-            getReport(frame);
+            getReport();
         }//close EFT if statement
         //to go back to ChocAn.java
         else if (ans == 4)
@@ -99,10 +100,10 @@ public class ManagerRole {
     }//close getReport function
     
     //used to get a single member/provider report
-    private static void getSingleReport(String report, JFrame frame) {
+    private static void getSingleReport(String report) {
+        JFrame frame = null;
         String temp;
-        int id = 0;
-        int ans;
+        int ans, id = 0;
         //for member reports
         if ("Member".equals(report)) {
             
@@ -133,11 +134,11 @@ public class ManagerRole {
             ans = JOptionPane.showOptionDialog(frame, "Do you want more " + report + " reports?", "ChocAn - Manager", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             //if "Yes" restart getSingleReport function
             if (ans == 0) {
-                getSingleReport(report,frame);
+                getSingleReport(report);
             }
             //if "No, but..." is chosen
             else if (ans == 1)
-                managerTerminal(frame);
+                managerTerminal();
             //if "No return..." is chosen
             else if (ans == 2)
                 return;
@@ -176,11 +177,11 @@ public class ManagerRole {
             ans = JOptionPane.showOptionDialog(frame, "Do you want more " + report + " reports?", "ChocAn - Manager", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             //if "Yes" restart getSingleReport function
             if (ans == 0) {
-                getSingleReport(report,frame);
+                getSingleReport(report);
             }
             //if "No, but..." is chosen
             else if (ans == 1)
-                managerTerminal(frame);
+                managerTerminal();
             //if "No return..." is chosen
             else if (ans == 2)
                 return;
