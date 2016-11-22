@@ -10,6 +10,109 @@ import java.io.*;
 
 public class Provider extends DatabaseEntry{
 	/**
+	 * Function looks up provider's listed name and returns it.
+	 * @param num - provider's ID number
+	 * @return provider's listed name
+	 * @throws IOException
+	 */
+	String returnName(int num) throws IOException{
+		File f = new File("\\files\\provider files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			line = read.readLine();
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up provider's listed address and returns it.
+	 * @param num - provider's ID number
+	 * @return provider's listed address
+	 * @throws IOException
+	 */
+	String returnAddress(int num) throws IOException{
+		File f = new File("\\files\\provider files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=2;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up provider's listed city and returns it.
+	 * @param num - provider's ID number
+	 * @return memeber's listed city
+	 * @throws IOException
+	 */
+	String returnCity(int num) throws IOException{
+		File f = new File("\\files\\provider files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=3;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up provider's listed state and returns it.
+	 * @param num - provider's ID number
+	 * @return provider's listed state
+	 * @throws IOException
+	 */
+	String returnState(int num) throws IOException{
+		File f = new File("\\files\\provider files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=4;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up provider's zip code and returns it.
+	 * @param num - provider's ID number
+	 * @return provider's zip code
+	 * @throws IOException
+	 */
+	String returnZip(int num) throws IOException{
+		File f = new File("\\files\\provider files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=5;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
 	 * Function adds new provider to provider files.
 	 * @param name - provider's name
 	 * @param num - provider's ID number

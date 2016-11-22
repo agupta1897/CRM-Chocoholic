@@ -30,7 +30,7 @@ public class Member extends DatabaseEntry {
 	 * @throws IOException
 	 */
 	String getStatus(int num) throws IOException{
-		File a = new File("\\files\\member files\\"+num+"txt");
+		File a = new File("\\files\\member files\\"+num+".txt");
 		String line = new String();
 		if(a.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(a));
@@ -50,6 +50,109 @@ public class Member extends DatabaseEntry {
 	 */
 	String getStatus2(){
 		return memberStatus;
+	}
+	
+	/**
+	 * Function looks up member's listed name and returns it.
+	 * @param num - member's ID number
+	 * @return member's listed name
+	 * @throws IOException
+	 */
+	String returnName(int num) throws IOException{
+		File f = new File("\\files\\member files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			line = read.readLine();
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up member's listed address and returns it.
+	 * @param num - member's ID number
+	 * @return member's listed address
+	 * @throws IOException
+	 */
+	String returnAddress(int num) throws IOException{
+		File f = new File("\\files\\member files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=2;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up member's listed city and returns it.
+	 * @param num - member's ID number
+	 * @return memeber's listed city
+	 * @throws IOException
+	 */
+	String returnCity(int num) throws IOException{
+		File f = new File("\\files\\member files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=3;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up member's listed state and returns it.
+	 * @param num - member's ID number
+	 * @return member's listed state
+	 * @throws IOException
+	 */
+	String returnState(int num) throws IOException{
+		File f = new File("\\files\\member files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=4;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
+	}
+	
+	/**
+	 * Function looks up member's zip code and returns it.
+	 * @param num - member's ID number
+	 * @return member's zip code
+	 * @throws IOException
+	 */
+	String returnZip(int num) throws IOException{
+		File f = new File("\\files\\member files\\"+num+".txt");
+		String line = new String();
+		if(f.exists()){
+			BufferedReader read = new BufferedReader(new FileReader(f));
+			for(int i=0;i<=5;i++){
+				line = read.readLine();
+			}
+			read.close();
+			return line;
+		}
+		else
+			return "Invalid number";
 	}
 	
 	/**
