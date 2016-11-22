@@ -354,7 +354,8 @@ public class ProviderRole {
     private static String verifyMember(int id) {
         
         //TODO
-        //String Status = MemberDatabase.lookUpMember(id);
+        //Member m = new Member();
+        //String Status = m.getStatus(id);
         
         //temporary to allow program to run without the database
         String status = "Validated";
