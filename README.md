@@ -48,4 +48,4 @@ To run the Chocohlics Anonymous data simulation, simply run the command
 
 in the root project directory.
 
-Instructions for Use
+## Instructions for Use
