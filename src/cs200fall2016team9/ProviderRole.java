@@ -124,8 +124,7 @@ public class ProviderRole {
         String temp, serviceName = "";
         int memberId = 0, serviceCode = 0;
         
-        //TODO ProviderDirectory pDir;
-        //pDir = new ProviderDirectory();
+        //TODO ProviderDirectory pDir = new ProviderDirectory();
         
         //if you didn't come from the startVisit function get providerId
         if (providerId == 0) {
@@ -342,8 +341,7 @@ public class ProviderRole {
      */
     private static void requestDirectory() throws IOException {
         JFrame frame = null;
-        //TODO ProviderDirectory pDir;
-        //pDir = new ProviderDirectory();
+        //TODO ProviderDirectory pDir = new ProviderDirectory();
         //pDir.sendDirectory();
         
         JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
@@ -358,11 +356,8 @@ public class ProviderRole {
      * @throws IOException 
      */
     private static String verifyMember(int id) throws IOException {
-        
-        //TODO
         Member m = new Member();
-        String status = m.getStatus(id);
-        return status;
+        return m.getStatus(id);
     }//close verifyMember function
   
     /**
@@ -376,6 +371,7 @@ public class ProviderRole {
      */
     private static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
         JFrame frame = null;
+        //ProviderDirectory pDir = new ProviderDirectory();
         //TODO get the fee
         
         double fee = 100;

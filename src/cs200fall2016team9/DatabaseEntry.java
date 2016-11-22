@@ -10,6 +10,9 @@ import java.io.*;
 
 public abstract class DatabaseEntry {
 	
+    DatabaseEntry() {
+        
+    }
 	private String name;
 	private int number;
 	private String address;

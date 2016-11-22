@@ -105,6 +105,7 @@ public class OperatorRole {
      */
     private static void addMember(String item) {
         JFrame frame = null;
+        MemberDatabase mData = new MemberDatabase();
         int id = 0, zip = 0;
         //get name
         String name = JOptionPane.showInputDialog(frame, "Enter new " + item + " name:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
@@ -169,10 +170,9 @@ public class OperatorRole {
             //try to parse the string
             try { zip = Integer.parseInt(temp);
             } catch (Exception e) {}
-        }//close while
-        
-        //TODO
-        
+        }//close while    
+        //add entry
+        mData.addEntry(name, id, address, city, state, zip);
         JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zip, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
@@ -205,6 +205,7 @@ public class OperatorRole {
      */
     private static void deleteMember(String item) {
         JFrame frame = null;
+        MemberDatabase mData = new MemberDatabase();
         String temp;
         int id = 0;
         
@@ -226,9 +227,8 @@ public class OperatorRole {
             try { id = Integer.parseInt(temp);
             } catch (Exception e) {}
         }//close while
-        
-        //TODO
-        
+        //delete member
+        mData.removeEntry(id);
         JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
@@ -262,7 +262,10 @@ public class OperatorRole {
      */
     private static void updateMember(String item, int id) {
         JFrame frame = null;
-        String temp;
+        Member m = new Member();
+        MemberDatabase mData = new MemberDatabase();
+        String temp, newName = "", newAddress = "", newCity = "", newState = "";
+        int newId = 0, newZip = 0;
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
             //get id
@@ -284,16 +287,13 @@ public class OperatorRole {
                 } catch (Exception e) {}
             }//close while
         }
-        
-        //TODO look up info using id
-        String newName = "", newAddress = "", newCity = "", newState = "";
-        int newId = 0, newZip = 0;
-        String name = "John Doe";
-        id = 123456789;
-        String address = "2001 Heaven St.";
-        String city = "Tuscaloosa";
-        String state = "AL";
-        int zip = 35404;
+        //look up info using id
+        String name = m.getName();
+        id = m.getNumber();
+        String address = m.getAddress();
+        String city = m.getCity();
+        String state = m.getState();
+        int zip = m.getZipCode();
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 6) {
@@ -304,8 +304,8 @@ public class OperatorRole {
 			        newName = JOptionPane.showInputDialog(frame, "Enter the new name: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
 			        if (newName == null)
 			            System.exit(0);
-			        
-			        //TODO update name in database
+			        //update name in database
+			        mData.updateEntry(id, newName, address, city, state, zip);
 			        
 			        JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
@@ -329,9 +329,8 @@ public class OperatorRole {
 			            try { newId = Integer.parseInt(temp);
 			            } catch (Exception e) {}
 			        }//close while
-			        
-			        //TODO Update ID in database
-			        
+			        //update the ID in database
+			        mData.updateEntry(newId, name, address, city, state, zip);
 			        JOptionPane.showMessageDialog(frame, item + " ID updated from " + id + " to " + newId + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "Address"
@@ -340,8 +339,8 @@ public class OperatorRole {
 			        newAddress = JOptionPane.showInputDialog(frame, "Enter the new address: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
 			        if (newAddress == null)
 			            System.exit(0);
-			        //TODO update address in database
-			        
+			        //update address in database
+			        mData.updateEntry(id, name, newAddress, city, state, zip);
 			        JOptionPane.showMessageDialog(frame, item + " address updated from " + address + " to " + newAddress + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "City"
@@ -350,8 +349,8 @@ public class OperatorRole {
 			        newCity = JOptionPane.showInputDialog(frame, "Enter the new city: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
 			        if (newCity == null)
 			            System.exit(0);
-			        //TODO update city in database
-			        
+			        //update city in database
+			        mData.updateEntry(id, name, address, newCity, state, zip);
 			        JOptionPane.showMessageDialog(frame, item + " city updated from " + city + " to " + newCity + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "State"
@@ -366,9 +365,8 @@ public class OperatorRole {
 			            if (newState == null)
 	                        System.exit(0);
 			        }
-			        
-			        //TODO update state in database
-			        
+			        //update state in database
+			        mData.updateEntry(id, name, address, city, newState, zip);
 			        JOptionPane.showMessageDialog(frame, item + " state updated from " + state + " to " + newState + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "Zip"
@@ -390,9 +388,8 @@ public class OperatorRole {
 			            try { newZip = Integer.parseInt(temp);
 			            } catch (Exception e) {}
 			        }//close while
-			        
-			        //TODO update zip in database
-			        
+			        //update zip in database
+			        mData.updateEntry(id, name, address, city, state, newZip);
 			        JOptionPane.showMessageDialog(frame, item + " zip updated from " + zip + " to " + newZip + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if exit button is pressed
@@ -400,17 +397,15 @@ public class OperatorRole {
 			        System.exit(0);
         	}//end switch
         	//get the new values;
-/*            newName = "Fred Stone";
-            newId = 123456789;
-            newAddress = "2001 Heaven St.";
-            newCity = "Tuscaloosa";
-            newState = "AL";
-            newZip = 35404;*/
+            newName = m.getName();
+            newId = m.getNumber();
+            newAddress = m.getAddress();
+            newCity = m.getCity();
+            newState = m.getState();
+            newZip = m.getZipCode();
         	Object [] options2 = {"Name: " + newName, "ID: " + newId, "Address: " + newAddress, "City: " + newCity, "State: " + newState, "Zip: " + newZip,"Done updating " + item};
         	ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while
-        
-        //TODO
         
         //determine where to go
         Object [] options = {"Add a " + item, "Remove a " + item, "Update another " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -494,6 +489,7 @@ public class OperatorRole {
      */
     private static void addProvider(String item) {
         JFrame frame = null;
+        ProviderDatabase pData = new ProviderDatabase();
         int id = 0, zip = 0;
         //get name
         String name = JOptionPane.showInputDialog(frame, "Enter new " + item + " name:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
@@ -552,9 +548,8 @@ public class OperatorRole {
             try { zip = Integer.parseInt(temp);
             } catch (Exception e) {}
         }//close while
-
-        //TODO
-        
+        //add provider to database
+        pData.addEntry(name, id, address, city, state, zip);        
         JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zip, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -587,6 +582,7 @@ public class OperatorRole {
      */
     private static void deleteProvider(String item) {
         JFrame frame = null;
+        ProviderDatabase pData = new ProviderDatabase();
         String temp;
         int id = 0;
         
@@ -608,9 +604,8 @@ public class OperatorRole {
             try { id = Integer.parseInt(temp);
             } catch (Exception e) {}
         }//close while
-        
-        //TODO
-        
+        //delete provider from database
+        pData.removeEntry(id);
         JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -644,7 +639,10 @@ public class OperatorRole {
      */
     private static void updateProvider(String item, int id) {
         JFrame frame = null;
-        String temp;
+        ProviderDatabase pData = new ProviderDatabase();
+        Provider p = new Provider();
+        String temp, newName = "", newAddress = "", newCity = "", newState = "";
+        int newId = 0, newZip = 0;
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
             //get id
@@ -667,15 +665,13 @@ public class OperatorRole {
             }//close while
         }
         
-        //TODO look up info using id
-        String newName = "", newAddress = "", newCity = "", newState = "";
-        int newId = 0, newZip = 0;
-        String name = "Jane Doe";
-        id = 234567890;
-        String address = "1001 Shirley St";
-        String city = "Tuscaloosa";
-        String state = "AL";
-        int zip = 35475;
+        //look up info using id
+        String name = p.getName();
+        id = p.getNumber();
+        String address = p.getAddress();
+        String city = p.getCity();
+        String state = p.getState();
+        int zip = p.getZipCode();
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 6) {
@@ -687,9 +683,8 @@ public class OperatorRole {
                     //exits if "cancel" or "exit" is pressed
                     if (newName == null)
                         System.exit(0);
-                    
-                    //TODO update name in database
-                    
+                    //update name in database
+                    pData.updateEntry(id, newName, address, city, state, zip);
                     JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "ID"
@@ -712,9 +707,8 @@ public class OperatorRole {
                         try { newId = Integer.parseInt(temp);
                         } catch (Exception e) {}
                     }//close while
-                    
-                    //TODO Update ID in database
-                    
+                    //update ID in database
+                    pData.updateEntry(newId, name, address, city, state, zip);
                     JOptionPane.showMessageDialog(frame, item + " ID updated from " + id + " to " + newId + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "Address"
@@ -724,8 +718,8 @@ public class OperatorRole {
                     //exits if "cancel" or "exit" is pressed
                     if (newAddress == null)
                         System.exit(0);
-                    //TODO update address in database
-                    
+                    //update address in database
+                    pData.updateEntry(id, name, newAddress, city, state, zip);
                     JOptionPane.showMessageDialog(frame, item + " address updated from " + address + " to " + newAddress + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "City"
@@ -735,8 +729,8 @@ public class OperatorRole {
                     //exits if "cancel" or "exit" is pressed
                     if (newCity == null)
                         System.exit(0);
-                    //TODO update city in database
-                    
+                    //update city in database
+                    pData.updateEntry(id, name, address, newCity, state, zip);
                     JOptionPane.showMessageDialog(frame, item + " city updated from " + city + " to " + newCity + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "State"
@@ -746,8 +740,8 @@ public class OperatorRole {
                     //exits if "cancel" or "exit" is pressed
                     if (newState == null)
                         System.exit(0);
-                    //TODO update state in database
-                    
+                    //update state in database
+                    pData.updateEntry(id, name, address, city, newState, zip);
                     JOptionPane.showMessageDialog(frame, item + " state updated from " + state + " to " + newState + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "Zip"
@@ -770,8 +764,8 @@ public class OperatorRole {
                          try { newZip = Integer.parseInt(temp);
                          } catch (Exception e) {}
                      }//close while
-                    //TODO update zip in database
-                    
+                    //update zip in database
+                    pData.updateEntry(id, name, address, city, state, newZip);
                     JOptionPane.showMessageDialog(frame, item + " zip code updated from " + zip + " to " + newZip + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if exit button is pressed
@@ -779,18 +773,15 @@ public class OperatorRole {
                     System.exit(0);
             }//end switch
             //get the new values;
-/*            newName = "Fred Stone";
-            newId = 1234567891;
-            newAddress = "3001 Captial St.";
-            newCity = "Cottondale";
-            newState = "AL";
-            newZip = 35703;*/
+            newName = p.getName();
+            newId = p.getNumber();
+            newAddress = p.getAddress();
+            newCity = p.getCity();
+            newState = p.getState();
+            newZip = p.getZipCode();
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Address: " + newAddress, "City: " + newCity, "State: " + newState, "Zip: " + newZip,"Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
-        }//end while
-        
-        //TODO
-        
+        }//end while      
         //determine where to go
         Object [] options = {"Add a " + item, "Remove a " + item, "Update another " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -875,6 +866,7 @@ public class OperatorRole {
      */
     private static void addService(String item) {
         JFrame frame = null;
+        //TODO ProviderDirectory pDir = new ProviderDirectory();
         int id = 0;
         double fee = 0;
         //get name
@@ -909,9 +901,8 @@ public class OperatorRole {
         //try to parse the string
         try { fee = Double.parseDouble(temp);
         } catch (Exception e){}       
-       
-        //TODO
-        
+        //TODO add service to the Provider Directory
+        //pDir.addEntry(name,id,fee);
         JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nFee: " + fee, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -944,6 +935,7 @@ public class OperatorRole {
      */
     private static void deleteService(String item) {
         JFrame frame = null;
+        //TODO ProviderDirectory pDir = new ProviderDirectory();
         String temp;
         int id = 0;
         
@@ -965,9 +957,8 @@ public class OperatorRole {
             try { id = Integer.parseInt(temp);
             } catch (Exception e) {}
         }//close while
-        
-        //TODO
-        
+        //TODO remove the service
+        //pDir.removeEntry(id);
         JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -1000,7 +991,10 @@ public class OperatorRole {
      */
     private static void updateService(String item, int id) {
         JFrame frame = null;
-        String temp;
+        //TODO ProviderDirectory pDir = new ProviderDirectory();
+        String temp, newName = "";
+        int newId = 0;
+        double newFee = 0;
         //if you don't come from manageMember function the id will be 0
     	if (id == 0) {
             //get id
@@ -1022,10 +1016,7 @@ public class OperatorRole {
                 } catch (Exception e) {}
             }//close while
         }//close if
-
-        String newName = "";
-        int newId = 0;
-        double newFee = 0;
+    	//TODO get the info
         String name = "Nutrition";
         id = 123456;
         double fee = 50;
@@ -1039,10 +1030,8 @@ public class OperatorRole {
                     newName = JOptionPane.showInputDialog(frame, "Enter the new name: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
                     //exits if "cancel" or "exit" is pressed
                     if (newName == null)
-                        System.exit(0);
-                    
+                        System.exit(0);                    
                     //TODO update name in database
-                    
                     JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "ID"
@@ -1065,9 +1054,7 @@ public class OperatorRole {
                         try { newId = Integer.parseInt(temp);
                         } catch (Exception e) {}
                     }//close while
-                    
                     //TODO Update ID in database
-                    
                     JOptionPane.showMessageDialog(frame, item + " ID updated from " + id + " to " + newId + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "fee"
@@ -1080,9 +1067,7 @@ public class OperatorRole {
                     //try to parse the string
                     try { newFee = Double.parseDouble(temp);
                     } catch (Exception e){}
-                    
-                    //TODO update fee in database
-                    
+                    //TODO update fee in database                  
                     JOptionPane.showMessageDialog(frame, item + " fee updated from " + fee + " to " + newFee + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if exit button is pressed
@@ -1095,10 +1080,7 @@ public class OperatorRole {
 //            newFee = 2;
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Fee: " + newFee, "Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
-        }//end while
-        
-        //TODO
-        
+        }//end while      
         //determine where to go
         Object [] options = {"Add a " + item, "Remove a " + item, "Update another " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
