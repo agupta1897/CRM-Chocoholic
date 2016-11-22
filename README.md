@@ -50,3 +50,11 @@ in the root project directory.
 
 ## Instructions for Use
 There is a manual for use in the manual folder
+
+## Contributors
+
+* Micheal (Jake) Bailey - mjbailey2@crimson.ua.edu
+* Amber Gupta - agupta18@crimson.ua.edu
+* Sean Martin - shmartin1@crimson.uea.edu
+* Jacob (Jake) Mizzell - jbmizzell1@crimson.ua.edu
+* Nathaniel Wade - ngwade@crimson.ua.edu
