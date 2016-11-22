@@ -18,21 +18,21 @@ Once you have installed Ant you can run the following commands in the root proje
 
 * Generate documentation for the project.
 
-$ ant doc
+    $ ant doc
 
 * Build a runnable jar file
 
-$ ant jar
+    $ ant jar
 
 * Buid documentation and build the runnable jar
 
-$ ant all
+    $ ant all
 
 ## Running the Simulation
 
 To run the Chocohlics Anonymous data simulation, simply run the command
 
-$ java -jar release/ChocAn.jar
+    $ java -jar release/ChocAn.jar
 
 in the root project directory.
 
