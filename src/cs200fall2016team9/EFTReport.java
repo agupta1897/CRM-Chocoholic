@@ -1,5 +1,7 @@
 package cs200fall2016team9;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  * 
  * @author Sean Martin
@@ -18,7 +20,8 @@ public class EFTReport {
 	 */
 	void eftReport() throws IOException{
 		BufferedReader alpha=new BufferedReader(new FileReader("\\files\\provider files\\allProviders.txt"));
-		BufferedWriter beta=new BufferedWriter(new FileWriter("\\files\\EFTReports\\eftReport.txt"));
+		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
+		BufferedWriter beta=new BufferedWriter(new FileWriter("\\files\\EFTReports\\eftReport"+date+".txt"));
 		String line=null;
 		while((line = alpha.readLine())!= null){
 			BufferedReader charlie=new BufferedReader(new FileReader("\\files\\provider files\\"+line+".txt"));
