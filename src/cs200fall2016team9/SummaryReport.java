@@ -18,22 +18,22 @@ public class SummaryReport {
 	 * @throws IOException
 	 */
 	void summaryReport() throws IOException{
-		BufferedReader provider = new BufferedReader(new FileReader("\\files\\provider files\\allProviders.txt"));
+		BufferedReader provider = new BufferedReader(new FileReader("src/files/provider files/allProviders.txt"));
 		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
-		BufferedWriter fstream = new BufferedWriter( new FileWriter("\\files\\SummaryReports\\summary"+date+".txt"));
+		BufferedWriter fstream = new BufferedWriter( new FileWriter("src/files/report files/summary report files\\summary"+date+".txt"));
 		String list=null;
 		int totalProviders=0;
 		int totalConsul=0;
 		double overAllFee=0;
 		while((list = provider.readLine())!=null){
-			File file = new File("\\files\\visit files\\provider visit files\\"+list+"v.txt");
+			File file = new File("src/files/visit file/provider visit files/"+list+"v.txt");
 			if(file.exists()){
 				totalProviders++;
-				BufferedReader proFile = new BufferedReader(new FileReader("\\files\\provider files\\"+list+".txt"));					
+				BufferedReader proFile = new BufferedReader(new FileReader("src/files/provider files/"+list+".txt"));					
 				fstream.write(proFile.readLine());//Writes in provider name
 				fstream.newLine();
 				proFile.close();
-				proFile = new BufferedReader(new FileReader("\\files\\visit files\\provider visit files\\"+list+"v.txt"));
+				proFile = new BufferedReader(new FileReader("src/files/visit files/provider visit files/"+list+"v.txt"));
 				String line=null;
 				int lineNumber=0;
 				int proFee=0;

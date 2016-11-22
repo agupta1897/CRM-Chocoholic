@@ -26,10 +26,10 @@ public abstract class DatabaseEntry {
 	protected static  boolean searchCode(String type, int code){
 		File f;
 		if(type == "Member"){
-			f = new File("\\files\\member files\\"+code+".txt");
+			f = new File("src/files/member files/"+code+".txt");
 		}
 		else if(type == "Provider"){
-			f = new File("\\files\\provider files\\"+code+".txt");
+			f = new File("src/files/provider files/"+code+".txt");
 		}
 		else{
 			return false;

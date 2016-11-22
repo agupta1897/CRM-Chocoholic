@@ -82,7 +82,7 @@ public class Member extends DatabaseEntry {
 	 * 	with the member ID as the title.
 	 */
 	void saveEntry() throws IOException{
-	File f = new File("\\files\\member files\\"+getNumber()+".txt");
+	File f = new File("src/files/member files/"+getNumber()+".txt");
 	BufferedWriter fstream = null;
 	fstream = new BufferedWriter(new FileWriter(f));
 	fstream.write(getName());

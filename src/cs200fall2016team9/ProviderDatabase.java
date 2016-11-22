@@ -26,7 +26,7 @@ public class ProviderDatabase extends Database {
 	@Override
 	void removeEntry(int id) {
 		try {
-			Files.deleteIfExists(Paths.get("//files//member files//" + id + ".txt"));
+			Files.deleteIfExists(Paths.get("src/files/member files/" + id + ".txt"));
 		} catch (Exception e) {
 
 		}

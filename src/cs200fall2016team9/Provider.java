@@ -38,7 +38,7 @@ public class Provider extends DatabaseEntry{
 	 * 	with the provider ID as the title.
 	 */
 	void saveEntry() throws IOException{
-	File f = new File("\\files\\provider files\\"+getNumber()+".txt");
+	File f = new File("src/files/provider files/"+getNumber()+".txt");
 	BufferedWriter fstream = null;
 	fstream = new BufferedWriter(new FileWriter(f));
 	fstream.write(getName());
