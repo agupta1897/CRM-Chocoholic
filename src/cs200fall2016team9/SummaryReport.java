@@ -1,18 +1,26 @@
 package cs200fall2016team9;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
- * 
+ * Create the Summary Report
  * @author Sean Martin
  *
  */
 
 public class SummaryReport {
-	
+	/**
+	 * Constructor
+	 */
 	SummaryReport(){}
-	
+	/**
+	 * generate summary report
+	 * @throws IOException
+	 */
 	void summaryReport() throws IOException{
 		BufferedReader provider = new BufferedReader(new FileReader("\\files\\provider files\\allProviders.txt"));
-		BufferedWriter fstream = new BufferedWriter( new FileWriter("\\files\\SummaryReports\\summary.txt"));
+		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
+		BufferedWriter fstream = new BufferedWriter( new FileWriter("\\files\\SummaryReports\\summary"+date+".txt"));
 		String list=null;
 		int totalProviders=0;
 		int totalConsul=0;
