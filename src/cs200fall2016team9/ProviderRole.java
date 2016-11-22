@@ -353,10 +353,8 @@ public class ProviderRole {
      */
     private static String verifyMember(int id) {
         
-        //TODO MemberDatabase m;
-        //m = new MemberDatabase();
-        //String Status = m.lookUpMember(id);
-        //get fee's if suspended
+        //TODO
+        //String Status = MemberDatabase.lookUpMember(id);
         
         //temporary to allow program to run without the database
         String status = "Validated";
@@ -367,7 +365,7 @@ public class ProviderRole {
      * Function to add the info obtained in billVisit function to the database
      * @param providerId the Provider ID
      * @param memberId the Member ID
-     * @param currentDateAndTime the Current Date and Time when the info was inputted
+     * @param currentDateAndTime the Current Date and Time when the info was inputed
      * @param date the date the service was provided
      * @param serviceCode the 6 digit code for the service provided
      * @param comment comments that the Provider might have entered
