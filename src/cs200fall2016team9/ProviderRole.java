@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import java.util.Calendar;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -18,8 +19,9 @@ public class ProviderRole {
     
     /**
      * Decides what function to go to based on the Providers choice
+     * @throws IOException 
      */
-    public static void providerTerminal() {
+    public static void providerTerminal() throws IOException {
         JFrame frame = null;
         //determine where to go
         Object [] options  = {"Verify Member for vist", "Bill Member for visit", "Request Provider Directory", "Return to Main Menu"};
@@ -45,8 +47,9 @@ public class ProviderRole {
     
     /**
      * If the Provider is wanting to verify the member before health care services are provided
+     * @throws IOException 
      */
-    private static void startVisit() {
+    private static void startVisit() throws IOException {
         JFrame frame = null;
         int terminalId = 0, memberId = 0;
         
@@ -114,8 +117,9 @@ public class ProviderRole {
     /**
      * Function to handle the provider inputing information about the visit
      * @param providerId the Provider ID
+     * @throws IOException 
      */
-    private static void billVisit (int providerId) {
+    private static void billVisit (int providerId) throws IOException {
         JFrame frame = null;
         String temp, serviceName = "";
         int memberId = 0, serviceCode = 0;
@@ -334,8 +338,9 @@ public class ProviderRole {
     
     /**
      * Function to send the Provider Directory if requested
+     * @throws IOException 
      */
-    private static void requestDirectory() {
+    private static void requestDirectory() throws IOException {
         JFrame frame = null;
         //TODO ProviderDirectory pDir;
         //pDir = new ProviderDirectory();
@@ -350,15 +355,13 @@ public class ProviderRole {
      * function to verify Member
      * @param id the Member ID you are looking up
      * @return the status of the member
+     * @throws IOException 
      */
-    private static String verifyMember(int id) {
+    private static String verifyMember(int id) throws IOException {
         
         //TODO
-        //Member m = new Member();
-        //String Status = m.getStatus(id);
-        
-        //temporary to allow program to run without the database
-        String status = "Validated";
+        Member m = new Member();
+        String status = m.getStatus(id);
         return status;
     }//close verifyMember function
   
