@@ -1,16 +1,24 @@
 package cs200fall2016team9;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
+ * Create Single or All Provider Reports
  * @author Sean Martin
  */
 public class ProviderReport {
-
+	/**
+	 * Constructor
+	 */
 	ProviderReport(){
 		
 	}
-	//send group
+	/**
+	 * Send All Provider Reports
+	 * @throws IOException
+	 */
 	void providerReport() throws IOException{
 		BufferedReader Charlie=new BufferedReader(new FileReader("\\files\\Provider files\\allProviders.txt"));
 		String line = null;
@@ -19,10 +27,15 @@ public class ProviderReport {
 		}
 		Charlie.close();
 	}
-	//Send individual
+	/**
+	 * Compile and Save a Single Provider Report
+	 * @param numberID
+	 * @throws IOException
+	 */
 	void providerReport(int numberID) throws IOException{
 		BufferedReader alpha = new BufferedReader(new FileReader("\\files\\Provider files\\"+numberID+".txt"));
-		BufferedWriter beta = new BufferedWriter(new FileWriter("\\files\\Provider reports\\"+numberID+"Report.txt"));
+		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
+		BufferedWriter beta = new BufferedWriter(new FileWriter("\\files\\Provider reports\\"+numberID+date+"Report.txt"));
 		String line = new String();
 		for(int i=0;i<=5;i++){
 			line=alpha.readLine();

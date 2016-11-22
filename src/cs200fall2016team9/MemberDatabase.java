@@ -26,7 +26,7 @@ public class MemberDatabase extends Database {
 	@Override
 	void removeEntry(int id) {
 		try {
-			Files.deleteIfExists(Paths.get(Integer.toString(id) + ".txt"));
+			Files.deleteIfExists(Paths.get("//files//member files//" +id + ".txt"));
 		} catch (Exception e) {
 
 		}
@@ -44,8 +44,5 @@ public class MemberDatabase extends Database {
 		}
 
 	}
-
-	void lookUpMember(int id) {
-		// TODO
-	}
+	
 }
