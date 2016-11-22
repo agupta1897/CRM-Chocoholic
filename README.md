@@ -17,16 +17,28 @@ To build, you must first make sure that you have Java 8 and Apache Ant installed
 Once you have installed Ant you can run the following commands in the root project directory to build the Chocoholics Anonymous project:
 
 * Generate documentation for the project.
+   
+```
+#!Java
 
     $ ant doc
+```
 
 * Build a runnable jar file
+    
+```
+#!Java
 
     $ ant jar
+```
 
 * Buid documentation and build the runnable jar
+    
+```
+#!Java
 
-    $ ant all
+$ ant all
+```
 
 ## Running the Simulation
 
