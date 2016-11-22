@@ -22,33 +22,12 @@ public class Member extends DatabaseEntry {
 	void setStatus(String newStatus){
 		memberStatus=newStatus;
 	}
-	
-	/**
-	 * Function searches for the member file, pulls the listed status, and returns a string of the status.
-	 * @param num - member's ID number
-	 * @return member's listed status or reason of issue
-	 * @throws IOException
-	 */
-	String getStatus(int num) throws IOException{
-		File a = new File("src/files/member files/"+num+".txt");
-		String line = new String();
-		if(a.exists()){
-			BufferedReader read = new BufferedReader(new FileReader(a));
-			for(int i=0;i<=6;i++){
-				line = read.readLine();
-			}
-			read.close();
-			return line;
-		}
-		else
-			return "Invalid number";
-	}
-	
+		
 	/**
 	 * Function returns the member's current status.
 	 * @return member's current status
 	 */
-	String getStatus2(){
+	String getStatus(){
 		return memberStatus;
 	}
 	
@@ -140,20 +119,45 @@ public class Member extends DatabaseEntry {
 	 * @return member's zip code
 	 * @throws IOException
 	 */
-	String returnZip(int num) throws IOException{
+	int returnZip(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
 		String line = new String();
+		int zip = 0;
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			for(int i=0;i<=5;i++){
 				line = read.readLine();
+				zip = Integer.parseInt(line);
 			}
 			read.close();
-			return line;
+			return zip;
 		}
-		else
-			return "Invalid number";
+		else {
+		    System.out.println("Something went wrong in Member.java returnZip()");
+			return 00000;
+		}
 	}
+	
+	/**
+     * Function searches for the member file, pulls the listed status, and returns a string of the status.
+     * @param num - member's ID number
+     * @return member's listed status or reason of issue
+     * @throws IOException
+     */
+    String returnStatus(int num) throws IOException{
+        File a = new File("src/files/member files/"+num+".txt");
+        String line = new String();
+        if(a.exists()){
+            BufferedReader read = new BufferedReader(new FileReader(a));
+            for(int i=0;i<=6;i++){
+                line = read.readLine();
+            }
+            read.close();
+            return line;
+        }
+        else
+            return "Invalid number";
+    }
 	
 	/**
 	 * Function adds new member to member files.
@@ -200,7 +204,7 @@ public class Member extends DatabaseEntry {
 	fstream.newLine();
 	fstream.write(getZipCode());
 	fstream.newLine();
-	fstream.write(getStatus2());
+	fstream.write(getStatus());
 	fstream.close();
 	}
 }

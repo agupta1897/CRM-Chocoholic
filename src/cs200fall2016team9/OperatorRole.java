@@ -1,5 +1,7 @@
 package cs200fall2016team9;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -16,16 +18,18 @@ public class OperatorRole {
     
     /**
      * Function to come from ChocAn.java
+     * @throws IOException 
      */
-    public static void operatorTerminal() {
+    public static void operatorTerminal() throws IOException {
     	//manage the database
         manageDatabase();
     }
 
     /**
      * Function to see what the Operator wants
+     * @throws IOException 
      */
-    private static void manageDatabase() {
+    private static void manageDatabase() throws IOException {
         JFrame frame = null;
         //Determine where to go
         Object [] options  = {"Manage a Member", "Manage a Provider", "Manage the Provider Directory", "Return to Main Menu"};
@@ -52,8 +56,9 @@ public class OperatorRole {
     /**
      * Function to see if add, remove, or update Member info
      * @param item will always be 'Member'
+     * @throws IOException 
      */
-    private static void manageMember(String item) {
+    private static void manageMember(String item) throws IOException {
         JFrame frame = null;
         //determine where to go
         Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + "s info", "Back to Operator Menu", "Return to Main Menu"};
@@ -102,8 +107,9 @@ public class OperatorRole {
     /**
      * Function to add a Member
      * @param item will always be 'Member'
+     * @throws IOException 
      */
-    private static void addMember(String item) {
+    private static void addMember(String item) throws IOException {
         JFrame frame = null;
         MemberDatabase mData = new MemberDatabase();
         int id = 0, zip = 0;
@@ -202,8 +208,9 @@ public class OperatorRole {
     /**
      * Function to delete Members
      * @param item will always be 'Member"
+     * @throws IOException 
      */
-    private static void deleteMember(String item) {
+    private static void deleteMember(String item) throws IOException {
         JFrame frame = null;
         MemberDatabase mData = new MemberDatabase();
         String temp;
@@ -259,8 +266,9 @@ public class OperatorRole {
      * Function to update Members information
      * @param item will always be 'Member'
      * @param id the Members ID that you are updating
+     * @throws IOException 
      */
-    private static void updateMember(String item, int id) {
+    private static void updateMember(String item, int id) throws IOException {
         JFrame frame = null;
         Member m = new Member();
         MemberDatabase mData = new MemberDatabase();
@@ -288,12 +296,11 @@ public class OperatorRole {
             }//close while
         }
         //look up info using id
-        String name = m.getName();
-        id = m.getNumber();
-        String address = m.getAddress();
-        String city = m.getCity();
-        String state = m.getState();
-        int zip = m.getZipCode();
+        String name = m.returnName(id);
+        String address = m.returnAddress(id);
+        String city = m.returnCity(id);
+        String state = m.returnState(id);
+        int zip = m.returnZip(id);
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 6) {
@@ -436,8 +443,9 @@ public class OperatorRole {
     /**
      * Function to see if add, remove, or update Providers information
      * @param item will always be 'Provider'
+     * @throws IOException 
      */
-    private static void manageProvider(String item) {
+    private static void manageProvider(String item) throws IOException {
         JFrame frame = null;
         //determine where to go
         Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -486,8 +494,9 @@ public class OperatorRole {
     /**
      * Function to add a Provider
      * @param item will always be 'Provider'
+     * @throws IOException 
      */
-    private static void addProvider(String item) {
+    private static void addProvider(String item) throws IOException {
         JFrame frame = null;
         ProviderDatabase pData = new ProviderDatabase();
         int id = 0, zip = 0;
@@ -579,8 +588,9 @@ public class OperatorRole {
     /**
      * Function to delete Providers
      * @param item will always be 'Provider'
+     * @throws IOException 
      */
-    private static void deleteProvider(String item) {
+    private static void deleteProvider(String item) throws IOException {
         JFrame frame = null;
         ProviderDatabase pData = new ProviderDatabase();
         String temp;
@@ -636,8 +646,9 @@ public class OperatorRole {
      * Function to update Providers information
      * @param item will always be 'Provider'
      * @param id the Providers ID you are updating
+     * @throws IOException 
      */
-    private static void updateProvider(String item, int id) {
+    private static void updateProvider(String item, int id) throws IOException {
         JFrame frame = null;
         ProviderDatabase pData = new ProviderDatabase();
         Provider p = new Provider();
@@ -666,12 +677,11 @@ public class OperatorRole {
         }
         
         //look up info using id
-        String name = p.getName();
-        id = p.getNumber();
-        String address = p.getAddress();
-        String city = p.getCity();
-        String state = p.getState();
-        int zip = p.getZipCode();
+        String name = p.returnName(id);
+        String address = p.returnAddress(id);
+        String city = p.returnCity(id);
+        String state = p.returnState(id);
+        int zip = p.returnZip(id);
         Object [] options1 = {"Name: " + name, "ID: " + id, "Address: " + address, "City: " + city, "State: " + state, "Zip: " + zip};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 6) {
@@ -810,8 +820,9 @@ public class OperatorRole {
     /**
      * Function to see if you want to add, remove, or update a Service's info
      * @param item will always be 'Service'
+     * @throws IOException 
      */
-    private static void manageDirectory (String item) {
+    private static void manageDirectory (String item) throws IOException {
         JFrame frame = null;
         //determine where to go
         Object [] options  = {"Add a " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -863,8 +874,9 @@ public class OperatorRole {
     /**
      * Function to add a service 
      * @param item will alwasy be 'Service'
+     * @throws IOException 
      */
-    private static void addService(String item) {
+    private static void addService(String item) throws IOException {
         JFrame frame = null;
         //TODO ProviderDirectory pDir = new ProviderDirectory();
         int id = 0;
@@ -932,8 +944,9 @@ public class OperatorRole {
     /**
      * Function to delete a Service
      * @param item will always be 'Service'
+     * @throws IOException 
      */
-    private static void deleteService(String item) {
+    private static void deleteService(String item) throws IOException {
         JFrame frame = null;
         //TODO ProviderDirectory pDir = new ProviderDirectory();
         String temp;
@@ -988,8 +1001,9 @@ public class OperatorRole {
      * Function to update a Service's info
      * @param item will always be 'Service'
      * @param id the Service ID
+     * @throws IOException 
      */
-    private static void updateService(String item, int id) {
+    private static void updateService(String item, int id) throws IOException {
         JFrame frame = null;
         //TODO ProviderDirectory pDir = new ProviderDirectory();
         String temp, newName = "";

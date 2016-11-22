@@ -357,7 +357,7 @@ public class ProviderRole {
      */
     private static String verifyMember(int id) throws IOException {
         Member m = new Member();
-        return m.getStatus(id);
+        return m.returnStatus(id);
     }//close verifyMember function
   
     /**

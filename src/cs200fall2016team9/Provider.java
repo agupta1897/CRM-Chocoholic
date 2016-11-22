@@ -97,19 +97,23 @@ public class Provider extends DatabaseEntry{
 	 * @return provider's zip code
 	 * @throws IOException
 	 */
-	String returnZip(int num) throws IOException{
+	int returnZip(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
 		String line = new String();
+		int zip = 0;
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			for(int i=0;i<=5;i++){
 				line = read.readLine();
+				zip = Integer.parseInt(line);
 			}
 			read.close();
-			return line;
+			return zip;
 		}
-		else
-			return "Invalid number";
+		else {
+			System.out.println("Something went wrong in returnZip()");
+            return 00000;
+		}
 	}
 	
 	/**
