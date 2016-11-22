@@ -37,7 +37,7 @@ Once you have installed Ant you can run the following commands in the root proje
 ```
 #!Java
 
-$ ant all
+    $ ant all
 ```
 
 ## Running the Simulation
