@@ -30,7 +30,7 @@ public class Member extends DatabaseEntry {
 	 * @throws IOException
 	 */
 	String getStatus(int num) throws IOException{
-		File a = new File("\\files\\member files\\"+num+".txt");
+		File a = new File("src/files/member files/"+num+".txt");
 		String line = new String();
 		if(a.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(a));
@@ -59,7 +59,7 @@ public class Member extends DatabaseEntry {
 	 * @throws IOException
 	 */
 	String returnName(int num) throws IOException{
-		File f = new File("\\files\\member files\\"+num+".txt");
+		File f = new File("src/files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -78,7 +78,7 @@ public class Member extends DatabaseEntry {
 	 * @throws IOException
 	 */
 	String returnAddress(int num) throws IOException{
-		File f = new File("\\files\\member files\\"+num+".txt");
+		File f = new File("src/files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -99,7 +99,7 @@ public class Member extends DatabaseEntry {
 	 * @throws IOException
 	 */
 	String returnCity(int num) throws IOException{
-		File f = new File("\\files\\member files\\"+num+".txt");
+		File f = new File("src/files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -120,7 +120,7 @@ public class Member extends DatabaseEntry {
 	 * @throws IOException
 	 */
 	String returnState(int num) throws IOException{
-		File f = new File("\\files\\member files\\"+num+".txt");
+		File f = new File("src/files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -141,7 +141,7 @@ public class Member extends DatabaseEntry {
 	 * @throws IOException
 	 */
 	String returnZip(int num) throws IOException{
-		File f = new File("\\files\\member files\\"+num+".txt");
+		File f = new File("src/files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -185,7 +185,7 @@ public class Member extends DatabaseEntry {
 	 * 	with the member ID as the title.
 	 */
 	void saveEntry() throws IOException{
-	File f = new File("\\files\\member files\\"+getNumber()+".txt");
+	File f = new File("src/files/member files/"+getNumber()+".txt");
 	BufferedWriter fstream = null;
 	fstream = new BufferedWriter(new FileWriter(f));
 	fstream.write(getName());

@@ -20,7 +20,7 @@ public class MemberReport {
 	 * @throws IOException
 	 */
 	void memberReport() throws IOException{
-		BufferedReader Charlie=new BufferedReader(new FileReader("\\files\\member files\\allMembers.txt"));
+		BufferedReader Charlie=new BufferedReader(new FileReader("src/files/member files/allMembers.txt"));
 		String line = null;
 		while((line=Charlie.readLine())!=null){
 			memberReport(Integer.parseInt(line));
@@ -33,9 +33,10 @@ public class MemberReport {
 	 * @throws IOException
 	 */
 	void memberReport(int numberID) throws IOException{
-		BufferedReader alpha = new BufferedReader(new FileReader("\\files\\member files\\"+numberID+".txt"));
+		BufferedReader alpha = new BufferedReader(new FileReader("src/files/member files/"+numberID+".txt"));
 		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
-		BufferedWriter beta = new BufferedWriter(new FileWriter("\\files\\member reports\\"+numberID+date+".txt"));
+		//TODO get member name
+		BufferedWriter beta = new BufferedWriter(new FileWriter("src/files/report files/member reports/"+numberID+date+".txt"));
 		String line = new String();
 		for(int i=0;i<=5;i++){
 			line=alpha.readLine();
@@ -43,7 +44,7 @@ public class MemberReport {
 			beta.newLine();
 		}
 		alpha.close();
-		alpha = new BufferedReader(new FileReader("\\files\\visit files\\member visit files\\"+numberID+"v.txt"));
+		alpha = new BufferedReader(new FileReader("src/files/visit files/member visit files/"+numberID+"v.txt"));
 		while((line = alpha.readLine())!= null){
 			beta.write(line);
 			beta.newLine();

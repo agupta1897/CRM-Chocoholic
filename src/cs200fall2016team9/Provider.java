@@ -16,7 +16,7 @@ public class Provider extends DatabaseEntry{
 	 * @throws IOException
 	 */
 	String returnName(int num) throws IOException{
-		File f = new File("\\files\\provider files\\"+num+".txt");
+		File f = new File("src/files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -35,7 +35,7 @@ public class Provider extends DatabaseEntry{
 	 * @throws IOException
 	 */
 	String returnAddress(int num) throws IOException{
-		File f = new File("\\files\\provider files\\"+num+".txt");
+		File f = new File("src/files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -56,7 +56,7 @@ public class Provider extends DatabaseEntry{
 	 * @throws IOException
 	 */
 	String returnCity(int num) throws IOException{
-		File f = new File("\\files\\provider files\\"+num+".txt");
+		File f = new File("src/files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -77,7 +77,7 @@ public class Provider extends DatabaseEntry{
 	 * @throws IOException
 	 */
 	String returnState(int num) throws IOException{
-		File f = new File("\\files\\provider files\\"+num+".txt");
+		File f = new File("src/files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -98,7 +98,7 @@ public class Provider extends DatabaseEntry{
 	 * @throws IOException
 	 */
 	String returnZip(int num) throws IOException{
-		File f = new File("\\files\\provider files\\"+num+".txt");
+		File f = new File("src/files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -141,7 +141,7 @@ public class Provider extends DatabaseEntry{
 	 * 	with the provider ID as the title.
 	 */
 	void saveEntry() throws IOException{
-	File f = new File("\\files\\provider files\\"+getNumber()+".txt");
+	File f = new File("src/files/provider files/"+getNumber()+".txt");
 	BufferedWriter fstream = null;
 	fstream = new BufferedWriter(new FileWriter(f));
 	fstream.write(getName());

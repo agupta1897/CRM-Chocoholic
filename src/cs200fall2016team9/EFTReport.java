@@ -19,12 +19,12 @@ public class EFTReport {
 	 * @throws IOException
 	 */
 	void eftReport() throws IOException{
-		BufferedReader alpha=new BufferedReader(new FileReader("\\files\\provider files\\allProviders.txt"));
+		BufferedReader alpha=new BufferedReader(new FileReader("src/files/provider files/allProviders.txt"));
 		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
-		BufferedWriter beta=new BufferedWriter(new FileWriter("\\files\\EFTReports\\eftReport"+date+".txt"));
+		BufferedWriter beta=new BufferedWriter(new FileWriter("src/files/report files/eft report files/eftReport"+date+".txt"));
 		String line=null;
 		while((line = alpha.readLine())!= null){
-			BufferedReader charlie=new BufferedReader(new FileReader("\\files\\provider files\\"+line+".txt"));
+			BufferedReader charlie=new BufferedReader(new FileReader("src/files/provider files/"+line+".txt"));
 			String delta;//Read in lines from the providers file
 			for(int i=0;i<=1;i++){
 				delta = charlie.readLine();
@@ -32,7 +32,7 @@ public class EFTReport {
 				beta.newLine();
 			}
 			charlie.close();
-			charlie=new BufferedReader(new FileReader("\\files\\visit files\\provider visit files\\"+line+"v.txt"));
+			charlie=new BufferedReader(new FileReader("src/files/visit files/provider visit files/"+line+"v.txt"));
 			String line2;
 			int totalFee=0;
 			int lineCounter=0;

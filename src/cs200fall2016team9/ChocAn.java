@@ -1,5 +1,7 @@
 package cs200fall2016team9;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane; 
 
@@ -12,20 +14,21 @@ import javax.swing.JOptionPane;
  *
  */
 public class ChocAn {
-    
     /**
      * The start of the program
      * @param args argument from the command line
+     * @throws IOException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         roleChoose();
     }//close main function
 
 
     /**
      * Decides which Role to go in based off of the user selection
+     * @throws IOException 
      */
-    public static void roleChoose() {
+    public static void roleChoose() throws IOException {
         JFrame frame = null;
         //determine where to go
         Object [] options = {"Provider", "Manager", "Operator"};
