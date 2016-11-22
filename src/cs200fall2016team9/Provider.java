@@ -105,9 +105,9 @@ public class Provider extends DatabaseEntry{
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			for(int i=0;i<=5;i++){
 				line = read.readLine();
-				zip = Integer.parseInt(line);
 			}
 			read.close();
+			zip = Integer.parseInt(line);
 			return zip;
 		}
 		else {
