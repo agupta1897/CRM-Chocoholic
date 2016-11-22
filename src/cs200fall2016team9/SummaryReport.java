@@ -33,7 +33,7 @@ public class SummaryReport {
 				fstream.write(proFile.readLine());//Writes in provider name
 				fstream.newLine();
 				proFile.close();
-				proFile = new BufferedReader(new FileReader("\\files\\visit files\\provider visit files\\"+list+".vtxt"));
+				proFile = new BufferedReader(new FileReader("\\files\\visit files\\provider visit files\\"+list+"v.txt"));
 				String line=null;
 				int lineNumber=0;
 				int proFee=0;
