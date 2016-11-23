@@ -190,6 +190,8 @@ public class Member extends DatabaseEntry {
 	 */
 	void saveEntry() throws IOException{
 	File f = new File("src/files/member files/"+getNumber()+".txt");
+	if(!f.exists())
+		f.createNewFile();
 	BufferedWriter fstream = null;
 	fstream = new BufferedWriter(new FileWriter(f));
 	fstream.write(getName());
