@@ -79,8 +79,8 @@ public class OperatorRole {
             //try to parse the string
             try {id = Integer.parseInt(temp);
             } catch (Exception e){}
-            //makes sure the number is 9 digits and isn't already somoneone's id
-            while((id <= 99999999) || (id >= 1000000000) || DatabaseEntry.searchCode(item,id)) { 
+            //makes sure the number is 9 digits
+            while((id <= 99999999) || (id >= 1000000000)) { 
                 temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                 //exits if "cancel" or "exit" is pressed
                 if (temp == null) 
@@ -137,8 +137,6 @@ public class OperatorRole {
             try { id = Integer.parseInt(temp);
             } catch (Exception e) {}
         }//close while
-        
-        
         //get address
         String address = JOptionPane.showInputDialog(frame, "Enter new " + item + " address:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
         //make sure exit wasn't pressed
