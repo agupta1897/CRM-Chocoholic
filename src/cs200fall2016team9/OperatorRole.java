@@ -271,7 +271,7 @@ public class OperatorRole {
         Member m = new Member();
         MemberDatabase mData = new MemberDatabase();
         String temp, newName = "", newAddress = "", newCity = "", newState = "";
-        int newId = 0, newZip = 0;
+        int newZip = 0;
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
             //get id
@@ -293,6 +293,8 @@ public class OperatorRole {
                 } catch (Exception e) {}
             }//close while
         }
+        //set newId equal to id so that it will be the same unless changed
+        int newId = id;
         //look up info using id
         String name = m.returnName(id);
         String address = m.returnAddress(id);
@@ -401,13 +403,12 @@ public class OperatorRole {
         	    default: 
 			        System.exit(0);
         	}//end switch
-        	//get the new values;
-            newName = m.returnName(id);
-            newId = id;
-            newAddress = m.returnAddress(id);
-            newCity = m.returnCity(id);
-            newState = m.returnState(id);
-            newZip = m.returnZip(id);
+        	//get the new values with newId;
+            newName = m.returnName(newId);
+            newAddress = m.returnAddress(newId);
+            newCity = m.returnCity(newId);
+            newState = m.returnState(newId);
+            newZip = m.returnZip(newId);
         	Object [] options2 = {"Name: " + newName, "ID: " + newId, "Address: " + newAddress, "City: " + newCity, "State: " + newState, "Zip: " + newZip,"Done updating " + item};
         	ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while
@@ -651,7 +652,7 @@ public class OperatorRole {
         ProviderDatabase pData = new ProviderDatabase();
         Provider p = new Provider();
         String temp, newName = "", newAddress = "", newCity = "", newState = "";
-        int newId = 0, newZip = 0;
+        int newZip = 0;
         //if you don't come from manageMember function the id will be 0
         if (id == 0) {
             //get id
@@ -673,7 +674,8 @@ public class OperatorRole {
                 } catch (Exception e) {}
             }//close while
         }
-        
+        //set newId equal to id so that it will be the same unless changed
+        int newId = id;
         //look up info using id
         String name = p.returnName(id);
         String address = p.returnAddress(id);
@@ -780,13 +782,12 @@ public class OperatorRole {
                 default: 
                     System.exit(0);
             }//end switch
-            //get the new values;
-            newName = p.returnName(id);
-            newId = id;
-            newAddress = p.returnAddress(id);
-            newCity = p.returnCity(id);
-            newState = p.returnState(id);
-            newZip = p.returnZip(id);
+            //get the new values with newId;
+            newName = p.returnName(newId);
+            newAddress = p.returnAddress(newId);
+            newCity = p.returnCity(newId);
+            newState = p.returnState(newId);
+            newZip = p.returnZip(newId);
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Address: " + newAddress, "City: " + newCity, "State: " + newState, "Zip: " + newZip,"Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while      
@@ -876,7 +877,7 @@ public class OperatorRole {
      */
     private static void addService(String item) throws IOException {
         JFrame frame = null;
-        //TODO ProviderDirectory pDir = new ProviderDirectory();
+        ProviderDirectory pDir = new ProviderDirectory();
         int id = 0;
         double fee = 0;
         //get name
@@ -911,8 +912,8 @@ public class OperatorRole {
         //try to parse the string
         try { fee = Double.parseDouble(temp);
         } catch (Exception e){}       
-        //TODO add service to the Provider Directory
-        //pDir.addEntry(name,id,fee);
+        //add service to the Provider Directory
+        pDir.addEntry(name,id,fee);
         JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nFee: " + fee, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -946,7 +947,7 @@ public class OperatorRole {
      */
     private static void deleteService(String item) throws IOException {
         JFrame frame = null;
-        //TODO ProviderDirectory pDir = new ProviderDirectory();
+        ProviderDirectory pDir = new ProviderDirectory();
         String temp;
         int id = 0;
         
@@ -968,8 +969,8 @@ public class OperatorRole {
             try { id = Integer.parseInt(temp);
             } catch (Exception e) {}
         }//close while
-        //TODO remove the service
-        //pDir.removeEntry(id);
+        //remove the service
+        pDir.removeEntry(id);
         JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -1003,9 +1004,8 @@ public class OperatorRole {
      */
     private static void updateService(String item, int id) throws IOException {
         JFrame frame = null;
-        //TODO ProviderDirectory pDir = new ProviderDirectory();
+        ProviderDirectory pDir = new ProviderDirectory();
         String temp, newName = "";
-        int newId = 0;
         double newFee = 0;
         //if you don't come from manageMember function the id will be 0
     	if (id == 0) {
@@ -1028,10 +1028,11 @@ public class OperatorRole {
                 } catch (Exception e) {}
             }//close while
         }//close if
-    	//TODO get the info
-        String name = "Nutrition";
-        id = 123456;
-        double fee = 50;
+    	//set newId to id so that they will be the same unless changed
+    	int newId = id;
+    	//get the info
+        String name = pDir.returnName(id);
+        double fee = pDir.returnFee(id);
         Object [] options1 = {"Name: " + name, "ID: " + id, "Fee: " + fee};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 3) {
@@ -1042,8 +1043,9 @@ public class OperatorRole {
                     newName = JOptionPane.showInputDialog(frame, "Enter the new name: ", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
                     //exits if "cancel" or "exit" is pressed
                     if (newName == null)
-                        System.exit(0);                    
-                    //TODO update name in database
+                        System.exit(0);
+                    //update name in database
+                    pDir.updateEntry(id, newName, fee, id);
                     JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "ID"
@@ -1066,7 +1068,8 @@ public class OperatorRole {
                         try { newId = Integer.parseInt(temp);
                         } catch (Exception e) {}
                     }//close while
-                    //TODO Update ID in database
+                    //update id in database
+                    pDir.updateEntry(newId, name, fee, id);
                     JOptionPane.showMessageDialog(frame, item + " ID updated from " + id + " to " + newId + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "fee"
@@ -1079,17 +1082,17 @@ public class OperatorRole {
                     //try to parse the string
                     try { newFee = Double.parseDouble(temp);
                     } catch (Exception e){}
-                    //TODO update fee in database                  
+                    //update fee in database   
+                    pDir.updateEntry(id, name, newFee, id);
                     JOptionPane.showMessageDialog(frame, item + " fee updated from " + fee + " to " + newFee + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if exit button is pressed
                 default: 
                     System.exit(0);
             }//end switch
-            //get the new values;
-//            newName = "Flex";
-//            newId = 654321;
-//            newFee = 2;
+            //get the new values
+            newName = pDir.returnName(newId);
+            newFee = pDir.returnFee(newId);
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Fee: " + newFee, "Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while      
