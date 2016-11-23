@@ -81,7 +81,7 @@ public class OperatorRole {
             } catch (Exception e){}
             //makes sure the number is 9 digits
             while((id <= 99999999) || (id >= 1000000000)) { 
-                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                 //exits if "cancel" or "exit" is pressed
                 if (temp == null) 
                     System.exit(0);
@@ -129,7 +129,7 @@ public class OperatorRole {
         
         //makes sure the number is 9 digits and isn't already somoneone's id
         while((id <= 99999999) || (id >= 1000000000) || DatabaseEntry.searchCode(item,id)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -167,7 +167,7 @@ public class OperatorRole {
         } catch (Exception e){}
         //makes sure the number is 9 digits
         while((zip <= 9999) || (zip >= 100000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -224,7 +224,7 @@ public class OperatorRole {
         } catch (Exception e){}
         //makes sure the number is 9 digits
         while((id <= 99999999) || (id >= 1000000000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -282,9 +282,9 @@ public class OperatorRole {
             //try to parse the string
             try { id = Integer.parseInt(temp);
             } catch (Exception e){}
-            //makes sure the number is 9 digits and isn't already somoneone's id
+            //makes sure the number is 9
             while((id <= 99999999) || (id >= 1000000000)) { 
-                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                 //exits if "cancel" or "exit" is pressed
                 if (temp == null) 
                     System.exit(0);
@@ -310,7 +310,7 @@ public class OperatorRole {
 			        if (newName == null)
 			            System.exit(0);
 			        //update name in database
-			        mData.updateEntry(id, newName, address, city, state, zip);
+			        mData.updateEntry(id, newName, address, city, state, zip, id);
 			        
 			        JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
@@ -335,7 +335,7 @@ public class OperatorRole {
 			            } catch (Exception e) {}
 			        }//close while
 			        //update the ID in database
-			        mData.updateEntry(newId, name, address, city, state, zip);
+			        mData.updateEntry(newId, name, address, city, state, zip, id);
 			        JOptionPane.showMessageDialog(frame, item + " ID updated from " + id + " to " + newId + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "Address"
@@ -345,7 +345,7 @@ public class OperatorRole {
 			        if (newAddress == null)
 			            System.exit(0);
 			        //update address in database
-			        mData.updateEntry(id, name, newAddress, city, state, zip);
+			        mData.updateEntry(id, name, newAddress, city, state, zip, id);
 			        JOptionPane.showMessageDialog(frame, item + " address updated from " + address + " to " + newAddress + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "City"
@@ -355,7 +355,7 @@ public class OperatorRole {
 			        if (newCity == null)
 			            System.exit(0);
 			        //update city in database
-			        mData.updateEntry(id, name, address, newCity, state, zip);
+			        mData.updateEntry(id, name, address, newCity, state, zip, id);
 			        JOptionPane.showMessageDialog(frame, item + " city updated from " + city + " to " + newCity + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "State"
@@ -371,7 +371,7 @@ public class OperatorRole {
 	                        System.exit(0);
 			        }
 			        //update state in database
-			        mData.updateEntry(id, name, address, city, newState, zip);
+			        mData.updateEntry(id, name, address, city, newState, zip, id);
 			        JOptionPane.showMessageDialog(frame, item + " state updated from " + state + " to " + newState + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if "Zip"
@@ -385,7 +385,7 @@ public class OperatorRole {
 			        } catch (Exception e){}
 			        //makes sure the number is 9 digits
 			        while((newZip <= 9999) || (newZip >= 100000)) { 
-			            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+			            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
 			            //exits if "cancel" or "exit" is pressed
 			            if (temp == null) 
 			                System.exit(0);
@@ -394,7 +394,7 @@ public class OperatorRole {
 			            } catch (Exception e) {}
 			        }//close while
 			        //update zip in database
-			        mData.updateEntry(id, name, address, city, state, newZip);
+			        mData.updateEntry(id, name, address, city, state, newZip, id);
 			        JOptionPane.showMessageDialog(frame, item + " zip updated from " + zip + " to " + newZip + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
 			    //if exit button is pressed
@@ -466,7 +466,7 @@ public class OperatorRole {
             } catch (Exception e){}
             //makes sure the number is 9 digits
             while((id <= 99999999) || (id >= 1000000000)) { 
-                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                 //exits if "cancel" or "exit" is pressed
                 if (temp == null) 
                     System.exit(0);
@@ -513,7 +513,7 @@ public class OperatorRole {
         } catch (Exception e){}
         //makes sure the number is 9 digits and doesn't belong to someone
         while((id <= 99999999) || (id >= 1000000000) || DatabaseEntry.searchCode(item,id)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -547,7 +547,7 @@ public class OperatorRole {
         } catch (Exception e){}
         //makes sure the number is 9 digits
         while((zip <= 9999) || (zip >= 100000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be a 5 digit number. Please enter vaild zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -604,7 +604,7 @@ public class OperatorRole {
         } catch (Exception e){}
         //makes sure the number is 9 digits
         while((id <= 99999999) || (id >= 1000000000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be a a 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -664,7 +664,7 @@ public class OperatorRole {
             } catch (Exception e){}
           //makes sure the number is 9 digits
             while((id <= 99999999) || (id >= 1000000000)) { 
-                temp = JOptionPane.showInputDialog(frame,"Must be 9 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                temp = JOptionPane.showInputDialog(frame,"Must be a 9 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                 //exits if "cancel" or "exit" is pressed
                 if (temp == null) 
                     System.exit(0);
@@ -692,7 +692,7 @@ public class OperatorRole {
                     if (newName == null)
                         System.exit(0);
                     //update name in database
-                    pData.updateEntry(id, newName, address, city, state, zip);
+                    pData.updateEntry(id, newName, address, city, state, zip, id);
                     JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "ID"
@@ -716,7 +716,7 @@ public class OperatorRole {
                         } catch (Exception e) {}
                     }//close while
                     //update ID in database
-                    pData.updateEntry(newId, name, address, city, state, zip);
+                    pData.updateEntry(newId, name, address, city, state, zip, id);
                     JOptionPane.showMessageDialog(frame, item + " ID updated from " + id + " to " + newId + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "Address"
@@ -727,7 +727,7 @@ public class OperatorRole {
                     if (newAddress == null)
                         System.exit(0);
                     //update address in database
-                    pData.updateEntry(id, name, newAddress, city, state, zip);
+                    pData.updateEntry(id, name, newAddress, city, state, zip, id);
                     JOptionPane.showMessageDialog(frame, item + " address updated from " + address + " to " + newAddress + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "City"
@@ -738,7 +738,7 @@ public class OperatorRole {
                     if (newCity == null)
                         System.exit(0);
                     //update city in database
-                    pData.updateEntry(id, name, address, newCity, state, zip);
+                    pData.updateEntry(id, name, address, newCity, state, zip, id);
                     JOptionPane.showMessageDialog(frame, item + " city updated from " + city + " to " + newCity + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "State"
@@ -749,7 +749,7 @@ public class OperatorRole {
                     if (newState == null)
                         System.exit(0);
                     //update state in database
-                    pData.updateEntry(id, name, address, city, newState, zip);
+                    pData.updateEntry(id, name, address, city, newState, zip, id);
                     JOptionPane.showMessageDialog(frame, item + " state updated from " + state + " to " + newState + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "Zip"
@@ -762,9 +762,9 @@ public class OperatorRole {
                      //try to parse the string
                      try { newZip = Integer.parseInt(temp);
                      } catch (Exception e){}
-                     //makes sure the number is 9 digits
+                     //makes sure the number is 5 digits
                      while((newZip <= 9999) || (newZip >= 100000)) { 
-                         temp = JOptionPane.showInputDialog(frame,"Must be 5 digit number. Please enter vaild " + item + " zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                         temp = JOptionPane.showInputDialog(frame,"Must be a 5 digit number. Please enter vaild zip code.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                          //exits if "cancel" or "exit" is pressed
                          if (temp == null) 
                              System.exit(0);
@@ -773,7 +773,7 @@ public class OperatorRole {
                          } catch (Exception e) {}
                      }//close while
                     //update zip in database
-                    pData.updateEntry(id, name, address, city, state, newZip);
+                    pData.updateEntry(id, name, address, city, state, newZip, id);
                     JOptionPane.showMessageDialog(frame, item + " zip code updated from " + zip + " to " + newZip + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if exit button is pressed
@@ -846,7 +846,7 @@ public class OperatorRole {
             } catch (Exception e){}
             //makes sure the number is 6 digits
             while((id <= 99999) || (id >= 1000000)) { 
-                temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                 //exits if "cancel" or "exit" is pressed
                 if (temp == null) 
                     System.exit(0);
@@ -894,7 +894,7 @@ public class OperatorRole {
         } catch (Exception e){}
         //makes sure the number is 6 digits and isn't already a service code
         while((id <= 99999) || (id >= 1000000) || DatabaseEntry.searchCode(item,id)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -960,7 +960,7 @@ public class OperatorRole {
         } catch (Exception e){}
         //makes sure the number is 6 digits
         while((id <= 99999) || (id >= 1000000)) { 
-            temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+            temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
@@ -1019,7 +1019,7 @@ public class OperatorRole {
             } catch (Exception e){}
             //makes sure the number is 6 digits
             while((id <= 99999) || (id >= 1000000)) { 
-                temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number. Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                 //exits if "cancel" or "exit" is pressed
                 if (temp == null) 
                     System.exit(0);
@@ -1056,9 +1056,9 @@ public class OperatorRole {
                     //try to parse the string
                     try { newId = Integer.parseInt(temp);
                     } catch (Exception e){}
-                  //makes sure the number is 6 digits and isn't already a service code
+                    //makes sure the number is 6 digits and isn't already a service code
                     while((newId <= 99999) || (newId >= 1000000) || DatabaseEntry.searchCode(item,newId)) { 
-                        temp = JOptionPane.showInputDialog(frame,"Must be 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                        temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                         //exits if "cancel" or "exit" is pressed
                         if (temp == null) 
                             System.exit(0);
