@@ -37,6 +37,8 @@ public abstract class DatabaseEntry {
 		else{
 			return false;
 		}
+		if(!f.exists())
+			return false;
 		FileReader inF = null;
 		try {inF = new FileReader(f);
 		} catch (FileNotFoundException e1) {
