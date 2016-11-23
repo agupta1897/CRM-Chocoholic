@@ -30,41 +30,21 @@ public abstract class DatabaseEntry {
 		File f;
 		if(type == "Member"){
 			f = new File("src/files/member files/"+code+".txt");
+			if(f.exists())
+				return true;
+			else
+				return false;
 		}
 		else if(type == "Provider"){
 			f = new File("src/files/provider files/"+code+".txt");
+			if(f.exists())
+				return true;
+			else
+				return false;
 		}
 		else{
 			return false;
 		}
-		if(!f.exists())
-			return false;
-		FileReader inF = null;
-		try {inF = new FileReader(f);
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		BufferedReader in = new BufferedReader(inF);
-		String s = null;
-		int num = 0;
-		try {s = in.readLine();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		while(s != null){
-			try {s = in.readLine();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try{num = Integer.parseInt(s);
-			}catch(Exception e){}
-			if(num==code)
-				return true;
-		}
-		return false;
 	}
 	
 	/**
