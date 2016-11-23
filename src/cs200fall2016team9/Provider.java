@@ -152,7 +152,7 @@ public class Provider extends DatabaseEntry{
 	fstream = new BufferedWriter(new FileWriter(f));
 	fstream.write(getName());
 	fstream.newLine();
-	fstream.write(getNumber());
+	fstream.write(Integer.toString(getNumber()));
 	fstream.newLine();
 	fstream.write(getAddress());
 	fstream.newLine();
@@ -160,7 +160,7 @@ public class Provider extends DatabaseEntry{
 	fstream.newLine();
 	fstream.write(getState());
 	fstream.newLine();
-	fstream.write(getZipCode());
+	fstream.write(Integer.toString(getZipCode()));
 	fstream.close();
 	}
 }

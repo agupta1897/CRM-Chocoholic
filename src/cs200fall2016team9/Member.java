@@ -187,6 +187,7 @@ public class Member extends DatabaseEntry {
 	/**
 	 * Function writes member's information to a new member file
 	 * 	with the member ID as the title.
+	 * @throws IOException 
 	 */
 	void saveEntry() throws IOException{
 	File f = new File("src/files/member files/"+getNumber()+".txt");
@@ -196,7 +197,7 @@ public class Member extends DatabaseEntry {
 	fstream = new BufferedWriter(new FileWriter(f));
 	fstream.write(getName());
 	fstream.newLine();
-	fstream.write(getNumber());
+	fstream.write(Integer.toString(getNumber()));
 	fstream.newLine();
 	fstream.write(getAddress());
 	fstream.newLine();
@@ -204,7 +205,7 @@ public class Member extends DatabaseEntry {
 	fstream.newLine();
 	fstream.write(getState());
 	fstream.newLine();
-	fstream.write(getZipCode());
+	fstream.write(Integer.toString(getZipCode()));
 	fstream.newLine();
 	fstream.write(getStatus());
 	fstream.close();
