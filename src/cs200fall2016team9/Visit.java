@@ -14,10 +14,12 @@ public abstract class Visit {
 	private int memberId;
 	private int serviceCode;
 	private String comment;
+	
+	
 
-	abstract void addEntry() 
+	abstract void addEntry() throws IOException;
 
-	public static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
+	//
 		//abstract void saveVisit() throws IOException;
 		
 		
@@ -67,8 +69,8 @@ public abstract class Visit {
 		protected void setServiceCode(int newServiceCode){
 			serviceCode =newServiceCode;
 		}
-	}
+	
 
 	
 	}
-}
+
