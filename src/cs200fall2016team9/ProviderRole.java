@@ -376,11 +376,11 @@ public class ProviderRole {
         //TODO get the fee
         
         double fee = 100;
+        //save the info
+        vData.addVisitInfo(providerId, memberId, currentDateAndTime, date, serviceCode, comment);
         //print out the info that is written to the disk plus the Fee
         JOptionPane.showMessageDialog(frame, "Member billed!\nProvider ID: " + providerId + "\nMember ID: " + memberId + "\nCurrent Date and Time: " + 
                 currentDateAndTime + "\nDate of service: " + date + "\nService code: " + serviceCode + "\nComment: " + comment + "\nFee: " + fee, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
-        vData.addVisitInfo(providerId, memberId, currentDateAndTime, date, serviceCode, comment);
-        
     }//close submitVisitInfo function
     
 }//close ProviderRole Class
