@@ -106,31 +106,36 @@ public class VisitDatabase extends Visit {
 	
 	@Override
 	void addEntry() throws IOException{
-		File f = new File("src/files/visit files/"+getProviderId()+".txt");
+		File f = new File("src/files/visit files/provider visit files/"+getProviderId()+"v.txt");
 		if(!f.exists())
 			f.createNewFile();
 		BufferedWriter fstream = null;
 		fstream = new BufferedWriter(new FileWriter(f));
-		fstream.write(getMemberId());
+		fstream.write(getDate());
+        fstream.newLine();
+        fstream.write(getCurrentDateAndTime());
+        fstream.newLine();
+        //TODO look up member name
+		fstream.write(Integer.toString(getMemberId()));
 		fstream.newLine();
 		fstream.write(Integer.toString(getServiceCode()));
-		fstream.newLine();
-		fstream.write(getDate());
-		fstream.newLine();
-		fstream.write(getCurrentDateAndTime());
-		fstream.newLine();
+		//TODO look up service fee and print it
 		fstream.write("\n");
 		fstream.close();
-		File f1 = new File("src/files/visit files/"+getMemberId()+".txt");
+		File f1 = new File("src/files/visit files/member visit files/"+getMemberId()+"v.txt");
 		if(!f1.exists())
 			f1.createNewFile();
 		BufferedWriter fstream1 = null;
 		fstream1 = new BufferedWriter(new FileWriter(f1));
-		fstream1.write(getProviderId());
-		fstream1.newLine();
-		fstream1.write(Integer.toString(getServiceCode()));
-		fstream1.newLine();
 		fstream1.write(getDate());
+		fstream1.newLine();
+		//TODO look up provider name with ID
+		//temp print providerID
+		fstream1.write(Integer.toString(getProviderId()));
+		fstream1.newLine();
+		//TODO look up service name with ID
+		//temp print service code
+		fstream1.write(Integer.toString(getServiceCode()));
 		fstream1.write("\n");
 		fstream1.close();
 		}
