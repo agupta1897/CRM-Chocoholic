@@ -371,6 +371,7 @@ public class ProviderRole {
      */
     private static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
         JFrame frame = null;
+        VisitDatabase vData = new VisitDatabase();
         //ProviderDirectory pDir = new ProviderDirectory();
         //TODO get the fee
         
@@ -378,7 +379,7 @@ public class ProviderRole {
         //print out the info that is written to the disk plus the Fee
         JOptionPane.showMessageDialog(frame, "Member billed!\nProvider ID: " + providerId + "\nMember ID: " + memberId + "\nCurrent Date and Time: " + 
                 currentDateAndTime + "\nDate of service: " + date + "\nService code: " + serviceCode + "\nComment: " + comment + "\nFee: " + fee, "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
-        //TODO
+        vData.addVisitInfo(providerId, memberId, currentDateAndTime, date, serviceCode, comment);
         
     }//close submitVisitInfo function
     
