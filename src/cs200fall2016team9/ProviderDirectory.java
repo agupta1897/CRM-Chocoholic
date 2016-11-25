@@ -113,7 +113,7 @@ public class ProviderDirectory {
 	
 	void saveList() throws IOException{
 		int i=0;
-		File f = new File("src/files/provider files/"+"providerDirectory"+".txt");
+		File f = new File("src/files/provider files/"+"Provider Directory"+".txt");
 		if(!f.exists())
 			f.createNewFile();
 		BufferedWriter fstream = null;
@@ -135,7 +135,7 @@ public class ProviderDirectory {
 		nameList.clear();
 		codeList.clear();
 		feeList.clear();
-		File f = new File("src/files/provider files/"+"providerDirectory"+".txt");
+		File f = new File("src/files/provider files/"+"Provider Directory"+".txt");
 		if(!f.exists())
 		{
 			return;
