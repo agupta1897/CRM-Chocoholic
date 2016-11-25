@@ -124,7 +124,7 @@ public class ProviderRole {
         String temp, serviceName = "";
         int memberId = 0, serviceCode = 0;
         
-        //TODO ProviderDirectory pDir = new ProviderDirectory();
+        ProviderDirectory pDir = new ProviderDirectory();
         
         //if you didn't come from the startVisit function get providerId
         if (providerId == 0) {
@@ -195,9 +195,7 @@ public class ProviderRole {
         int ans = JOptionPane.showConfirmDialog(frame, "Do you want the Provider Directory sent to you?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
         //Send Provider Directory if "Yes" is entered
         if (ans == 0) {
-            
-            //TODO pDir.sendDirectory();
-            
+            pDir.sendDirectory();
             JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         }
         //continue with the function if "No"
@@ -214,8 +212,8 @@ public class ProviderRole {
         } catch (Exception e) {}
         //if the serviceCode is 6 digits display the service name
         if (serviceCode > 99999 && serviceCode < 1000000) {
-            //TODO look up service name
-            serviceName = "Dentist";
+            //look up service name
+            serviceName = pDir.serviceLookUp(serviceCode);
             ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
             //if exit is pressed
             if (ans == -1) 
@@ -229,8 +227,8 @@ public class ProviderRole {
                 //try to parse the string
                 try { serviceCode = Integer.parseInt(temp);
                 } catch (Exception e) {}
-                //TODO get service name
-                serviceName  = "Bob";
+                //get service name
+                serviceName = pDir.serviceLookUp(serviceCode);
                 //if it's the right length
                 if (serviceCode > 99999 && serviceCode < 1000000) {
                     ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
@@ -255,8 +253,8 @@ public class ProviderRole {
             } catch (Exception e) {}
             //if the serviceCode is 6 digits display the service name
             if (serviceCode > 99999 && serviceCode < 1000000) {
-                //TODO look up service fee
-                serviceName = "Charlie";
+                //look up service fee
+                serviceName = pDir.serviceLookUp(serviceCode);
                 ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
                 //if exit is pressed
                 if (ans == -1) 
@@ -270,8 +268,8 @@ public class ProviderRole {
                     //try to parse the string
                     try { serviceCode = Integer.parseInt(temp);
                     } catch (Exception e) {}
-                    //TODO get service name
-                    serviceName  = "Delta";
+                    //get service name
+                    serviceName = pDir.serviceLookUp(serviceCode);
                     //if serviceCode is 6 digits
                     if (serviceCode > 99999 && serviceCode < 1000000) {
                         ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
@@ -285,9 +283,6 @@ public class ProviderRole {
                 }//close while
             }//close if
         }//close while
-        
-        // TODO String serviceName = pDir.serviceLookUp(serviceCode);
-        //System.out.println("Is " + serviceName + " the correct service?");
         
         //ask if Provider wants to enter comments
         ans = JOptionPane.showConfirmDialog(frame, "Do you wish to enter comments?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
@@ -341,8 +336,8 @@ public class ProviderRole {
      */
     private static void requestDirectory() throws IOException {
         JFrame frame = null;
-        //TODO ProviderDirectory pDir = new ProviderDirectory();
-        //pDir.sendDirectory();
+        ProviderDirectory pDir = new ProviderDirectory();
+        pDir.sendDirectory();
         
         JOptionPane.showMessageDialog(frame, "It has been sent!", "ChocAn - Provider", JOptionPane.INFORMATION_MESSAGE);
         //return to providerTerminal function
@@ -372,10 +367,9 @@ public class ProviderRole {
     private static void submitVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
         JFrame frame = null;
         VisitDatabase vData = new VisitDatabase();
-        //ProviderDirectory pDir = new ProviderDirectory();
-        //TODO get the fee
-        
-        double fee = 100;
+        ProviderDirectory pDir = new ProviderDirectory();
+        //get the fee
+        double fee = pDir.getServiceFee(serviceCode);
         //save the info
         vData.addVisitInfo(providerId, memberId, currentDateAndTime, date, serviceCode, comment);
         //print out the info that is written to the disk plus the Fee

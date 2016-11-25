@@ -312,7 +312,7 @@ public class OperatorRole {
 			        if (newName == null)
 			            System.exit(0);
 			        //update name in database
-			        mData.updateEntry(id, newName, address, city, state, zip, id);
+			        mData.(id, newName, address, city, state, zip, id);
 			        
 			        JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
@@ -913,7 +913,7 @@ public class OperatorRole {
         try { fee = Double.parseDouble(temp);
         } catch (Exception e){}       
         //add service to the Provider Directory
-        pDir.addEntry(name,id,fee);
+        pDir.addService(name,id,fee);
         JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nFee: " + fee, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         //determine where to go
         Object [] options = {"Add another " + item, "Remove a " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
@@ -970,7 +970,7 @@ public class OperatorRole {
             } catch (Exception e) {}
         }//close while
         //remove the service
-        pDir.removeEntry(id);
+        pDir.removeService(id);
         JOptionPane.showMessageDialog(frame, item + " " + id + " deleted!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
         Object [] options = {"Add a " + item, "Remove another " + item, "Update a " + item + " info", "Back to Operator Menu", "Return to Main Menu"};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to do?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -1031,8 +1031,8 @@ public class OperatorRole {
     	//set newId to id so that they will be the same unless changed
     	int newId = id;
     	//get the info
-        String name = pDir.returnName(id);
-        double fee = pDir.returnFee(id);
+        String name = pDir.serviceLookUp(id);
+        double fee = pDir.getServiceFee(id);
         Object [] options1 = {"Name: " + name, "ID: " + id, "Fee: " + fee};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
         while (ans != 3) {
@@ -1045,7 +1045,7 @@ public class OperatorRole {
                     if (newName == null)
                         System.exit(0);
                     //update name in database
-                    pDir.updateEntry(id, newName, fee, id);
+                    pDir.updateService(id, newName, fee, id);
                     JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "ID"
@@ -1069,7 +1069,7 @@ public class OperatorRole {
                         } catch (Exception e) {}
                     }//close while
                     //update id in database
-                    pDir.updateEntry(newId, name, fee, id);
+                    pDir.updateService(newId, name, fee, id);
                     JOptionPane.showMessageDialog(frame, item + " ID updated from " + id + " to " + newId + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if "fee"
@@ -1083,7 +1083,7 @@ public class OperatorRole {
                     try { newFee = Double.parseDouble(temp);
                     } catch (Exception e){}
                     //update fee in database   
-                    pDir.updateEntry(id, name, newFee, id);
+                    pDir.updateService(id, name, newFee, id);
                     JOptionPane.showMessageDialog(frame, item + " fee updated from " + fee + " to " + newFee + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 //if exit button is pressed
@@ -1091,8 +1091,8 @@ public class OperatorRole {
                     System.exit(0);
             }//end switch
             //get the new values
-            newName = pDir.returnName(newId);
-            newFee = pDir.returnFee(newId);
+            newName = pDir.serviceLookUp(newId);
+            newFee = pDir.getServiceFee(newId);
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Fee: " + newFee, "Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
         }//end while      
