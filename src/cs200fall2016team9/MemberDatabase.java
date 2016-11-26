@@ -1,5 +1,6 @@
 package cs200fall2016team9;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -38,6 +39,8 @@ public class MemberDatabase extends Database {
 		if(id == oldId)
 			m.addNewMember(name, id, address, city, state, zip);
 		else {
+		    File oldFile = new File("src/files/member files/" + oldId + ".txt");
+		    File newFile = new File("src/files/member files/" + id + ".txt");
 			oldFile.renameTo(newFile);
 			m.addNewMember(name, id, address, city, state, zip);
 		}

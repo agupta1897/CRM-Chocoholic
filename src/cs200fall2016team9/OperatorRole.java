@@ -312,7 +312,7 @@ public class OperatorRole {
 			        if (newName == null)
 			            System.exit(0);
 			        //update name in database
-			        mData.(id, newName, address, city, state, zip, id);
+			        mData.updateEntry(id, newName, address, city, state, zip, id);
 			        
 			        JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
 			        break;
