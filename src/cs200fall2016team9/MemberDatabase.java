@@ -33,9 +33,14 @@ public class MemberDatabase extends Database {
 	}
 
 	@Override
-	void updateEntry(int id, String name, String address, String city, String state, int zip) {
+	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
 		Member m = new Member();
-		m.addNewMember(name, id, address, city, state, zip);
+		if(id == oldId)
+			m.addNewMember(name, id, address, city, state, zip);
+		else {
+			oldFile.renameTo(newFile);
+			m.addNewMember(name, id, address, city, state, zip);
+		}
 		try {
 			removeEntry(id);
 			m.saveEntry();

@@ -33,9 +33,14 @@ public class ProviderDatabase extends Database {
 	}
 
 	@Override
-	void updateEntry(int id, String name, String address, String city, String state, int zip) {
+	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
 		Provider p = new Provider();
-		p.addNewProvider(name, id, address, city, state, zip);
+		if(id == oldId)
+			p.addNewProvider(name, id, address, city, state, zip);
+		else {
+			oldFile.renameTo(newFile);
+			p.addNewProvider(name, id, address, city, state, zip);
+		}
 		try {
 			removeEntry(id);
 			p.saveEntry();
