@@ -1,5 +1,7 @@
 package cs200fall2016team9;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -16,16 +18,18 @@ public class ManagerRole {
     
     /**
      * Function to come from ChocAn.java
+     * @throws IOException 
      */
-    public static void managerTerminal() {
+    public static void managerTerminal() throws IOException {
         //go to getReport function, initially pass in empty string
     	getReport();
     }
     
     /**
      * Function to figure out what type of report the Manager wants
+     * @throws IOException 
      */
-    private static void getReport() {
+    private static void getReport() throws IOException {
         JFrame frame = null;
         String report;
         //determine where to go
@@ -34,17 +38,12 @@ public class ManagerRole {
         //if "Get Member Reports" is chosen
         if (ans == 0) {
             report = "Member";
-            
-        	//TODO MemberReport mR;
-        	//mR = new MemberReport;
-            
+        	MemberReport mR = new MemberReport();
             //ask if they want all the member reports run
             ans = JOptionPane.showConfirmDialog(frame, "Do you want to run all Member reports?", "ChocAn - Manager", JOptionPane.YES_NO_OPTION);
        		//get all member reports if "Yes"
        		if (ans == 0) {
-
-        		//TODO mR.memberReport(report);
-            	
+        		mR.memberReport();
             	JOptionPane.showMessageDialog(frame, "Getting all Member reports!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             	//return to getReport function
             	getReport();
@@ -61,17 +60,12 @@ public class ManagerRole {
         //if "Get Provider Reports" is chosen
         else if (ans == 1) {
             report = "Provider";
-            
-        	//TODO ProviderReport pR;
-        	//pR = new ProviderReport;
-            
+            ProviderReport pR = new ProviderReport();
             //ask if they want all the provider reports run
             ans = JOptionPane.showConfirmDialog(frame, "Do you want to run all Provider reports?", "ChocAn - Manager", JOptionPane.YES_NO_OPTION);
        		//if "Yes" then run Provider reports
        		if (ans == 0) {
-
-        		//TODO pR.providerReport(report);
-
+        		pR.providerReport();
        		 JOptionPane.showMessageDialog(frame, "Getting all Provider reports!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
        		 //return to getReport function
        		 getReport();
@@ -108,14 +102,15 @@ public class ManagerRole {
     /**
      * Function used to get a single member/provider report
      * @param report the type of report, either 'Member' or 'Provider'
+     * @throws IOException 
      */
-    private static void getSingleReport(String report) {
+    private static void getSingleReport(String report) throws IOException {
         JFrame frame = null;
         String temp;
         int ans, id = 0;
         //for member reports
         if ("Member".equals(report)) {
-            
+            MemberReport mR = new MemberReport();
             //get id number for the report you want
             temp = JOptionPane.showInputDialog(frame, "Please enter the " + report + " number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
@@ -134,9 +129,7 @@ public class ManagerRole {
                 try { id = Integer.parseInt(temp);
                 } catch (Exception e) {}
             }//close while
-            
-            //TODO mR.memberReport(id);
-            
+            mR.memberReport(id);
             JOptionPane.showMessageDialog(frame, "Getting " + report + " report for " + report + " ID: " + id + ".", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             //determine where to go
             Object [] options = {"Yes", "No, but stay in Manager role", "No return to Main Menu"};
@@ -158,7 +151,7 @@ public class ManagerRole {
         }
         //for Provider Reports
         else if ("Provider".equals(report)){
-            
+            ProviderReport pR = new ProviderReport();
             //get id for the provider report you want
             temp = JOptionPane.showInputDialog(frame, "Please enter the " + report + " number.", "ChocAn - Manager", JOptionPane.QUESTION_MESSAGE);
             //exits if "cancel" or "exit" is pressed
@@ -177,9 +170,7 @@ public class ManagerRole {
                 try { id = Integer.parseInt(temp);
                 } catch (Exception e) {}
             }//close while
-            
-            //TODO mR.memberReport(id);
-            
+            pR.providerReport(id);
             JOptionPane.showMessageDialog(frame, "Getting " + report + " report for " + report + " ID: " + id + ".", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             //determine where to go
             Object [] options = {"Yes", "No, but stay in Manager role", "No return to Main Menu"};
