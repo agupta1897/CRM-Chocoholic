@@ -126,6 +126,7 @@ public class Provider extends DatabaseEntry{
 	 * @param zip - provider's zip code
 	 */
 	void addNewProvider(String name, int num, String address, String city, String state, int zip){
+		BufferedWriter writer = null;
 		setName(name);
 		setNumber(num);
 		setAddress(address);
@@ -138,8 +139,16 @@ public class Provider extends DatabaseEntry{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			writer = new BufferedWriter(new FileWriter("src/files/provider files/allProviders.txt", true));
+			writer.newLine();
+			writer.append(Integer.toString(num));
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 	/**
 	 * Function writes provider's information to a new provider file
 	 * 	with the provider ID as the title.

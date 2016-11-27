@@ -169,6 +169,7 @@ public class Member extends DatabaseEntry {
 	 * @param zip - member's zip code
 	 */
 	void addNewMember(String name, int num, String address, String city, String state, int zip){
+		BufferedWriter writer = null;
 		setName(name);
 		setNumber(num);
 		setAddress(address);
@@ -178,6 +179,15 @@ public class Member extends DatabaseEntry {
 		setStatus("Validated");
 		try {
 			saveEntry();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			writer = new BufferedWriter(new FileWriter("src/files/member files/allMembers.txt", true));
+			writer.newLine();
+			writer.append(Integer.toString(num));
+			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
