@@ -13,28 +13,16 @@ import java.util.Vector;
  * @author Amber Gupta
  *
  */
-/*Void returnName(int num) throws IOException{
-	File f = new File("src/files/member files/"+num+".txt");
-	String line = new String();
-	if(f.exists()){
-		BufferedReader read = new BufferedReader(new FileReader(f));
-		line = read.readLine();
-		read.close();
-		return line;
-	}
-	else
-		return "Invalid number";
-}
-*/
+
 public class VisitDatabase extends Visit {
 	
-	 Vector<String> VmemberId = new Vector<String>();
+	/* Vector<String> VmemberId = new Vector<String>();
 	 Vector<String> VproviderId = new Vector<String>();
 	 Vector<String> VserviceCode= new Vector<String>();
 	 Vector<String> Vdate = new Vector<String>();
 	 Vector<String> VcurrentDateAndTime = new Vector<String>();
 
-
+*/
 
 	void addVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
 		
@@ -55,7 +43,7 @@ public class VisitDatabase extends Visit {
 		}
 	}
 	
-	void lookUpVisit ( int Filename, String type) throws IOException {
+	/*void lookUpVisit ( int Filename, String type) throws IOException {
 		String str;
 		File f = new File("src/files/visit files/"+Filename+".txt");
 		if(type=="member"){
@@ -103,10 +91,13 @@ public class VisitDatabase extends Visit {
 	
 
 	
-	
+	*/
 	@Override
 	void addEntry() throws IOException{
 		File f = new File("src/files/visit files/provider visit files/"+getProviderId()+"v.txt");
+		Member m = new Member();
+		Provider p = new Provider();
+		ProviderDirectory pd= new ProviderDirectory();
 		if(!f.exists())
 			f.createNewFile();
 		BufferedWriter fstream = null;
@@ -116,10 +107,15 @@ public class VisitDatabase extends Visit {
         fstream.write(getCurrentDateAndTime());
         fstream.newLine();
         //TODO look up member name
+        fstream.write(m.returnName(getMemberId()));
+        fstream.newLine();
 		fstream.write(Integer.toString(getMemberId()));
 		fstream.newLine();
 		fstream.write(Integer.toString(getServiceCode()));
+		fstream.newLine();
+		fstream.write(pd.getServiceFee(getServiceCode()));
 		//TODO look up service fee and print it
+		fstream.write(getComment());
 		fstream.write("\n");
 		fstream.close();
 		File f1 = new File("src/files/visit files/member visit files/"+getMemberId()+"v.txt");
@@ -131,21 +127,24 @@ public class VisitDatabase extends Visit {
 		fstream1.newLine();
 		//TODO look up provider name with ID
 		//temp print providerID
+		fstream1.write(p.returnName(getProviderId()));
+        fstream1.newLine();
 		fstream1.write(Integer.toString(getProviderId()));
 		fstream1.newLine();
 		//TODO look up service name with ID
 		//temp print service code
-		fstream1.write(Integer.toString(getServiceCode()));
+		fstream1.write(pd.getServiceName(getServiceCode()));
 		fstream1.write("\n");
 		fstream1.close();
 		}
 		// TODO Auto-generated method stub
 		
 
-void removeEntry(int filename) throws IOException{
+/*void removeEntry(int filename) throws IOException{
     File a = new File("src/files/member files/"+filename+".txt");
     if(a.exists()){
        a.delete();
     	}
 	}
+*/
 }

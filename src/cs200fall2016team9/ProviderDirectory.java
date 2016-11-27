@@ -30,13 +30,15 @@ public class ProviderDirectory {
 		{
 			x.printStackTrace();
 		}
+		
+		
 	}
 	
 	public void removeService(String ServiceName, int ServiceCode, int ServiceFee){
 		int i=0, a=0;
 		try 
 		{
-			openList();
+			saveList();
 		}
 		catch (IOException x)
 		{
@@ -207,7 +209,31 @@ public class ProviderDirectory {
 				return feeList.elementAt(i); 
 			}
 			else
-			return 0;
+			return '\0';
+	}
+	
+	public String getServiceName (int serviceCode){
+		int i=0, a=0;
+		try 
+		{
+			openList();
+		}
+		catch (IOException x)
+		{
+			x.printStackTrace();
+		}
+		
+		for(i=0;i<codeList.size();i++){
+			if(codeList.elementAt(i)==serviceCode){
+				a=1; 
+				break;
+			}
+		}
+			if(a==1){
+			return nameList.elementAt(i); 
+		}
+		else
+		return "INVALID";
 	}
 	
 	
