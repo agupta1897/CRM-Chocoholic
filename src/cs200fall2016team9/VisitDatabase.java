@@ -22,9 +22,11 @@ public class VisitDatabase extends Visit {
 	 Vector<String> Vdate = new Vector<String>();
 	 Vector<String> VcurrentDateAndTime = new Vector<String>();
 
+
 */
 
 	void addVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
+		
 		
 		
 		setProviderId(providerId);
