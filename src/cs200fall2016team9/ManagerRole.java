@@ -81,11 +81,15 @@ public class ManagerRole {
        	}//close Provider if statement
         //if "Get Summary Reports" is chosen
         else if (ans == 2) {
+            SummaryReport sR = new SummaryReport();
+            sR.summaryReport();
             JOptionPane.showMessageDialog(frame, "Getting Summary Report!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             //return to getReport function
             getReport();
         }//close Summary if statement
         else if (ans == 3) {
+            EFTReport eftR = new EFTReport();
+            eftR.eftReport();
             JOptionPane.showMessageDialog(frame, "Getting EFT Report!", "ChocAn - Manager", JOptionPane.INFORMATION_MESSAGE);
             //return to get report function
             getReport();
