@@ -222,14 +222,9 @@ public class ProviderDirectory {
 		
 		for(i=0;i<codeList.size();i++){
 			if(codeList.elementAt(i)==serviceCode){
-				a=1; 
-				break;
-			}
-		}
-			if(a==1){
 				return nameList.elementAt(i); 
 			}
-			else
+		}
 			return "INVALID";
 	
 	}
