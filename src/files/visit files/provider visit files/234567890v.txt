@@ -3,5 +3,5 @@
 Suzanne Smith
 123456782
 123453
-15.5
+15.50
 This is a test
