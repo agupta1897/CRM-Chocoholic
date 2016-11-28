@@ -36,12 +36,12 @@ public class SummaryReport {
 				proFile = new BufferedReader(new FileReader("src/files/visit files/provider visit files/"+list+"v.txt"));
 				String line=null;
 				int lineNumber=0;
-				int proFee=0;
+				double proFee=0;
 				int proConsul=0;
 				while((line=proFile.readLine())!=null){
 					lineNumber++;
-					if(lineNumber%7==6){
-						proFee+=Integer.parseInt(line);
+					if(lineNumber%8==6){
+						proFee+=Double.parseDouble(line);
 						proConsul++;
 					}
 				}
