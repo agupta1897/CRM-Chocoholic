@@ -210,7 +210,7 @@ public class ProviderDirectory {
 	
 	
 	public String serviceLookUp( int serviceCode ){
-		int i=0, a=0;
+		int i=0;
 		try 
 		{
 			openList();
@@ -313,7 +313,7 @@ public Boolean searchName( String serviceName){
 		
 
 		for(i=0;i<nameList.size();i++){
-			if(nameList.elementAt(i)==serviceName){
+			if(nameList.elementAt(i).equals(serviceName)){
 				return true;
 			} 
 		}
