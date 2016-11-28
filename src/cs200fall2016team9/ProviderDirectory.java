@@ -19,7 +19,7 @@ import java.util.Vector;
 
 public class ProviderDirectory {
 	private Vector<String> nameList = new Vector<String>();
-	private Vector<Integer> feeList = new Vector<Integer>();
+	private Vector<Double> feeList = new Vector<Double>();
 	private Vector<Integer> codeList= new Vector<Integer>();
 	
 	public void sendDirectory(){
@@ -35,7 +35,7 @@ public class ProviderDirectory {
 		
 	}
 	
-	public void removeService(String ServiceName, int ServiceCode, int ServiceFee){
+	public void removeService(String ServiceName, int ServiceCode, double ServiceFee){
 		int i=0, a=0;
 		try 
 		{
@@ -68,7 +68,7 @@ public class ProviderDirectory {
 		}
 	}
 	
-	public void addService(String newServiceName, int newServiceCode, int newServiceFee){
+	public void addService(String newServiceName, int newServiceCode, double newServiceFee){
 		int i=0;
 		try 
 		{
@@ -97,11 +97,10 @@ public class ProviderDirectory {
 			i=0;
 			while(nameList.elementAt(i).compareTo(newServiceName)<0){
 				i++;
+			}
 				nameList.add(i,newServiceName);
 				codeList.add(i,newServiceCode);
-				feeList.add(i,newServiceFee);
-			}
-			
+				feeList.add(i,newServiceFee);	
 		}
 		
 		try 
@@ -124,7 +123,7 @@ public class ProviderDirectory {
 			for( i=0; i<codeList.size();i++){
 				fstream.write(nameList.elementAt(i));
 				  fstream.newLine();
-				fstream.write(feeList.elementAt(i));
+				fstream.write(Double.toString(feeList.elementAt(i)));
 				  fstream.newLine();
 				fstream.write(codeList.elementAt(i));
 				  fstream.newLine();
@@ -147,12 +146,12 @@ public class ProviderDirectory {
 		{
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			nameList.addElement(read.readLine());
-			feeList.addElement(Integer.parseInt(read.readLine()));
+			feeList.addElement(Double.parseDouble(read.readLine()));
 			codeList.addElement(Integer.parseInt(read.readLine()));
 			read.readLine();
 			while((str=read.readLine())!=null){
 			nameList.addElement(str);
-			feeList.addElement(Integer.parseInt(read.readLine()));
+			feeList.addElement(Double.parseDouble(read.readLine()));
 			codeList.addElement(Integer.parseInt(read.readLine()));
 			read.readLine();
 				}
@@ -189,7 +188,7 @@ public class ProviderDirectory {
 	
 	}
 	
-	public int getServiceFee( int serviceCode){
+	public double getServiceFee( int serviceCode){
 		int i=0, a=0;
 		try 
 		{

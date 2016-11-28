@@ -115,7 +115,7 @@ public class VisitDatabase extends Visit {
 		fstream.newLine();
 		fstream.write(Integer.toString(getServiceCode()));
 		fstream.newLine();
-		fstream.write(pd.getServiceFee(getServiceCode()));
+		fstream.write(Double.toString(pd.getServiceFee(getServiceCode())));
 		//TODO look up service fee and print it
 		fstream.write(getComment());
 		fstream.write("\n");
