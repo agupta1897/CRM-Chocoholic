@@ -128,7 +128,7 @@ public class ProviderDirectory {
 			for( i=0; i<codeList.size();i++){
 				fstream.write(nameList.elementAt(i));
 				  fstream.newLine();
-				fstream.write(codeList.elementAt(i));
+				fstream.write(Integer.toString(codeList.elementAt(i)));
 				  fstream.newLine();
 				fstream.write(Double.toString(feeList.elementAt(i)));
                   fstream.newLine();
