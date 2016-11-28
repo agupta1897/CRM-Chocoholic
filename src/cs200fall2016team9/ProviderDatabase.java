@@ -27,7 +27,7 @@ public class ProviderDatabase extends Database {
 	@Override
 	void removeEntry(int id) {
 		try {
-			Files.deleteIfExists(Paths.get("src/files/member files/" + id + ".txt"));
+			Files.deleteIfExists(Paths.get("src/files/provider files/" + id + ".txt"));
 		} catch (Exception e) {
 
 		}
@@ -39,9 +39,12 @@ public class ProviderDatabase extends Database {
 		if(id == oldId)
 			p.addNewProvider(name, id, address, city, state, zip);
 		else {
-		    File oldFile = new File("src/files/member files/" + oldId + ".txt");
-            File newFile = new File("src/files/member files/" + id + ".txt");
+		    File oldFile = new File("src/files/provider files/" + oldId + ".txt");
+            File newFile = new File("src/files/provider files/" + id + ".txt");
+            File oldVisitFile = new File("src/files/provider visit files/" + oldId + ".txt");
+            File newVisitFile = new File("src/files/provider visit files/" + id + ".txt");
             oldFile.renameTo(newFile);
+            oldVisitFile.renameTo(newVisitFile);
 			p.addNewProvider(name, id, address, city, state, zip);
 		}
 		try {

@@ -41,7 +41,10 @@ public class MemberDatabase extends Database {
 		else {
 		    File oldFile = new File("src/files/member files/" + oldId + ".txt");
 		    File newFile = new File("src/files/member files/" + id + ".txt");
-			oldFile.renameTo(newFile);
+		    File oldVisitFile = new File("src/files/member visit files/" + oldId + ".txt");
+		    File newVisitFile = new File("src/files/member visit files/" + id + ".txt");
+		    oldFile.renameTo(newFile);
+		    oldVisitFile.renameTo(newVisitFile);
 			m.addNewMember(name, id, address, city, state, zip);
 		}
 		try {
