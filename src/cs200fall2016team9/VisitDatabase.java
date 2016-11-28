@@ -108,7 +108,6 @@ public class VisitDatabase extends Visit {
         fstream.newLine();
         fstream.write(getCurrentDateAndTime());
         fstream.newLine();
-        //TODO look up member name
         fstream.write(m.returnName(getMemberId()));
         fstream.newLine();
 		fstream.write(Integer.toString(getMemberId()));
@@ -116,7 +115,7 @@ public class VisitDatabase extends Visit {
 		fstream.write(Integer.toString(getServiceCode()));
 		fstream.newLine();
 		fstream.write(Double.toString(pd.getServiceFee(getServiceCode())));
-		//TODO look up service fee and print it
+		fstream.newLine();
 		fstream.write(getComment());
 		fstream.write("\n");
 		fstream.close();
@@ -127,14 +126,8 @@ public class VisitDatabase extends Visit {
 		fstream1 = new BufferedWriter(new FileWriter(f1));
 		fstream1.write(getDate());
 		fstream1.newLine();
-		//TODO look up provider name with ID
-		//temp print providerID
 		fstream1.write(p.returnName(getProviderId()));
         fstream1.newLine();
-		//fstream1.write(Integer.toString(getProviderId()));
-		//fstream1.newLine();
-		//TODO look up service name with ID
-		//temp print service code
 		fstream1.write(pd.getServiceName(getServiceCode()));
 		fstream1.write("\n");
 		fstream1.close();
