@@ -38,7 +38,7 @@ public class EFTReport {
 			int lineCounter=0;
 			while((line2=charlie.readLine())!=null){
 				lineCounter++;
-				if(lineCounter%7==6){
+				if(lineCounter%8==6){
 					totalFee+=Integer.parseInt(line2);
 				}
 			}
