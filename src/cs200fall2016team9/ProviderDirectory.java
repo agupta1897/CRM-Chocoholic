@@ -123,10 +123,10 @@ public class ProviderDirectory {
 			for( i=0; i<codeList.size();i++){
 				fstream.write(nameList.elementAt(i));
 				  fstream.newLine();
-				fstream.write(Double.toString(feeList.elementAt(i)));
-				  fstream.newLine();
 				fstream.write(codeList.elementAt(i));
 				  fstream.newLine();
+				fstream.write(Double.toString(feeList.elementAt(i)));
+                  fstream.newLine();
 				  fstream.write("\n");
 			}
 			fstream.close();
@@ -146,13 +146,13 @@ public class ProviderDirectory {
 		{
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			nameList.addElement(read.readLine());
-			feeList.addElement(Double.parseDouble(read.readLine()));
 			codeList.addElement(Integer.parseInt(read.readLine()));
+			feeList.addElement(Double.parseDouble(read.readLine()));
 			read.readLine();
 			while((str=read.readLine())!=null){
 			nameList.addElement(str);
-			feeList.addElement(Double.parseDouble(read.readLine()));
 			codeList.addElement(Integer.parseInt(read.readLine()));
+			feeList.addElement(Double.parseDouble(read.readLine()));
 			read.readLine();
 				}
 			read.close();
