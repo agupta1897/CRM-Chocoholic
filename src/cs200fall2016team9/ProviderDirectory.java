@@ -35,7 +35,7 @@ public class ProviderDirectory {
 		
 	}
 	
-	public void removeService(String ServiceName, int ServiceCode, double ServiceFee){
+	public void removeService(int ServiceCode){
 		int i=0, a=0;
 		try 
 		{
@@ -112,6 +112,11 @@ public class ProviderDirectory {
 			x.printStackTrace();
 		}
 	}
+	
+	public void updateService(int id, String newName, double fee, int oldId) {
+        // TODO Auto-generated method stub
+        
+    }
 	
 	void saveList() throws IOException{
 		int i=0;
@@ -235,6 +240,8 @@ public class ProviderDirectory {
 		else
 		return "INVALID";
 	}
+
+    
 	
 	
 	
