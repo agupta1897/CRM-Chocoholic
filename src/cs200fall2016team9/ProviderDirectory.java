@@ -297,10 +297,10 @@ public class ProviderDirectory {
 
 		for(i=0;i<codeList.size();i++){
 			if(codeList.elementAt(i)==serviceCode){
-				return true;
+				return false;
 			} 
 		}
-			return false;
+			return true;
         // TODO Auto-generated method stub	
     }
     
@@ -319,10 +319,11 @@ public Boolean searchName( String serviceName){
 
 		for(i=0;i<nameList.size();i++){
 			if(nameList.elementAt(i)==serviceName){
-				return true;
+				return false;
 			} 
 		}
-			return false;
+		
+			return true;
         // TODO Auto-generated method stub	
     }
 	
