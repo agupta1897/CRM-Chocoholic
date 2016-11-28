@@ -114,6 +114,39 @@ public class ProviderDirectory {
 	}
 	
 	public void updateService(int id, String newName, double fee, int oldId) {
+		int i=0;
+		try 
+		{
+			openList();
+		}
+		catch (IOException x)
+		{
+			x.printStackTrace();
+		}
+		
+		if(oldId==id){
+			for(i=0;i<codeList.size();i++){
+				if(codeList.elementAt(i)==id)
+				{
+					feeList.set(i,fee);
+					nameList.set(i, newName);
+					
+				}
+			}
+		}
+		else
+		{
+			for(i=0;i<codeList.size();i++){
+				if(codeList.elementAt(i)==oldId)
+				{
+					codeList.set(i, id);
+					feeList.set(i,fee);
+					nameList.set(i, newName);
+					
+				}
+			}
+
+		}
         // TODO Auto-generated method stub
         
     }
