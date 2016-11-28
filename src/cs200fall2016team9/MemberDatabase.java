@@ -56,6 +56,7 @@ public class MemberDatabase extends Database {
 	 * @param city // city they live in
 	 * @param state // state they live in
 	 * @param zip // their zip code number
+	 * @param oldId // last id member had
 	 */
 	@Override
 	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
