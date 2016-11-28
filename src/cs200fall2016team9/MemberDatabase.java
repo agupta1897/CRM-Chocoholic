@@ -15,7 +15,15 @@ import java.nio.file.Paths;
 
 public class MemberDatabase extends Database {
 	
-	
+	/**
+	 * Adds a new member to database.
+	 * @param name // name of member
+	 * @param num // id number of member
+	 * @param address // address of member
+	 * @param city // city they live in
+	 * @param state // state they live in
+	 * @param zip // their zip code number
+	 */
 	@Override
 	void addEntry(String name, int num, String address, String city, String state, int zip) {
 		Member m = new Member();
@@ -27,7 +35,10 @@ public class MemberDatabase extends Database {
 		}
 	}
 
-	
+	/**
+	 * Removes a member from database.
+	 * @param id // id number of member
+	 */
 	@Override
 	void removeEntry(int id) {
 		try {
@@ -37,7 +48,15 @@ public class MemberDatabase extends Database {
 		}
 	}
 	
-	/
+	/**
+	 * Updates current member in database.
+	 * @param id // id number of member
+	 * @param name // name of member
+	 * @param address // address of member
+	 * @param city // city they live in
+	 * @param state // state they live in
+	 * @param zip // their zip code number
+	 */
 	@Override
 	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
 		Member m = new Member();

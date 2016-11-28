@@ -15,10 +15,14 @@ import java.nio.file.Paths;
 
 public class ProviderDatabase extends Database {
 
-	/*
+	/**
 	 * Adds a new provider to database.
-	 * (non-Javadoc)
-	 * @see cs200fall2016team9.Database#addEntry(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, int)
+	 * @param name // name of provider
+	 * @param num // id number of provider
+	 * @param address // address of provider
+	 * @param city // city they live in
+	 * @param state // state they live in
+	 * @param zip // their zip code number
 	 */
 	@Override
 	void addEntry(String name, int num, String address, String city, String state, int zip) {
@@ -31,10 +35,9 @@ public class ProviderDatabase extends Database {
 		}
 	}
 	
-	/*
+	/**
 	 * Removes a provider from database.
-	 * (non-Javadoc)
-	 * @see cs200fall2016team9.Database#removeEntry(int)
+	 * @param id // id number of provider
 	 */
 	@Override
 	void removeEntry(int id) {
@@ -45,10 +48,14 @@ public class ProviderDatabase extends Database {
 		}
 	}
 	
-	/*
+	/**
 	 * Updates current provider in database.
-	 * (non-Javadoc)
-	 * @see cs200fall2016team9.Database#updateEntry(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, int)
+	 * @param name // name of provider
+	 * @param num // id number of provider
+	 * @param address // address of provider
+	 * @param city // city they live in
+	 * @param state // state they live in
+	 * @param zip // their zip code number
 	 */
 	@Override
 	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
