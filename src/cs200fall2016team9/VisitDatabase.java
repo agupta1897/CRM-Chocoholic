@@ -1,12 +1,12 @@
 package cs200fall2016team9;
 
-import java.io.BufferedReader;
+//import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
+//import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Vector;
+//import java.util.Vector;
 
 /**
  * 
@@ -131,8 +131,8 @@ public class VisitDatabase extends Visit {
 		//temp print providerID
 		fstream1.write(p.returnName(getProviderId()));
         fstream1.newLine();
-		fstream1.write(Integer.toString(getProviderId()));
-		fstream1.newLine();
+		//fstream1.write(Integer.toString(getProviderId()));
+		//fstream1.newLine();
 		//TODO look up service name with ID
 		//temp print service code
 		fstream1.write(pd.getServiceName(getServiceCode()));
