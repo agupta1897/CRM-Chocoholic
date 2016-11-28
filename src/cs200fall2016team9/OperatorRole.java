@@ -872,7 +872,7 @@ public class OperatorRole {
     
     /**
      * Function to add a service 
-     * @param item will alwasy be 'Service'
+     * @param item will always be 'Service'
      * @throws IOException 
      */
     private static void addService(String item) throws IOException {
@@ -892,16 +892,16 @@ public class OperatorRole {
             System.exit(0);
         //try to parse the string
         try { id = Integer.parseInt(temp);
-        } catch (Exception e){}
-        //makes sure the number is 6 digits and isn't already a service code
-        while((id <= 99999) || (id >= 1000000) || DatabaseEntry.searchCode(item,id)) { 
+        } catch (Exception e){System.out.println("broke id 1");}
+        //makes sure the number is 6 digits
+        while((id <= 99999) || (id >= 1000000)) { 
             temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
                 System.exit(0);
             //try to parse the string
             try { id = Integer.parseInt(temp);
-            } catch (Exception e) {}
+            } catch (Exception e) {System.out.println("broke id");}
         }//close while
         
         //get fee
@@ -911,7 +911,7 @@ public class OperatorRole {
             System.exit(0);
         //try to parse the string
         try { fee = Double.parseDouble(temp);
-        } catch (Exception e){}       
+        } catch (Exception e){ System.out.println("broke fee");}       
         //add service to the Provider Directory
         pDir.addService(name,id,fee);
         JOptionPane.showMessageDialog(frame, item + " added!\nName: " + name + "\nNumber: " + id + "\nFee: " + fee, "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -1058,8 +1058,8 @@ public class OperatorRole {
                     //try to parse the string
                     try { newId = Integer.parseInt(temp);
                     } catch (Exception e){}
-                    //makes sure the number is 6 digits and isn't already a service code
-                    while((newId <= 99999) || (newId >= 1000000) || DatabaseEntry.searchCode(item,newId)) { 
+                    //makes sure the number is 6 digits
+                    while((newId <= 99999) || (newId >= 1000000)) { 
                         temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                         //exits if "cancel" or "exit" is pressed
                         if (temp == null) 
