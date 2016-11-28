@@ -1,6 +1,7 @@
 package cs200fall2016team9;
 
 /**
+ * This class is the base abstracts for these functions.
  * 
  * @author Nate Wade
  *

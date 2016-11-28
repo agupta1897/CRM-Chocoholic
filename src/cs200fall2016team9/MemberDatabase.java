@@ -15,11 +15,7 @@ import java.nio.file.Paths;
 
 public class MemberDatabase extends Database {
 	
-	/*
-	 * Adds a new member to database.
-	 * (non-Javadoc)
-	 * @see cs200fall2016team9.Database#addEntry(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, int)
-	 */
+	
 	@Override
 	void addEntry(String name, int num, String address, String city, String state, int zip) {
 		Member m = new Member();
@@ -31,11 +27,7 @@ public class MemberDatabase extends Database {
 		}
 	}
 
-	/*
-	 * Removes a member from database.
-	 * (non-Javadoc)
-	 * @see cs200fall2016team9.Database#removeEntry(int)
-	 */
+	
 	@Override
 	void removeEntry(int id) {
 		try {
@@ -45,11 +37,7 @@ public class MemberDatabase extends Database {
 		}
 	}
 	
-	/*
-	 * Updates current member in database.
-	 * (non-Javadoc)
-	 * @see cs200fall2016team9.Database#updateEntry(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, int)
-	 */
+	/
 	@Override
 	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
 		Member m = new Member();
