@@ -35,7 +35,6 @@ public class ProviderReport {
 	void providerReport(int numberID) throws IOException{
 		BufferedReader alpha = new BufferedReader(new FileReader("src/files/provider files/"+numberID+".txt"));
 		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
-		//TODO get provider name
 		BufferedWriter beta = new BufferedWriter(new FileWriter("src/files/report files/provider reports/"+numberID+date+"Report.txt"));
 		String line = new String();
 		for(int i=0;i<=5;i++){
@@ -54,7 +53,9 @@ public class ProviderReport {
 				totalConsul++;
 				totalFee+=Integer.parseInt(line);
 			}
-			beta.write(line);
+			if(lineNumber%7!=0){
+				beta.write(line);
+			}
 			beta.newLine();
 		}
 		if(totalConsul>=999){
