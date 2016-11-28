@@ -1082,7 +1082,16 @@ public class OperatorRole {
                     //try to parse the string
                     try { newFee = Double.parseDouble(temp);
                     } catch (Exception e){}
-                    //update fee in database   
+                    //make sure the fee is less than 999.99
+                    while(newFee > 999.99) {
+                        temp = JOptionPane.showInputDialog(frame, "Must be a number less than 999.99. Enter the new fee: ", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                        if (temp == null)
+                            System.exit(0);
+                        //try to parse the string
+                        try { newFee = Double.parseDouble(temp);
+                        } catch (Exception e){}
+                    }//close while
+                    //update fee in database
                     pDir.updateService(id, name, newFee, id);
                     JOptionPane.showMessageDialog(frame, item + " fee updated from " + fee + " to " + newFee + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
                     break;
