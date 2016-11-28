@@ -147,6 +147,14 @@ public class ProviderDirectory {
 			}
 
 		}
+		try 
+		{
+			saveList();
+		}
+		catch (IOException x)
+		{
+			x.printStackTrace();
+		}
         // TODO Auto-generated method stub
         
     }
@@ -274,7 +282,9 @@ public class ProviderDirectory {
 		return "INVALID";
 	}
 
-    
+    public Boolean searchCode( int serviceCode){
+    	
+    }
 	
 	
 	
