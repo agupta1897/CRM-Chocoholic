@@ -284,6 +284,46 @@ public class ProviderDirectory {
 
     public Boolean searchCode( int serviceCode){
     	
+    	int i=0;
+		try 
+		{
+			openList();
+		}
+		catch (IOException x)
+		{
+			x.printStackTrace();
+		}
+		
+
+		for(i=0;i<codeList.size();i++){
+			if(codeList.elementAt(i)==serviceCode){
+				return true;
+			} 
+		}
+			return false;
+        // TODO Auto-generated method stub	
+    }
+    
+public Boolean searchName( String serviceName){
+    	
+    	int i=0;
+		try 
+		{
+			openList();
+		}
+		catch (IOException x)
+		{
+			x.printStackTrace();
+		}
+		
+
+		for(i=0;i<nameList.size();i++){
+			if(nameList.elementAt(i)==serviceName){
+				return true;
+			} 
+		}
+			return false;
+        // TODO Auto-generated method stub	
     }
 	
 	
