@@ -885,6 +885,13 @@ public class OperatorRole {
         //exits if "cancel" or "exit" is pressed
         if (name == null)
             System.exit(0);
+        while(pDir.searchName(name)) {
+            //get new name
+              name = JOptionPane.showInputDialog(frame, "The Service name can't be one that already exist. Enter a different name: ", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+              //exits if "cancel" or "exit" is pressed
+              if (name == null)
+                  System.exit(0);
+          }//close while
         //get id
         String temp = JOptionPane.showInputDialog(frame, "Enter new " + item + " number:", "ChocAn - Operator", JOptionPane.QUESTION_MESSAGE);
         //exits if "cancel" or "exit" is pressed
@@ -893,8 +900,8 @@ public class OperatorRole {
         //try to parse the string
         try { id = Integer.parseInt(temp);
         } catch (Exception e){System.out.println("broke id 1");}
-        //makes sure the number is 6 digits
-        while((id <= 99999) || (id >= 1000000)) { 
+        //makes sure the number is 6 digits and isn't a service id already
+        while((id <= 99999) || (id >= 1000000) || pDir.searchCode(id)) { 
             temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
             //exits if "cancel" or "exit" is pressed
             if (temp == null) 
@@ -1044,6 +1051,14 @@ public class OperatorRole {
                     //exits if "cancel" or "exit" is pressed
                     if (newName == null)
                         System.exit(0);
+                    //makes sure the service name isn't already assigned
+                    while(pDir.searchName(newName)) {
+                      //get new name
+                        newName = JOptionPane.showInputDialog(frame, "The Service name can't be one that already exist. Enter the new name: ", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
+                        //exits if "cancel" or "exit" is pressed
+                        if (newName == null)
+                            System.exit(0);
+                    }//close while
                     //update name in database
                     pDir.updateService(id, newName, fee, id);
                     JOptionPane.showMessageDialog(frame, item + " name updated from " + name + " to " + newName + "!", "ChocAn - Operator", JOptionPane.INFORMATION_MESSAGE);
@@ -1058,8 +1073,8 @@ public class OperatorRole {
                     //try to parse the string
                     try { newId = Integer.parseInt(temp);
                     } catch (Exception e){}
-                    //makes sure the number is 6 digits
-                    while((newId <= 99999) || (newId >= 1000000)) { 
+                    //makes sure the number is 6 digits and isn't already a service coe
+                    while((newId <= 99999) || (newId >= 1000000) || pDir.searchCode(id)) { 
                         temp = JOptionPane.showInputDialog(frame,"Must be a 6 digit number and not already belong to a " + item + ". Please enter vaild " + item + " number.", "ChocAn - Operator", JOptionPane.ERROR_MESSAGE);
                         //exits if "cancel" or "exit" is pressed
                         if (temp == null) 
