@@ -21,7 +21,14 @@ public class ProviderDirectorySearchNameTest {
         assertTrue(directory.searchName("Massage"));
     }
     
-    @Test	(expected=ClassCastException.class)
+    @Test	(expected = NullPointerException.class)
     public void testForFailure(){
+    	directory.searchName("");
+    }
+    
+    @Test
+    public void testForSanity(){
+    	directory.addService("Hero Training", 000000, 50.59);
+    	assertEqual()
     }
 }
