@@ -6,7 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cs200fall2016team9.ProviderDirectory;
-
+/**
+ * This is a JUnit test case of the provider directory function SearchName 
+ * @author Sean
+ *
+ */
 public class ProviderDirectorySearchNameTest {
 
     ProviderDirectory directory;
