@@ -19,10 +19,11 @@ public class ProviderDirectorySearchCodeTest {
     @Test
     public void testForSuccess() {
         assertTrue(pDir.searchCode(123456));
+        assertFalse(pDir.searchCode(122222));
     }
     
-    @Test
-    public void testForFailure(){
-        assertFalse(pDir.searchCode(1234567));
+    @Test (expected = NumberFormatException.class)
+    public void testForException(){
+        pDir.searchCode(1234567);
     }
 }
