@@ -46,7 +46,7 @@ public class ProviderReport {
 		BufferedReader alpha = new BufferedReader(new FileReader(s+numberID+".txt")); //Open provider file
 		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
 		a = new File("src/files/provider files/allProviders.txt");
-		s = "files/report files/provider reports files/";
+		s = "files/report files/provider report files/";
 		if(a.exists()){//Check to see if using Eclipse
 			s="src/"+s;
 		}//write provider report file
@@ -59,7 +59,7 @@ public class ProviderReport {
 		}
 		alpha.close();
 		a = new File("src/files/provider files/allProviders.txt");
-		s = "files/visit files/Provider visit file/";
+		s = "files/visit files/provider visit files/";
 		if(a.exists()){//check to see if using eclipse
 			s="src/"+s;
 		}//Open provider visit file
