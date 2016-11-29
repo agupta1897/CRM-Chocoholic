@@ -24,7 +24,7 @@ public class ProviderDirectory {
 	
 	
 	
-	public void sendDirectory(){
+	public void sendDirectory() throws IOException{
 		try 
 		{
 			openList();
@@ -34,8 +34,31 @@ public class ProviderDirectory {
 			x.printStackTrace();
 		}
 		
+		int i=0;
+		File f;
+		File a = new File("src/files/member files/allMembers.txt");
+		if(a.exists()) 
+			f = new File("src/files/Provider Directory Email Attachment.txt");
+		else 
+			f = new File("files/Provider Directory Email Attachment.txt");
+		if(!f.exists())
+			f.createNewFile();
+		BufferedWriter fstream = null;
+		fstream = new BufferedWriter(new FileWriter(f));
+			for( i=0; i<codeList.size();i++){
+				fstream.write(nameList.elementAt(i));
+				  fstream.newLine();
+				fstream.write(Integer.toString(codeList.elementAt(i)));
+				  fstream.newLine();
+				fstream.write(Double.toString(feeList.elementAt(i)));
+                  fstream.newLine();
+				  fstream.write("\n");
+			}
+			fstream.close();
+		}
 		
-	}
+		
+	
 	
 	/**
 	 * 
@@ -189,7 +212,12 @@ public class ProviderDirectory {
 	
 	void saveList() throws IOException{
 		int i=0;
-		File f = new File("src/files/Provider Directory.txt");
+		File f;
+		File a = new File("src/files/member files/allMembers.txt");
+		if(a.exists()) 
+			f = new File("src/files/Provider Directory.txt");
+		else 
+			f = new File("files/Provider Directory.txt");
 		if(!f.exists())
 			f.createNewFile();
 		BufferedWriter fstream = null;
@@ -215,7 +243,12 @@ public class ProviderDirectory {
 		nameList.clear();
 		codeList.clear();
 		feeList.clear();
-		File f = new File("src/files/Provider Directory.txt");
+		File f;
+		File a = new File("src/files/member files/allMembers.txt");
+		if(a.exists()) 
+			f = new File("src/files/Provider Directory.txt");
+		else 
+			f = new File("files/Provider Directory.txt");
 		if(!f.exists())
 		{
 			return;
