@@ -62,7 +62,7 @@ public class ProviderDatabaseTest {
 	}
 	
 	@After
-	public void closeUp() {
+	public void closeUp() throws IOException {
 		pd.removeEntry(123456799);
 	}
 	

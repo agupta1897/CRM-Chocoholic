@@ -66,7 +66,7 @@ public class MemberDatabaseTest {
 	}
 	
 	@After
-	public void closeUp() {
+	public void closeUp() throws IOException {
 		md.removeEntry(123456799);
 	}
 	

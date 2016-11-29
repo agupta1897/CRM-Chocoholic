@@ -62,8 +62,9 @@ public class ProviderDatabase extends Database {
         String lineToRemove = Integer.toString(id);
         String currentLine;
         while((currentLine = reader.readLine())!= null){
-            writer.write(currentLine);//Copy member visit information
-            if (currentLine.equals(lineToRemove)) continue;
+            if (currentLine.equals(lineToRemove)) 
+                continue;
+            writer.write(currentLine);
             writer.newLine();
         }
         writer.close(); 
