@@ -7,6 +7,11 @@ import org.junit.Test;
 
 import cs200fall2016team9.ProviderDirectory;
 
+/**
+ * 
+ * @author Jake Mizzell
+ *
+ */
 public class ProviderDirectorySearchCodeTest {
 
     ProviderDirectory pDir;
