@@ -50,6 +50,10 @@ Tomahawk Throwing
 999999
 100.0
 
+Tomahawk Throwing
+999999
+100.0
+
 Yoga Session
 123458
 5.0
