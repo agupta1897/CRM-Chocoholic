@@ -1,9 +1,16 @@
 package cs200fall2016team9.test;
-
+/**
+ * 
+ * This is a JUnit testing file for Class ProviderDatabase and Class Provider.
+ * @author amber
+ * 
+ * 
+ */
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -54,7 +61,10 @@ public class ProviderDatabaseTest {
 		assertFalse(p.returnName(123456799).equals("Invalid number"));
 	}
 	
-	//@Test
+	@After
+	public void closeUp() {
+		pd.removeEntry(123456799);
+	}
 	
 	
 	}

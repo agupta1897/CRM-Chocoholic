@@ -28,23 +28,23 @@ public abstract class DatabaseEntry {
 	 */
 	protected static  boolean searchCode(String type, int code){
 		File f;
-		File x = new File("src/files/Provider Directory.txt");
-		if(type == "Member"){
-			if(x.exists())
+		File x = new File("src/files/Provider Directory.txt");	//File to test for file locations
+		if(type == "Member"){	//Code is member ID
+			if(x.exists())	//If exists files under src directory
 				f = new File("src/files/member files/"+code+".txt");
-			else
+			else	//Otherwise files under implied path
 				f = new File("files/member files/"+code+".txt");
-			if(f.exists())
+			if(f.exists())	//If code is taken
 				return true;
 			else
 				return false;
 		}
-		else if(type == "Provider"){
-			if(x.exists())
+		else if(type == "Provider"){	//Code is provider ID
+			if(x.exists())	//If exists files under src directory
 				f = new File("src/files/provider files/"+code+".txt");
-			else
+			else	//Otherwise files under implied path
 				f = new File("files/provider files/"+code+".txt");
-			if(f.exists())
+			if(f.exists())	//If code is taken
 				return true;
 			else
 				return false;

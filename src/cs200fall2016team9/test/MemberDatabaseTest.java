@@ -1,9 +1,16 @@
 package cs200fall2016team9.test;
-
+/**
+ * 
+ * This is a JUnit testing file for Class MemberDatabase and Class Member.
+ * @author amber
+ * 
+ * 
+ */
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,5 +65,9 @@ public class MemberDatabaseTest {
 		assertEquals("Invalid number",m.returnStatus(123456799));
 	}
 	
+	@After
+	public void closeUp() {
+		md.removeEntry(123456799);
+	}
 	
 }
