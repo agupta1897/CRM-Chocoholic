@@ -39,6 +39,8 @@ public class Member extends DatabaseEntry {
 	 */
 	String returnName(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -58,6 +60,8 @@ public class Member extends DatabaseEntry {
 	 */
 	String returnAddress(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -79,6 +83,8 @@ public class Member extends DatabaseEntry {
 	 */
 	String returnCity(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -100,6 +106,8 @@ public class Member extends DatabaseEntry {
 	 */
 	String returnState(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/member files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -121,6 +129,8 @@ public class Member extends DatabaseEntry {
 	 */
 	int returnZip(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/member files/"+num+".txt");
 		String line = new String();
 		int zip = 0;
 		if(f.exists()){
@@ -172,6 +182,7 @@ public class Member extends DatabaseEntry {
 	 * @param zip - member's zip code
 	 */
 	void addNewMember(String name, int num, String address, String city, String state, int zip){
+		File x = new File("src/files/Provider Directory.txt");
 		BufferedWriter writer = null;
 		setName(name);
 		setNumber(num);
@@ -187,7 +198,10 @@ public class Member extends DatabaseEntry {
 			e.printStackTrace();
 		}
 		try {
-			writer = new BufferedWriter(new FileWriter("src/files/member files/allMembers.txt", true));
+			if(x.exists())
+				writer = new BufferedWriter(new FileWriter("src/files/member files/allMembers.txt", true));
+			else
+				writer = new BufferedWriter(new FileWriter("files/member files/allMembers.txt", true));
 			writer.newLine();
 			writer.append(Integer.toString(num));
 			writer.close();
@@ -204,6 +218,9 @@ public class Member extends DatabaseEntry {
 	 */
 	void saveEntry() throws IOException{
 	File f = new File("src/files/member files/"+getNumber()+".txt");
+	File x = new File("src/files/Provider Directory.txt");
+	if(!x.exists())
+		f = new File("files/member files/"+getNumber()+".txt");
 	if(!f.exists())
 		f.createNewFile();
 	BufferedWriter fstream = null;

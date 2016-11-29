@@ -28,15 +28,22 @@ public abstract class DatabaseEntry {
 	 */
 	protected static  boolean searchCode(String type, int code){
 		File f;
+		File x = new File("src/files/Provider Directory.txt");
 		if(type == "Member"){
-			f = new File("src/files/member files/"+code+".txt");
+			if(x.exists())
+				f = new File("src/files/member files/"+code+".txt");
+			else
+				f = new File("files/member files/"+code+".txt");
 			if(f.exists())
 				return true;
 			else
 				return false;
 		}
 		else if(type == "Provider"){
-			f = new File("src/files/provider files/"+code+".txt");
+			if(x.exists())
+				f = new File("src/files/provider files/"+code+".txt");
+			else
+				f = new File("files/provider files/"+code+".txt");
 			if(f.exists())
 				return true;
 			else

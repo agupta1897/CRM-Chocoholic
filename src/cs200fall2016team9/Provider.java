@@ -17,6 +17,8 @@ public class Provider extends DatabaseEntry{
 	 */
 	String returnName(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -36,6 +38,8 @@ public class Provider extends DatabaseEntry{
 	 */
 	String returnAddress(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -57,6 +61,8 @@ public class Provider extends DatabaseEntry{
 	 */
 	String returnCity(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -78,6 +84,8 @@ public class Provider extends DatabaseEntry{
 	 */
 	String returnState(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
 		if(f.exists()){
 			BufferedReader read = new BufferedReader(new FileReader(f));
@@ -99,6 +107,8 @@ public class Provider extends DatabaseEntry{
 	 */
 	int returnZip(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
+		if(!f.exists())
+			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
 		int zip = 0;
 		if(f.exists()){
@@ -126,6 +136,7 @@ public class Provider extends DatabaseEntry{
 	 * @param zip - provider's zip code
 	 */
 	void addNewProvider(String name, int num, String address, String city, String state, int zip){
+		File x = new File("src/files/Provider Directory.txt");
 		BufferedWriter writer = null;
 		setName(name);
 		setNumber(num);
@@ -140,7 +151,10 @@ public class Provider extends DatabaseEntry{
 			e.printStackTrace();
 		}
 		try {
-			writer = new BufferedWriter(new FileWriter("src/files/provider files/allProviders.txt", true));
+			if(x.exists())
+				writer = new BufferedWriter(new FileWriter("src/files/provider files/allProviders.txt", true));
+			else
+				writer = new BufferedWriter(new FileWriter("files/provider files/allProviders.txt", true));
 			writer.newLine();
 			writer.append(Integer.toString(num));
 			writer.close();
@@ -155,6 +169,9 @@ public class Provider extends DatabaseEntry{
 	 */
 	void saveEntry() throws IOException{
 	File f = new File("src/files/provider files/"+getNumber()+".txt");
+	File x = new File("src/files/Provider Directory.txt");
+	if(!x.exists())
+		f = new File("files/provider files/"+getNumber()+".txt");
 	if(!f.exists())
 		f.createNewFile();
 	BufferedWriter fstream = null;
