@@ -1,0 +1,34 @@
+package cs200fall2016team9.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import cs200fall2016team9.ProviderDirectory;
+
+public class ProviderDirectorySearchNameTest {
+
+    ProviderDirectory directory;
+    
+    @Before
+    public void setUp() throws Exception {
+        directory= new ProviderDirectory();
+    }
+
+    @Test
+    public void testForSuccess() {
+        assertTrue(directory.searchName("Massage"));
+    }
+    
+    @Test	(expected = NullPointerException.class)
+    public void testForFailure(){
+    	directory.searchName("");
+    }
+    
+    @Test
+    public void testForSanity(){
+    	directory.addService("Hero Training", 000000, 50.59);
+    	assertEqual()
+    }
+}

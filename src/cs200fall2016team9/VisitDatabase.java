@@ -83,9 +83,9 @@ public class VisitDatabase extends Visit {
 		File f1;
 		File b = new File("src/files/member files/allMembers.txt");
 		if(b.exists()) 
-			 f1 = new File("src/files/visit files/provider visit files/"+getMemberId()+"v.txt");
+			 f1 = new File("src/files/visit files/member visit files/"+getMemberId()+"v.txt");
 		else 
-			 f1 = new File("files/visit files/provider visit files/"+getMemberId()+"v.txt");
+			 f1 = new File("files/visit files/member visit files/"+getMemberId()+"v.txt");
 		if(!f1.exists())
 			f1.createNewFile();
 		BufferedWriter fstream1 = null;

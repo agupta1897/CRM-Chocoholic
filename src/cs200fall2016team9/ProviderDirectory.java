@@ -361,7 +361,8 @@ public class ProviderDirectory {
 	 */	
 	
     public Boolean searchCode( int serviceCode){
-    	
+    	if(serviceCode > 999999)
+    	    throw new NumberFormatException("Must be less than 6 digits");
     	int i=0;
 		try 
 		{
@@ -390,7 +391,8 @@ public class ProviderDirectory {
 	
     
 public Boolean searchName( String serviceName){
-    	
+    	if (serviceName == null)
+    		throw new NullPointerException();
     	int i=0;
 		try 
 		{
@@ -400,15 +402,12 @@ public Boolean searchName( String serviceName){
 		{
 			x.printStackTrace();
 		}
-		
-
 		for(i=0;i<nameList.size();i++){
 			if(nameList.elementAt(i).equals(serviceName)){
 				return true;
 			} 
 		}
-		
-			return false;
+		return false;
         // TODO Auto-generated method stub	
     }
 	
