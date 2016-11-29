@@ -12,15 +12,17 @@ import java.util.Vector;
 
 /**
  * 
- * 
  * @author Amber Gupta
- *
+ * ProviderDirectory maintains an Alphabetically ordered nameList of services provided with the corresponding Fee and ServiceID.
+ * 
  */
 
 public class ProviderDirectory {
 	private Vector<String> nameList = new Vector<String>();
 	private Vector<Double> feeList = new Vector<Double>();
 	private Vector<Integer> codeList= new Vector<Integer>();
+	
+	
 	
 	public void sendDirectory(){
 		try 
@@ -35,6 +37,11 @@ public class ProviderDirectory {
 		
 	}
 	
+	/**
+	 * 
+	 * As the name suggests, this function removes a service from the providerDirectory list.
+	 * @param ServiceCode- ServiceCode is used to find which service is needed to be deleted
+	 */
 	public void removeService(int ServiceCode){
 		int i=0, a=0;
 		try 
@@ -67,6 +74,14 @@ public class ProviderDirectory {
 			x.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 
+	 * As the name suggests, this function Adds a service from the providerDirectory list.
+	 * @param newServiceName- Name of the service to be added in the ProviderDirectory List.
+	 * @param newServieCode- Code of the service to be added in the ProviderDirectory List.
+	 * @param newServiceFee- Fee of the service to be added in the ProviderDirectory List.
+	 */
 	
 	public void addService(String newServiceName, int newServiceCode, double newServiceFee){
 		int i=0;
@@ -113,6 +128,14 @@ public class ProviderDirectory {
 		}
 	}
 	
+	/**
+	 * 
+	 * As the name suggests, this function updates a service from the providerDirectory list.
+	 * @param oldId- Service Code of the service to needs to be updated in the ProviderDirectory List.
+	 * @param newName- NewName of the service to be updated in the ProviderDirectory List.
+	 * @param fee- New Fee of the service to be updated in the ProviderDirectory List.
+	 * @param id- New Id which replaces the oldId in the ProviderDIrectory List.
+	 */
 	public void updateService(int id, String newName, double fee, int oldId) {
 		int i=0;
 		try 
@@ -159,6 +182,11 @@ public class ProviderDirectory {
         
     }
 	
+	/**
+	 * 
+	 * This function uses the current set of Vectors (nameList, codeList, feeList) to save the ProviderDirectory List.
+	 */
+	
 	void saveList() throws IOException{
 		int i=0;
 		File f = new File("src/files/Provider Directory.txt");
@@ -177,6 +205,10 @@ public class ProviderDirectory {
 			}
 			fstream.close();
 		}
+	
+	/**
+	 * This function uses the 'Provider Directory.txt' to set the Vectors (nameList, codeList, feeList) to use other operations on them.
+	 */
 
 	void openList() throws IOException{
 		String str;
@@ -205,11 +237,9 @@ public class ProviderDirectory {
 			}
 		}
 	
-		
 	
 	
-	
-	public String serviceLookUp( int serviceCode ){
+	/*public String serviceLookUp( int serviceCode ){
 		int i=0;
 		try 
 		{
@@ -228,6 +258,13 @@ public class ProviderDirectory {
 			return "INVALID";
 	
 	}
+	*/
+	
+	/**
+	 * This function uses serviceCode to look up and return the respective serviceFee.
+	 * @param serviceCode- used as in input to get the serviceFee for.
+	 * @return the fee of the service which corresponds to the respective serviceCode (if exists), else returns '\0'
+	 */	
 	
 	public double getServiceFee( int serviceCode){
 		int i=0, a=0;
@@ -253,6 +290,13 @@ public class ProviderDirectory {
 			return '\0';
 	}
 	
+	
+	/**
+	 * This function uses serviceCode to look up and return the respective serviceName.
+	 * @param serviceCode- used as in input to get the serviceName for.
+	 * @return the name of the service which corresponds to the respective serviceCode (if exists), else returns INVALID
+	 */	
+	
 	public String getServiceName (int serviceCode){
 		int i=0, a=0;
 		try 
@@ -277,6 +321,12 @@ public class ProviderDirectory {
 		return "INVALID";
 	}
 
+	/**
+	 * This function checks if the serviceCode passed in the parameter is unique or not.
+	 * @param serviceCode- serviceCode to be checked for.
+	 * @return true if the serviceCode is not unique, else returns False
+	 */	
+	
     public Boolean searchCode( int serviceCode){
     	
     	int i=0;
@@ -298,6 +348,13 @@ public class ProviderDirectory {
 			return false;
         // TODO Auto-generated method stub	
     }
+    
+    /**
+	 * This function checks if the serviceName passed in the parameter is unique or not.
+	 * @param serviceName- serviceName to be checked for uniqueness.
+	 * @return true if the serviceName is not unique, else returns False
+	 */	
+	
     
 public Boolean searchName( String serviceName){
     	

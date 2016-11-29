@@ -1,30 +1,29 @@
 package cs200fall2016team9;
 
-//import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-//import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-//import java.util.Vector;
 
 /**
  * 
  * @author Amber Gupta
- *
+ * VisitDatabase Class extends the abstract Visit Class.
+ * This class manages functions to write both the ProviderVisit and MemberVisit Files.
  */
 
 public class VisitDatabase extends Visit {
 	
-	/* Vector<String> VmemberId = new Vector<String>();
-	 Vector<String> VproviderId = new Vector<String>();
-	 Vector<String> VserviceCode= new Vector<String>();
-	 Vector<String> Vdate = new Vector<String>();
-	 Vector<String> VcurrentDateAndTime = new Vector<String>();
-
-
-*/
-
+	/**
+	 * 
+	 * As the name suggests, this function sets the visit information to respective parameter and then calls the add entry function to add the new visit Information.
+	 * @param providerId - setProviderId(providerId);
+	 * @param memberId - setMemberId(memberId);
+	 * @param currentDateAndTime - setCurrentDateAndTime(currentDateAndTime);
+	 * @param date - setDate(date);
+	 * @param serviceCode - setServiceCode(serviceCode);
+	 * @param comment - setComment(comment);
+	 */
 	void addVisitInfo(int providerId, int memberId, String currentDateAndTime, String date, int serviceCode, String comment) {
 		
 		
@@ -45,56 +44,13 @@ public class VisitDatabase extends Visit {
 		}
 	}
 	
-	/*void lookUpVisit ( int Filename, String type) throws IOException {
-		String str;
-		File f = new File("src/files/visit files/"+Filename+".txt");
-		if(type=="member"){
-			VproviderId.clear();
-			VserviceCode.clear();
-			Vdate.clear();
-			if(f.exists()){
-				BufferedReader read = new BufferedReader(new FileReader(f));
-				VproviderId.addElement(read.readLine());
-				VserviceCode.addElement(read.readLine());
-				Vdate.addElement(read.readLine());
-				read.readLine();
-				while((str=read.readLine())!=null){
-				VproviderId.addElement(str);
-				VserviceCode.addElement(read.readLine());
-				Vdate.addElement(read.readLine());
-				read.readLine();
-					}
-				read.close();
-				}
-			}
-		else if(type=="provider"){
-			VmemberId.clear();
-			VserviceCode.clear();
-			Vdate.clear();
-			VcurrentDateAndTime.clear();
-			if(f.exists()){
-				BufferedReader read = new BufferedReader(new FileReader(f));
-				VmemberId.addElement(read.readLine());
-				VserviceCode.addElement(read.readLine());
-				Vdate.addElement(read.readLine());
-				VcurrentDateAndTime.addElement(read.readLine());
-				read.readLine();
-				while((str=read.readLine())!=null){
-				VmemberId.addElement(read.readLine());
-				VserviceCode.addElement(read.readLine());
-				Vdate.addElement(read.readLine());
-				VcurrentDateAndTime.addElement(read.readLine());
-				read.readLine();
-				}
-			read.close();
-				}
-		}
-	}
 	
-
-	
-	*/
 	@Override
+	/**
+	 * This function writes the respective details in both the Provider and Member visit files.
+	 * This function calls other functions from Visit, Member, Provider to fetch Data to save in Visit files.
+	 *
+	 */
 	void addEntry() throws IOException{
 		File f = new File("src/files/visit files/provider visit files/"+getProviderId()+"v.txt");
 		Member m = new Member();
@@ -135,11 +91,5 @@ public class VisitDatabase extends Visit {
 		// TODO Auto-generated method stub
 		
 
-/*void removeEntry(int filename) throws IOException{
-    File a = new File("src/files/member files/"+filename+".txt");
-    if(a.exists()){
-       a.delete();
-    	}
-	}
-*/
+
 }

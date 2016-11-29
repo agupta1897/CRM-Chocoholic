@@ -5,7 +5,7 @@ import java.io.*;
 /**
  *  @author Jake Bailey
  * Abstract class for use in storing and retreving information
- *	such as member or provider information.
+ * Such as member or provider information.
  */
 
 public abstract class DatabaseEntry {
