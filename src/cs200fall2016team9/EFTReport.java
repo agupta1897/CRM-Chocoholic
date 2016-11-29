@@ -12,41 +12,61 @@ public class EFTReport {
 	/**
 	 * Constructor
 	 */
-	EFTReport(){
+	EFTReport(){ //Constructs
 	}
 	/**
 	 * compiles eftReport and saves it to a file location in a folder
 	 * @throws IOException
 	 */
 	void eftReport() throws IOException{
-		BufferedReader alpha=new BufferedReader(new FileReader("src/files/provider files/allProviders.txt"));
-		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
-		BufferedWriter beta=new BufferedWriter(new FileWriter("src/files/report files/eft report files/eftReport"+date+".txt"));
-		String line=null;
-		while((line = alpha.readLine())!= null){
-			BufferedReader charlie=new BufferedReader(new FileReader("src/files/provider files/"+line+".txt"));
+		File a = new File("src/files/provider files/allProviders.txt");
+		String s = "files/provider files/allProviders.txt";
+		if(a.exists()){
+			s="src/"+s;
+		}
+		BufferedReader alpha=new BufferedReader(new FileReader(s)); //Looks up provider file
+		String date= new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime()); //gets the date
+		a = new File("src/files/provider files/allProviders.txt");
+		s = "files/report files/eft report files/eftReport";
+		if(a.exists()){
+			s="src/"+s;
+		}
+		BufferedWriter beta=new BufferedWriter(new FileWriter(s+date+".txt")); //creates/overwrites eft report file
+		String line=null;	//String variable is null;
+		while((line = alpha.readLine())!= null){ // line gets strings from the BufferedReader alpha and the loop checks to make sure the file isn't ended
+			a = new File("src/files/provider files/allProviders.txt");
+			s = "files/provider files/";
+			if(a.exists()){
+				s="src/"+s;
+			}
+			BufferedReader charlie=new BufferedReader(new FileReader(s+line+".txt")); //Open provider file
 			String delta;//Read in lines from the providers file
-			for(int i=0;i<=1;i++){
+			for(int i=0;i<=1;i++){  //a loop to copy the provider name and number
 				delta = charlie.readLine();
 				beta.write(delta);
 				beta.newLine();
 			}
-			charlie.close();
-			charlie=new BufferedReader(new FileReader("src/files/visit files/provider visit files/"+line+"v.txt"));
-			String line2;
-			int totalFee=0;
-			int lineCounter=0;
+			charlie.close(); //close provider file
+			a = new File("src/files/provider files/allProviders.txt");
+			s = "files/visit files/provider visit files/";
+			if(a.exists()){
+				s="src/"+s;
+			}
+			charlie=new BufferedReader(new FileReader(s+line+"v.txt")); //Open provider visit file
+			String line2; // creates a new string variable
+			Double totalFee=0.0;
+			int lineCounter=0; //While loop to copy fee data from the visit file
 			while((line2=charlie.readLine())!=null){
-				lineCounter++;
+				lineCounter++;//add to line counter to find the lines with fee information
 				if(lineCounter%8==6){
-					totalFee+=Integer.parseInt(line2);
+					totalFee+=Double.parseDouble(line2);
 				}
 			}
-			charlie.close();
-			beta.write(totalFee);
+			charlie.close(); // close the visit file and then write the total fee
+			beta.write(Double.toString(totalFee));
 			beta.newLine();
 		}
-		alpha.close();
-		beta.close();
+		alpha.close();//close the all provider file
+		beta.close();//close the eft report file
 	}
 }
