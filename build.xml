@@ -26,7 +26,7 @@
     
     <target name="create_run_jar">
     	<mkdir dir = "release/files"/>
-    	<copy todir = "release">
+    	<copy todir = "release/files">
     		<fileset dir = "src/files"/>
     	</copy>
         <jar destfile="release/ChocAn.jar" filesetmanifest="mergewithoutmain">
