@@ -12,7 +12,7 @@ public class ProviderReport {
 	/**
 	 * Constructor
 	 */
-	ProviderReport(){
+	public ProviderReport(){
 		
 	}
 	/**
@@ -37,7 +37,7 @@ public class ProviderReport {
 	 * @param numberID
 	 * @throws IOException
 	 */
-	void providerReport(int numberID) throws IOException{
+	public void providerReport(int numberID) throws IOException{
 		File a = new File("src/files/provider files/allProviders.txt");
 		String s = "files/provider files/"; //Check to see if using eclipse or Jar
 		if(a.exists()){
