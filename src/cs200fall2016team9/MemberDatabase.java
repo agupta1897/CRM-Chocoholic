@@ -25,7 +25,7 @@ public class MemberDatabase extends Database {
 	 * @param zip // their zip code number
 	 */
 	@Override
-	public void addEntry(String name, int num, String address, String city, String state, int zip) {
+    public void addEntry(String name, int num, String address, String city, String state, int zip) {
 		Member m = new Member();
 		m.addNewMember(name, num, address, city, state, zip);
 		try {
@@ -40,7 +40,7 @@ public class MemberDatabase extends Database {
 	 * @param id // id number of member
 	 */
 	@Override
-	public void removeEntry(int id) {
+    public void removeEntry(int id) {
 		try {
 			Files.deleteIfExists(Paths.get("src/files/member files/" +id + ".txt"));
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class MemberDatabase extends Database {
 	 * @param oldId // last id member had
 	 */
 	@Override
-	public void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
+	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
 		Member m = new Member();
 		if(id == oldId)
 			m.addNewMember(name, id, address, city, state, zip);

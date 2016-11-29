@@ -12,7 +12,7 @@ public class Member extends DatabaseEntry {
 	
 	private String memberStatus;
 	
-	Member(){
+	public Member(){
 	}
 	
 	/**
@@ -37,7 +37,7 @@ public class Member extends DatabaseEntry {
 	 * @return member's listed name
 	 * @throws IOException
 	 */
-	String returnName(int num) throws IOException{
+	public String returnName(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
 		if(!f.exists())
 			f = new File("files/member files/"+num+".txt");
@@ -104,7 +104,7 @@ public class Member extends DatabaseEntry {
 	 * @return member's listed state
 	 * @throws IOException
 	 */
-	String returnState(int num) throws IOException{
+	public String returnState(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
 		if(!f.exists())
 			f = new File("files/member files/"+num+".txt");
@@ -154,7 +154,7 @@ public class Member extends DatabaseEntry {
      * @return member's listed status or reason of issue
      * @throws IOException
      */
-    String returnStatus(int num) throws IOException{
+    public String returnStatus(int num) throws IOException{
         File a = new File("src/files/member files/"+num+".txt");
         if (!a.exists()) {
             a = new File("files/member files/"+num+".txt");

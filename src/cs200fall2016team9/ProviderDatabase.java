@@ -40,7 +40,7 @@ public class ProviderDatabase extends Database {
 	 * @param id // id number of provider
 	 */
 	@Override
-	public void removeEntry(int id) {
+    public void removeEntry(int id) {
 		try {
 			Files.deleteIfExists(Paths.get("src/files/provider files/" + id + ".txt"));
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class ProviderDatabase extends Database {
 	 * @param oldId // last id provider had
 	 */
 	@Override
-	public void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
+	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
 		Provider p = new Provider();
 		if(id == oldId)
 			p.addNewProvider(name, id, address, city, state, zip);

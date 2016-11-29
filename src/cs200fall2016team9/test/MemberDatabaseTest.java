@@ -1,4 +1,4 @@
-package cs200fall2016team9;
+package cs200fall2016team9.test;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,10 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MemberDatabasetest {
+import cs200fall2016team9.Member;
+import cs200fall2016team9.MemberDatabase;
+
+public class MemberDatabaseTest {
 
 	MemberDatabase md= new MemberDatabase();
 	Member m= new Member();

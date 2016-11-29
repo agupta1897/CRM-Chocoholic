@@ -36,7 +36,7 @@ public class Provider extends DatabaseEntry{
 	 * @return provider's listed address
 	 * @throws IOException
 	 */
-	public String returnAddress(int num) throws IOException{
+	String returnAddress(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
 		if(!f.exists())
 			f = new File("files/provider files/"+num+".txt");
@@ -59,7 +59,7 @@ public class Provider extends DatabaseEntry{
 	 * @return memeber's listed city
 	 * @throws IOException
 	 */
-	public String returnCity(int num) throws IOException{
+	String returnCity(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
 		if(!f.exists())
 			f = new File("files/provider files/"+num+".txt");
@@ -105,7 +105,7 @@ public class Provider extends DatabaseEntry{
 	 * @return provider's zip code
 	 * @throws IOException
 	 */
-	public int returnZip(int num) throws IOException{
+	int returnZip(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
 		if(!f.exists())
 			f = new File("files/provider files/"+num+".txt");
