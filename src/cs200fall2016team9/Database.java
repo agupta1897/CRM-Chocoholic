@@ -17,12 +17,12 @@ public abstract class Database {
 	 * @param state // state they live in
 	 * @param zip // their zip code number
 	 */
-	abstract void addEntry(String name, int num, String address, String city, String state, int zip);
+	abstract public void addEntry(String name, int num, String address, String city, String state, int zip);
 	/**
 	 * Base abstract function for removing an entry.
 	 * @param id
 	 */
-	abstract void removeEntry(int id);
+	abstract public void removeEntry(int id);
 	/**
 	 * Base abstract function for updating a current entry.
 	 * @param id // id number for entry
@@ -33,5 +33,5 @@ public abstract class Database {
 	 * @param zip // zip code number of entry
 	 * @param oldId // last id of entry
 	 */
-	abstract void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId);
+	abstract public void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId);
 }

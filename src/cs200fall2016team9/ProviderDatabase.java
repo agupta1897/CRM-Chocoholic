@@ -25,7 +25,7 @@ public class ProviderDatabase extends Database {
 	 * @param zip // their zip code number
 	 */
 	@Override
-	void addEntry(String name, int num, String address, String city, String state, int zip) {
+    public void addEntry(String name, int num, String address, String city, String state, int zip) {
 		Provider p = new Provider();
 		p.addNewProvider(name, num, address, city, state, zip);
 		try {
@@ -40,7 +40,7 @@ public class ProviderDatabase extends Database {
 	 * @param id // id number of provider
 	 */
 	@Override
-	void removeEntry(int id) {
+	public void removeEntry(int id) {
 		try {
 			Files.deleteIfExists(Paths.get("src/files/provider files/" + id + ".txt"));
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class ProviderDatabase extends Database {
 	 * @param oldId // last id provider had
 	 */
 	@Override
-	void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
+	public void updateEntry(int id, String name, String address, String city, String state, int zip, int oldId) {
 		Provider p = new Provider();
 		if(id == oldId)
 			p.addNewProvider(name, id, address, city, state, zip);
