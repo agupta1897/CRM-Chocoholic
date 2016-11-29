@@ -1,5 +1,7 @@
 package cs200fall2016team9.test;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,11 +18,11 @@ public class ProviderDirectorySearchCodeTest {
 
     @Test
     public void testForSuccess() {
-        pDir.searchCode(123456);
+        assertTrue(pDir.searchCode(123456));
     }
     
     @Test
     public void testForFailure(){
-        pDir.searchCode(1234567);
+        assertFalse(pDir.searchCode(1234567));
     }
 }
