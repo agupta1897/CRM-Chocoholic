@@ -34,6 +34,7 @@
             	<attribute name="Main-Class" value="cs200fall2016team9.ChocAn"/>
               	<attribute name="Class-Path" value="."/>
             </manifest>
+        	<fileset dir = "bin"/>
         </jar>
     </target>
               	
