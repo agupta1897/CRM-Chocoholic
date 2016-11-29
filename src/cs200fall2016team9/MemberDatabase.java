@@ -1,6 +1,10 @@
 package cs200fall2016team9;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -38,14 +42,34 @@ public class MemberDatabase extends Database {
 	/**
 	 * Removes a member from database.
 	 * @param id // id number of member
+	 * @throws IOException 
 	 */
 	@Override
-    public void removeEntry(int id) {
+    public void removeEntry(int id) throws IOException {
 		try {
 			Files.deleteIfExists(Paths.get("src/files/member files/" +id + ".txt"));
-		} catch (Exception e) {
-
-		}
+		} catch (Exception e) {}
+		File x = new File("src/files/Provider Directory.txt");
+		File f = new File("src/files/member files/allMembers.txt");
+		File t = new File("src/files/member files/temp.txt");
+        if(!x.exists()) {
+            f = new File("files/member files/allMembers.txt");
+            t = new File("src/files/member files/temp.txt");
+        }
+            t.createNewFile();
+        BufferedReader reader = new BufferedReader(new FileReader(f));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(t));
+        String lineToRemove = Integer.toString(id);
+        String currentLine;
+        while((currentLine = reader.readLine())!= null){
+            writer.write(currentLine);//Copy member visit information
+            if (currentLine.equals(lineToRemove)) continue;
+            writer.newLine();
+        }
+        writer.close(); 
+        reader.close(); 
+        Files.deleteIfExists(Paths.get("src/files/member files/allMembers.txt"));
+        t.renameTo(f);
 	}
 	
 	/**

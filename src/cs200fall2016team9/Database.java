@@ -1,5 +1,8 @@
 package cs200fall2016team9;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * This class is the base abstracts for these functions.
  * 
@@ -21,8 +24,10 @@ public abstract class Database {
 	/**
 	 * Base abstract function for removing an entry.
 	 * @param id the id
+	 * @throws FileNotFoundException 
+	 * @throws IOException 
 	 */
-	abstract void removeEntry(int id);
+	abstract void removeEntry(int id) throws IOException;
 	/**
 	 * Base abstract function for updating a current entry.
 	 * @param id // id number for entry
