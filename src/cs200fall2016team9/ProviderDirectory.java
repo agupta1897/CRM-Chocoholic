@@ -78,9 +78,9 @@ public class ProviderDirectory {
 	/**
 	 * 
 	 * As the name suggests, this function Adds a service from the providerDirectory list.
-	 * @param newServiceName- Name of the service to be added in the ProviderDirectory List.
-	 * @param newServieCode- Code of the service to be added in the ProviderDirectory List.
-	 * @param newServiceFee- Fee of the service to be added in the ProviderDirectory List.
+	 * @param newServiceName - Name of the service to be added in the ProviderDirectory List.
+	 * @param newServiceCode - Code of the service to be added in the ProviderDirectory List.
+	 * @param newServiceFee - Fee of the service to be added in the ProviderDirectory List.
 	 */
 	
 	public void addService(String newServiceName, int newServiceCode, double newServiceFee){
