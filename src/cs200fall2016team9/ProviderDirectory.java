@@ -391,7 +391,8 @@ public class ProviderDirectory {
 	
     
 public Boolean searchName( String serviceName){
-    	
+    	if (serviceName == null)
+    		throw new NullPointerException();
     	int i=0;
 		try 
 		{
@@ -406,8 +407,7 @@ public Boolean searchName( String serviceName){
 				return true;
 			} 
 		}
-		
-			return false;
+		return false;
         // TODO Auto-generated method stub	
     }
 	
