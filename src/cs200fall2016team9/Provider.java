@@ -13,7 +13,7 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed name and returns it.
 	 * @param num - provider's ID number
 	 * @return provider's listed name
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	public String returnName(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
@@ -34,7 +34,7 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed address and returns it.
 	 * @param num - provider's ID number
 	 * @return provider's listed address
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	String returnAddress(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
@@ -57,7 +57,7 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed city and returns it.
 	 * @param num - provider's ID number
 	 * @return memeber's listed city
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	String returnCity(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
@@ -80,7 +80,7 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed state and returns it.
 	 * @param num - provider's ID number
 	 * @return provider's listed state
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	public String returnState(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");

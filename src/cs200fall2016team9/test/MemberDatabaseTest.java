@@ -20,6 +20,10 @@ public class MemberDatabaseTest {
 		
 	}
 
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test
 	public void testforSanity() throws IOException {
 		md.addEntry("Mike", 123456799, "JFK INTERNATIONAL AIRPORT", "Tuscaloosa", "Alabama", 25415);
@@ -30,6 +34,10 @@ public class MemberDatabaseTest {
 		
 	}
 	
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test
 	public void testforFailureofremoveEntry()throws IOException{
 		md.addEntry("Mike", 123456799, "JFK INTERNATIONAL AIRPORT", "Tuscaloosa", "Alabama", 25415);
@@ -38,6 +46,10 @@ public class MemberDatabaseTest {
 		
 	}
 	
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test
 	public void testforSuccess() throws IOException{
 		md.addEntry("Mike", 123456799, "JFK INTERNATIONAL AIRPORT", "Tuscaloosa", "Alabama", 25415);

@@ -35,7 +35,7 @@ public class Member extends DatabaseEntry {
 	 * Function looks up member's listed name and returns it.
 	 * @param num - member's ID number
 	 * @return member's listed name
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	public String returnName(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
@@ -56,7 +56,7 @@ public class Member extends DatabaseEntry {
 	 * Function looks up member's listed address and returns it.
 	 * @param num - member's ID number
 	 * @return member's listed address
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	String returnAddress(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
@@ -79,7 +79,7 @@ public class Member extends DatabaseEntry {
 	 * Function looks up member's listed city and returns it.
 	 * @param num - member's ID number
 	 * @return memeber's listed city
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	String returnCity(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
@@ -102,7 +102,7 @@ public class Member extends DatabaseEntry {
 	 * Function looks up member's listed state and returns it.
 	 * @param num - member's ID number
 	 * @return member's listed state
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	public String returnState(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
@@ -125,7 +125,7 @@ public class Member extends DatabaseEntry {
 	 * Function looks up member's zip code and returns it.
 	 * @param num - member's ID number
 	 * @return member's zip code
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	int returnZip(int num) throws IOException{
 		File f = new File("src/files/member files/"+num+".txt");
@@ -152,7 +152,7 @@ public class Member extends DatabaseEntry {
      * Function searches for the member file, pulls the listed status, and returns a string of the status.
      * @param num - member's ID number
      * @return member's listed status or reason of issue
-     * @throws IOException
+     * @throws IOException throws error
      */
     public String returnStatus(int num) throws IOException{
         File a = new File("src/files/member files/"+num+".txt");

@@ -20,7 +20,7 @@ public abstract class Database {
 	abstract void addEntry(String name, int num, String address, String city, String state, int zip);
 	/**
 	 * Base abstract function for removing an entry.
-	 * @param id
+	 * @param id the id
 	 */
 	abstract void removeEntry(int id);
 	/**

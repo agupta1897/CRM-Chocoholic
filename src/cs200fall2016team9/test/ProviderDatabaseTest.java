@@ -15,10 +15,18 @@ public class ProviderDatabaseTest {
 	ProviderDatabase pd = new ProviderDatabase();
 	Provider p = new Provider();
 	
+	/**
+	 * 
+	 * @throws Exception throws error
+	 */
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test
 	public void testforSanity() throws IOException {
 		pd.addEntry("Mike", 123456799, "JFK INTERNATIONAL AIRPORT", "Tuscaloosa", "Alabama", 25415);
@@ -29,6 +37,10 @@ public class ProviderDatabaseTest {
 	}
 	
 	
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test
 	public void testforSuccessOfaddEntry()throws IOException{
 		pd.addEntry("Mike", 123456799, "JFK INTERNATIONAL AIRPORT", "Tuscaloosa", "Alabama", 25415);
