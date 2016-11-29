@@ -64,10 +64,18 @@ public class ProviderDatabase extends Database {
 		if(id == oldId)
 			p.addNewProvider(name, id, address, city, state, zip);
 		else {
-		    File oldFile = new File("src/files/provider files/" + oldId + ".txt");
-            File newFile = new File("src/files/provider files/" + id + ".txt");
-            File oldVisitFile = new File("src/files/provider visit files/" + oldId + "v.txt");
-            File newVisitFile = new File("src/files/provider visit files/" + id + "v.txt");
+			File oldFile = new File("src/files/provider files/" + oldId + ".txt");
+		    if(!oldFile.exists())
+		    	oldFile = new File("files/provider files/" + oldId + ".txt");
+		    File newFile = new File("src/files/provider files/" + id + ".txt");
+		    if(!newFile.exists())
+		    	newFile = new File("files/provider files/" + id + ".txt");
+		    File oldVisitFile = new File("src/files/provider visit files/" + oldId + "v.txt");
+		    if(!oldVisitFile.exists())
+		    	oldVisitFile = new File("files/provider visit files/" + oldId + "v.txt");
+		    File newVisitFile = new File("src/files/provider visit files/" + id + "v.txt");
+		    if(!newVisitFile.exists())
+		    	newVisitFile = new File("files/provider visit files/" + id + "v.txt");
             oldFile.renameTo(newFile);
             oldVisitFile.renameTo(newVisitFile);
 			p.addNewProvider(name, id, address, city, state, zip);

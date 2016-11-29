@@ -65,12 +65,20 @@ public class MemberDatabase extends Database {
 			m.addNewMember(name, id, address, city, state, zip);
 		else {
 		    File oldFile = new File("src/files/member files/" + oldId + ".txt");
+		    if(!oldFile.exists())
+		    	oldFile = new File("files/member files/" + oldId + ".txt");
 		    File newFile = new File("src/files/member files/" + id + ".txt");
+		    if(!newFile.exists())
+		    	newFile = new File("files/member files/" + id + ".txt");
 		    File oldVisitFile = new File("src/files/member visit files/" + oldId + "v.txt");
+		    if(!oldVisitFile.exists())
+		    	oldVisitFile = new File("files/member visit files/" + oldId + "v.txt");
 		    File newVisitFile = new File("src/files/member visit files/" + id + "v.txt");
+		    if(!newVisitFile.exists())
+		    	newVisitFile = new File("files/member visit files/" + id + "v.txt");
 		    oldFile.renameTo(newFile);
 		    oldVisitFile.renameTo(newVisitFile);
-			m.addNewMember(name, id, address, city, state, zip);
+		    m.addNewMember(name, id, address, city, state, zip);
 		}
 		try {
 			removeEntry(id);
