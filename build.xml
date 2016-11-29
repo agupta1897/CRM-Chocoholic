@@ -26,7 +26,7 @@
     
     <target name="create_run_jar">
     	<mkdir dir = "release/files"/>
-    	<copy todir = "release/files">
+    	<copy todir = "release">
     		<fileset dir = "src/files"/>
     	</copy>
         <jar destfile="release/ChocAn.jar" filesetmanifest="mergewithoutmain">
@@ -73,5 +73,21 @@
         <java classname="cs200fall2016team9.ChocAn" failonerror="true" fork="yes">
             <classpath refid="cs200fall2016team9.classpath"/>
         </java>
+    </target>
+   	<target name="ProviderDirectorySearchCodeTest">
+    	<mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+        	<formatter type="xml"/>
+            <test name="cs200fall2016team9.test.ProviderDirectorySearchCodeTest" todir="${junit.output.dir}"/>
+            <classpath refid="cs200fall2016team9.classpath"/>
+        </junit>
+    </target>
+        <target name="junitreport">
+    	<junitreport todir="${junit.output.dir}">
+    	    <fileset dir="${junit.output.dir}">
+    	        <include name="TEST-*.xml"/>
+    	    </fileset>
+    	    <report format="frames" todir="${junit.output.dir}"/>
+    	    </junitreport>
     </target>
 </project>
