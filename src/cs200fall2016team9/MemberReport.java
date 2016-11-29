@@ -57,6 +57,7 @@ public class MemberReport {
 			beta.write(line);
 			beta.newLine();
 		}
+		beta.newLine();
 		alpha.close();//close file
 		a = new File("src/files/member files/allMembers.txt");//check if using Jar or Eclipse
 		s = "files/visit files/member visit files/";
