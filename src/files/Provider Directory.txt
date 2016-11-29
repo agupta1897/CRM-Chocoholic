@@ -38,6 +38,7 @@ Swimming Lessons
 123457
 80.0
 
+<<<<<<< HEAD
 Tomahawk Throwing
 999999
 100.0
@@ -54,6 +55,8 @@ Tomahawk Throwing
 999999
 100.0
 
+=======
+>>>>>>> branch 'master' of https://bitbucket.org/hergin/cs200fall2016team9
 Yoga Session
 123458
 5.0

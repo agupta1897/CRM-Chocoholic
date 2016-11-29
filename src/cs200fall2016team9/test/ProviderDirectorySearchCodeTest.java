@@ -32,5 +32,8 @@ public class ProviderDirectorySearchCodeTest {
         pDir.addService("Tomahawk Throwing", 999999, 100);
         assertEquals("Tomahawk Throwing", pDir.getServiceName(999999));
         assertEquals(100, pDir.getServiceFee(999999), 0);
+        assertTrue(pDir.searchCode(999999));
+        pDir.removeService(999999);
+        assertFalse(pDir.searchCode(999999));
     }
 }
