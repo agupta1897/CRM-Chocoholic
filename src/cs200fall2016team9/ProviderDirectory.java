@@ -401,8 +401,6 @@ public Boolean searchName( String serviceName){
 		{
 			x.printStackTrace();
 		}
-		
-
 		for(i=0;i<nameList.size();i++){
 			if(nameList.elementAt(i).equals(serviceName)){
 				return true;
