@@ -25,10 +25,14 @@
     </target>
     
     <target name="create_run_jar">
-        <jar destfile="release/ChocAn.jar">
+    	<mkdir dir = "release/files"/>
+    	<copy todir = "release/files">
+    		<fileset dir = "src/files"/>
+    	</copy>
+        <jar destfile="release/ChocAn.jar" filesetmanifest="mergewithoutmain">
         	<manifest>
             	<attribute name="Main-Class" value="cs200fall2016team9.ChocAn"/>
-              	<attribute name="Class-Path" value="files."/>
+              	<attribute name="Class-Path" value="."/>
             </manifest>
         <fileset dir="C:/Users/jakem/git/cs200fall2016team9/bin"/>
         </jar>

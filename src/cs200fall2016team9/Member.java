@@ -146,6 +146,9 @@ public class Member extends DatabaseEntry {
      */
     String returnStatus(int num) throws IOException{
         File a = new File("src/files/member files/"+num+".txt");
+        if (!a.exists()) {
+            a = new File("files/member files/"+num+".txt");
+        }
         String line = new String();
         if(a.exists()){
             BufferedReader read = new BufferedReader(new FileReader(a));
