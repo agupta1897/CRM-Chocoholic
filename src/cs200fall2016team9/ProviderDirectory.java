@@ -361,7 +361,8 @@ public class ProviderDirectory {
 	 */	
 	
     public Boolean searchCode( int serviceCode){
-    	
+    	if(serviceCode > 999999)
+    	    throw new NumberFormatException("Must be less than 6 digits");
     	int i=0;
 		try 
 		{
