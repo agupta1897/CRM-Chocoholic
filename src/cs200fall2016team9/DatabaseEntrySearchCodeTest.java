@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class DatabaseEntrySearchCodeTest {
 
-	//DatabaseEntry D;
+	
 	Member M;
 	@Before
 	public void setUp() throws Exception {
