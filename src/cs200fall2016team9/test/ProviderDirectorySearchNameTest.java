@@ -23,7 +23,7 @@ public class ProviderDirectorySearchNameTest {
     
     @Test	(expected = NullPointerException.class)
     public void testForFailure(){
-    	directory.searchName("");
+    	directory.searchName(null);
     }
     
     @Test

@@ -392,7 +392,7 @@ public class ProviderDirectory {
     
 public Boolean searchName( String serviceName){
     	if (serviceName == null)
-    		throw new NullPointerException();
+    		throw new NullPointerException("Must not be null");
     	int i=0;
 		try 
 		{
