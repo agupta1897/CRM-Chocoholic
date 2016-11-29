@@ -213,7 +213,7 @@ public class ProviderRole {
         //if the serviceCode is 6 digits display the service name
         if (serviceCode > 99999 && serviceCode < 1000000) {
             //look up service name
-            serviceName = pDir.serviceLookUp(serviceCode);
+            serviceName = pDir.getServiceName(serviceCode);
             ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
             //if exit is pressed
             if (ans == -1) 
@@ -228,7 +228,7 @@ public class ProviderRole {
                 try { serviceCode = Integer.parseInt(temp);
                 } catch (Exception e) {}
                 //get service name
-                serviceName = pDir.serviceLookUp(serviceCode);
+                serviceName = pDir.getServiceName(serviceCode);
                 //if it's the right length
                 if (serviceCode > 99999 && serviceCode < 1000000) {
                     ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
@@ -254,7 +254,7 @@ public class ProviderRole {
             //if the serviceCode is 6 digits display the service name
             if (serviceCode > 99999 && serviceCode < 1000000) {
                 //look up service fee
-                serviceName = pDir.serviceLookUp(serviceCode);
+                serviceName = pDir.getServiceName(serviceCode);
                 ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);
                 //if exit is pressed
                 if (ans == -1) 
@@ -269,7 +269,7 @@ public class ProviderRole {
                     try { serviceCode = Integer.parseInt(temp);
                     } catch (Exception e) {}
                     //get service name
-                    serviceName = pDir.serviceLookUp(serviceCode);
+                    serviceName = pDir.getServiceName(serviceCode);
                     //if serviceCode is 6 digits
                     if (serviceCode > 99999 && serviceCode < 1000000) {
                         ans = JOptionPane.showConfirmDialog(frame, "Is " + serviceName + " the correct service?", "ChocAn - Provider", JOptionPane.YES_NO_OPTION);

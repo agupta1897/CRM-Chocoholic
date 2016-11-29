@@ -1038,7 +1038,7 @@ public class OperatorRole {
     	//set newId to id so that they will be the same unless changed
     	int newId = id;
     	//get the info
-        String name = pDir.serviceLookUp(id);
+        String name = pDir.getServiceName(id);
         double fee = pDir.getServiceFee(id);
         Object [] options1 = {"Name: " + name, "ID: " + id, "Fee: " + fee};
         int ans = JOptionPane.showOptionDialog(frame, "What do you want to update?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
@@ -1115,7 +1115,7 @@ public class OperatorRole {
                     System.exit(0);
             }//end switch
             //get the new values
-            newName = pDir.serviceLookUp(newId);
+            newName = pDir.getServiceName(newId);
             newFee = pDir.getServiceFee(newId);
             Object [] options2 = {"Name: " + newName, "ID: " + newId, "Fee: " + newFee, "Done updating " + item};
             ans = JOptionPane.showOptionDialog(frame, "What do you want to update next?", "ChocAn - Operator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
