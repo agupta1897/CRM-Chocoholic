@@ -17,7 +17,7 @@ public class ChocAn {
     /**
      * The start of the program
      * @param args argument from the command line
-     * @throws IOException 
+     * @throws IOException for errors
      */
     public static void main(String[] args) throws IOException {
         roleChoose();
@@ -26,7 +26,7 @@ public class ChocAn {
 
     /**
      * Decides which Role to go in based off of the user selection
-     * @throws IOException 
+     * @throws IOException for errors
      */
     public static void roleChoose() throws IOException {
         JFrame frame = null;

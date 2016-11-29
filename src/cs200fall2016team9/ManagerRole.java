@@ -18,7 +18,7 @@ public class ManagerRole {
     
     /**
      * Function to come from ChocAn.java
-     * @throws IOException 
+     * @throws IOException for errors
      */
     public static void managerTerminal() throws IOException {
         //go to getReport function, initially pass in empty string

@@ -12,6 +12,7 @@
     <path id="cs200fall2016team9.classpath">
         <pathelement location="bin"/>
     </path>
+    
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
@@ -22,12 +23,25 @@
             </fileset>
         </copy>
     </target>
+    
+    <target name="create_run_jar">
+        <jar destfile="release/ChocAn.jar">
+        	<manifest>
+            	<attribute name="Main-Class" value="cs200fall2016team9.ChocAn"/>
+              	<attribute name="Class-Path" value="files."/>
+            </manifest>
+        <fileset dir="C:/Users/jakem/git/cs200fall2016team9/bin"/>
+        </jar>
+    </target>
+              	
     <target name="clean">
         <delete dir="bin"/>
     </target>
+              	
     <target name="javadoc">
     	<javadoc access="public" author="true" classpath="." destdir="doc" doctitle="ChocAnDocumentation" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="cs200fall2016team9" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
-    </target>          	
+    </target> 
+              	
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
     <target name="build-subprojects"/>

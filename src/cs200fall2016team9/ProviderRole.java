@@ -19,7 +19,7 @@ public class ProviderRole {
     
     /**
      * Decides what function to go to based on the Providers choice
-     * @throws IOException 
+     * @throws IOException for errors
      */
     public static void providerTerminal() throws IOException {
         JFrame frame = null;

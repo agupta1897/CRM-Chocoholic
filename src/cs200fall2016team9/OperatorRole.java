@@ -18,7 +18,7 @@ public class OperatorRole {
     
     /**
      * Function to come from ChocAn.java
-     * @throws IOException 
+     * @throws IOException for errors
      */
     public static void operatorTerminal() throws IOException {
     	//manage the database
@@ -27,7 +27,7 @@ public class OperatorRole {
 
     /**
      * Function to see what the Operator wants
-     * @throws IOException 
+     * @throws IOException for errors
      */
     private static void manageDatabase() throws IOException {
         JFrame frame = null;
