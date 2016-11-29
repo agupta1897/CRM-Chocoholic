@@ -54,7 +54,7 @@ public class MemberDatabase extends Database {
 		File t = new File("src/files/member files/temp.txt");
         if(!x.exists()) {
             f = new File("files/member files/allMembers.txt");
-            t = new File("src/files/member files/temp.txt");
+            t = new File("files/member files/temp.txt");
         }
             t.createNewFile();
         BufferedReader reader = new BufferedReader(new FileReader(f));

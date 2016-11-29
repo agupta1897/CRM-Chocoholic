@@ -54,7 +54,7 @@ public class ProviderDatabase extends Database {
         File t = new File("src/files/Provider files/temp.txt");
         if(!x.exists()) {
             f = new File("files/Provider files/allProviders.txt");
-            t = new File("src/files/Provider files/temp.txt");
+            t = new File("files/Provider files/temp.txt");
         }
             t.createNewFile();
         BufferedReader reader = new BufferedReader(new FileReader(f));
