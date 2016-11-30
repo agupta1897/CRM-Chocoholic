@@ -15,7 +15,7 @@ import cs200fall2016team9.ProviderReport;
 
 /**
  * JUnit test for Provider Report.
- * @author Jake
+ * @author Jake Bailey
  */
 
 public class ProviderReportTest {

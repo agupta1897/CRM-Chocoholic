@@ -1,11 +1,5 @@
 package cs200fall2016team9.test;
-/**
- * 
- * This is a JUnit testing file for Class ProviderDatabase and Class Provider.
- * @author amber
- * 
- * 
- */
+
 import static org.junit.Assert.*;
 
 import java.io.IOException;
@@ -17,6 +11,10 @@ import org.junit.Test;
 import cs200fall2016team9.Provider;
 import cs200fall2016team9.ProviderDatabase;
 
+/**
+ * This is a JUnit testing file for Class ProviderDatabase and Class Provider.
+ * @author Amber Gupta
+ */
 public class ProviderDatabaseTest {
 
 	ProviderDatabase pd = new ProviderDatabase();
