@@ -12,7 +12,7 @@ public class MemberReport {
 	/**
 	 * Constructor
 	 */
-	MemberReport(){
+	public MemberReport(){
 		
 	}
 	/**
@@ -37,7 +37,7 @@ public class MemberReport {
 	 * @param numberID
 	 * @throws IOException
 	 */
-	void memberReport(int numberID) throws IOException{
+	public void memberReport(int numberID) throws IOException{
 		File a = new File("src/files/member files/allMembers.txt");//check if using Jar or Eclipse
 		String s = "files/member files/";
 		if(a.exists()){//If using eclipse add SRC to address
@@ -50,7 +50,7 @@ public class MemberReport {
 		if(a.exists()){//If using eclipse add SRC to address
 			s="src/"+s;
 		}//Open member report file to write
-		BufferedWriter beta = new BufferedWriter(new FileWriter(s+numberID+date+".txt"));
+		BufferedWriter beta = new BufferedWriter(new FileWriter(s+numberID+date+"Report.txt"));
 		String line = new String();
 		for(int i=0;i<=5;i++){//copy member information
 			line=alpha.readLine();
