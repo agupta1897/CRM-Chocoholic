@@ -1,10 +1,8 @@
 package cs200fall2016team9.test;
 /**
- * 
  * This is a JUnit testing file for Class ProviderDatabase and Class Provider.
- * @author amber
  * 
- * 
+ * @author Amber Gupta
  */
 import static org.junit.Assert.*;
 
