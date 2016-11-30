@@ -49,9 +49,11 @@ public class ProviderDatabase extends Database {
 		try {
 			Files.deleteIfExists(Paths.get("src/files/provider files/" + id + ".txt"));
 		} catch (Exception e) {}
+		//to see if running in eclipse or jar
 		File x = new File("src/files/Provider Directory.txt");
         File f = new File("src/files/Provider files/allProviders.txt");
         File t = new File("src/files/Provider files/temp.txt");
+        //if jar
         if(!x.exists()) {
             f = new File("files/Provider files/allProviders.txt");
             t = new File("files/Provider files/temp.txt");
@@ -61,11 +63,14 @@ public class ProviderDatabase extends Database {
         BufferedWriter writer = new BufferedWriter(new FileWriter(t));
         String lineToRemove = Integer.toString(id);
         String currentLine;
-        while((currentLine = reader.readLine())!= null){
+        for(int i = 0;(currentLine = reader.readLine())!= null; i++){
+            //if the line equals the one to remove skip iteration
             if (currentLine.equals(lineToRemove)) 
                 continue;
+            //if it's not the first line print newLine
+            if (i>0)
+                writer.newLine();
             writer.write(currentLine);
-            writer.newLine();
         }
         writer.close(); 
         reader.close(); 

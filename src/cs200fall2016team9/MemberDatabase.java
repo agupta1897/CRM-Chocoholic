@@ -49,23 +49,28 @@ public class MemberDatabase extends Database {
 		try {
 			Files.deleteIfExists(Paths.get("src/files/member files/" +id + ".txt"));
 		} catch (Exception e) {}
+		//sees if from eclipse or jar
 		File x = new File("src/files/Provider Directory.txt");
 		File f = new File("src/files/member files/allMembers.txt");
 		File t = new File("src/files/member files/temp.txt");
+		//if jar
         if(!x.exists()) {
             f = new File("files/member files/allMembers.txt");
             t = new File("files/member files/temp.txt");
         }
-            t.createNewFile();
+        t.createNewFile();
         BufferedReader reader = new BufferedReader(new FileReader(f));
         BufferedWriter writer = new BufferedWriter(new FileWriter(t));
         String lineToRemove = Integer.toString(id);
         String currentLine;
-        while((currentLine = reader.readLine())!= null){
+        for(int i = 0;(currentLine = reader.readLine())!= null; i++){
+            //if the line equals the one to remove skip iteration
             if (currentLine.equals(lineToRemove)) 
                 continue;
+            //if it's not the first line print newLine
+            if (i>0)
+                writer.newLine();
             writer.write(currentLine);
-            writer.newLine();
         }
         writer.close(); 
         reader.close(); 
