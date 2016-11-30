@@ -21,7 +21,7 @@ Once you have installed Ant you can run the following commands in the root proje
 ```
 #!Java
 
-      $ ant doc
+      $ ant javadoc
 ```
 
 * Build a runnable jar file
@@ -37,16 +37,16 @@ Once you have installed Ant you can run the following commands in the root proje
 ```
 #!Java
 
-      $ ant all
+      $ ant build
 ```
 
 ## Running the Simulation
 
 To run the Chocohlics Anonymous data simulation, simply run the command
 
-      $ java -jar release/ChocAn.jar
+      $ java -jar ChocAn.jar
 
-in the root project directory.
+in the in "...git/cs200Fall2016team9/release" folder
 
 ## Instructions for Use
 There is a manual for use in the manual folder
