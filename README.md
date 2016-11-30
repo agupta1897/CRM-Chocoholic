@@ -29,7 +29,7 @@ Once you have installed Ant you can run the following commands in the root proje
 ```
 #!Java
 
-      $ ant create_run_jar
+      $ ant jar
 ```
 
 * Buid documentation and build the runnable jar
