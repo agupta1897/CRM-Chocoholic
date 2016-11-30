@@ -13,20 +13,20 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed name and returns it.
 	 * @param num - provider's ID number
 	 * @return provider's listed name
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
-	String returnName(int num) throws IOException{
+	public String returnName(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
-		if(!f.exists())
+		if(!f.exists())	//If filed doesn't exist files are under implied directory
 			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
-		if(f.exists()){
+		if(f.exists()){	//File exists and name can be read and output
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			line = read.readLine();
 			read.close();
 			return line;
 		}
-		else
+		else	//No such provider file under given ID
 			return "Invalid number";
 	}
 	
@@ -34,14 +34,14 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed address and returns it.
 	 * @param num - provider's ID number
 	 * @return provider's listed address
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	String returnAddress(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
-		if(!f.exists())
+		if(!f.exists())	//If filed doesn't exist files are under implied directory
 			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
-		if(f.exists()){
+		if(f.exists()){	//File exists and address can be read and output
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			for(int i=0;i<=2;i++){
 				line = read.readLine();
@@ -49,7 +49,7 @@ public class Provider extends DatabaseEntry{
 			read.close();
 			return line;
 		}
-		else
+		else	//No such provider file under given ID
 			return "Invalid number";
 	}
 	
@@ -57,14 +57,14 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed city and returns it.
 	 * @param num - provider's ID number
 	 * @return memeber's listed city
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	String returnCity(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
-		if(!f.exists())
+		if(!f.exists())	//If filed doesn't exist files are under implied directory
 			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
-		if(f.exists()){
+		if(f.exists()){	//File exists and city can be read and output
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			for(int i=0;i<=3;i++){
 				line = read.readLine();
@@ -72,7 +72,7 @@ public class Provider extends DatabaseEntry{
 			read.close();
 			return line;
 		}
-		else
+		else	//No such provider file under given ID
 			return "Invalid number";
 	}
 	
@@ -80,14 +80,14 @@ public class Provider extends DatabaseEntry{
 	 * Function looks up provider's listed state and returns it.
 	 * @param num - provider's ID number
 	 * @return provider's listed state
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
-	String returnState(int num) throws IOException{
+	public String returnState(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
-		if(!f.exists())
+		if(!f.exists())	//If filed doesn't exist files are under implied directory
 			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
-		if(f.exists()){
+		if(f.exists()){	//File exists and state can be read and output
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			for(int i=0;i<=4;i++){
 				line = read.readLine();
@@ -95,7 +95,7 @@ public class Provider extends DatabaseEntry{
 			read.close();
 			return line;
 		}
-		else
+		else	//No such provider file under given ID
 			return "Invalid number";
 	}
 	
@@ -107,11 +107,11 @@ public class Provider extends DatabaseEntry{
 	 */
 	int returnZip(int num) throws IOException{
 		File f = new File("src/files/provider files/"+num+".txt");
-		if(!f.exists())
+		if(!f.exists())	//If filed doesn't exist files are under implied directory
 			f = new File("files/provider files/"+num+".txt");
 		String line = new String();
 		int zip = 0;
-		if(f.exists()){
+		if(f.exists()){	//File exists and zip code can be read and output
 			BufferedReader read = new BufferedReader(new FileReader(f));
 			for(int i=0;i<=5;i++){
 				line = read.readLine();
@@ -120,7 +120,7 @@ public class Provider extends DatabaseEntry{
 			zip = Integer.parseInt(line);
 			return zip;
 		}
-		else {
+		else {	//No such provider file under given ID
 			System.out.println("Something went wrong in returnZip()");
             return 00000;
 		}
@@ -136,7 +136,7 @@ public class Provider extends DatabaseEntry{
 	 * @param zip - provider's zip code
 	 */
 	void addNewProvider(String name, int num, String address, String city, String state, int zip){
-		File x = new File("src/files/Provider Directory.txt");
+		File x = new File("src/files/Provider Directory.txt");	//File for location verification
 		BufferedWriter writer = null;
 		setName(name);
 		setNumber(num);
@@ -145,19 +145,19 @@ public class Provider extends DatabaseEntry{
 		setState(state);
 		setZIP(zip);
 		try {
-			saveEntry();
+			saveEntry();	//Write info to file with proper format
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			if(x.exists())
+			if(x.exists())	//File exists and so files are under src directory
 				writer = new BufferedWriter(new FileWriter("src/files/provider files/allProviders.txt", true));
-			else
+			else	//File doesn't exist and so files are under implied directory
 				writer = new BufferedWriter(new FileWriter("files/provider files/allProviders.txt", true));
-			writer.newLine();
-			writer.append(Integer.toString(num));
-			writer.close();
+			writer.newLine();	//Move to last line of allProviders file
+			writer.append(Integer.toString(num));	//Append new provider ID to end of allProviders file
+			writer.close();	//Close allProviders file
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -169,13 +169,13 @@ public class Provider extends DatabaseEntry{
 	 */
 	void saveEntry() throws IOException{
 	File f = new File("src/files/provider files/"+getNumber()+".txt");
-	File x = new File("src/files/Provider Directory.txt");
-	if(!x.exists())
+	File x = new File("src/files/Provider Directory.txt");	//File for location verification
+	if(!x.exists())	//File doesn't exist and so files are under implied directory
 		f = new File("files/provider files/"+getNumber()+".txt");
-	if(!f.exists())
+	if(!f.exists())	//File isn't made yet so needs to be made
 		f.createNewFile();
 	BufferedWriter fstream = null;
-	fstream = new BufferedWriter(new FileWriter(f));
+	fstream = new BufferedWriter(new FileWriter(f));	//Write info to file with proper format
 	fstream.write(getName());
 	fstream.newLine();
 	fstream.write(Integer.toString(getNumber()));

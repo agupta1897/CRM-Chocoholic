@@ -12,7 +12,6 @@
     <path id="cs200fall2016team9.classpath">
         <pathelement location="bin"/>
     </path>
-    
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
@@ -23,8 +22,8 @@
             </fileset>
         </copy>
     </target>
-    
-    <target name="create_run_jar">
+              	
+    <target name="jar">
     	<mkdir dir = "release/files"/>
     	<copy todir = "release/files">
     		<fileset dir = "src/files"/>
@@ -41,7 +40,7 @@
     <target name="clean">
         <delete dir="bin"/>
     </target>
-              	
+      	
     <target name="javadoc">
     	<javadoc access="public" author="true" classpath="." destdir="doc" doctitle="ChocAnDocumentation" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="cs200fall2016team9" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
     </target> 
@@ -75,20 +74,18 @@
             <classpath refid="cs200fall2016team9.classpath"/>
         </java>
     </target>
-   	<target name="ProviderDirectorySearchCodeTest">
-    	<mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-        	<formatter type="xml"/>
-            <test name="cs200fall2016team9.test.ProviderDirectorySearchCodeTest" todir="${junit.output.dir}"/>
-            <classpath refid="cs200fall2016team9.classpath"/>
-        </junit>
-    </target>
-        <target name="junitreport">
-    	<junitreport todir="${junit.output.dir}">
-    	    <fileset dir="${junit.output.dir}">
-    	        <include name="TEST-*.xml"/>
-    	    </fileset>
-    	    <report format="frames" todir="${junit.output.dir}"/>
-    	    </junitreport>
+    <target name = "all">
+    	<mkdir dir = "release/files"/>
+        	<copy todir = "release/files">
+            	<fileset dir = "src/files"/>
+            </copy>
+            <jar destfile="release/ChocAn.jar" filesetmanifest="mergewithoutmain">
+            	<manifest>
+              		<attribute name="Main-Class" value="cs200fall2016team9.ChocAn"/>
+              	   	<attribute name="Class-Path" value="."/>
+              	</manifest>
+        		<fileset dir = "bin"/>
+    		</jar>
+    	<javadoc access="public" author="true" classpath="." destdir="doc" doctitle="ChocAnDocumentation" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="cs200fall2016team9" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
     </target>
 </project>

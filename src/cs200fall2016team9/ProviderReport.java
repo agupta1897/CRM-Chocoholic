@@ -17,7 +17,7 @@ public class ProviderReport {
 	}
 	/**
 	 * Send All Provider Reports
-	 * @throws IOException
+	 * @throws IOException throws error
 	 */
 	void providerReport() throws IOException{
 		File a = new File("src/files/provider files/allProviders.txt");//check if using Jar or Eclipse
@@ -34,8 +34,8 @@ public class ProviderReport {
 	}
 	/**
 	 * Compile and Save a Single Provider Report
-	 * @param numberID
-	 * @throws IOException
+	 * @param numberID the id number
+	 * @throws IOException throws error
 	 */
 	public void providerReport(int numberID) throws IOException{
 		File a = new File("src/files/provider files/allProviders.txt");

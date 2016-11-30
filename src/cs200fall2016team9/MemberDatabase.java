@@ -1,6 +1,10 @@
 package cs200fall2016team9;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -25,7 +29,7 @@ public class MemberDatabase extends Database {
 	 * @param zip // their zip code number
 	 */
 	@Override
-	void addEntry(String name, int num, String address, String city, String state, int zip) {
+    public void addEntry(String name, int num, String address, String city, String state, int zip) {
 		Member m = new Member();
 		m.addNewMember(name, num, address, city, state, zip);
 		try {
@@ -38,14 +42,40 @@ public class MemberDatabase extends Database {
 	/**
 	 * Removes a member from database.
 	 * @param id // id number of member
+	 * @throws IOException throws error
 	 */
 	@Override
-	void removeEntry(int id) {
+    public void removeEntry(int id) throws IOException {
 		try {
 			Files.deleteIfExists(Paths.get("src/files/member files/" +id + ".txt"));
-		} catch (Exception e) {
-
-		}
+		} catch (Exception e) {}
+		//sees if from eclipse or jar
+		File x = new File("src/files/Provider Directory.txt");
+		File f = new File("src/files/member files/allMembers.txt");
+		File t = new File("src/files/member files/temp.txt");
+		//if jar
+        if(!x.exists()) {
+            f = new File("files/member files/allMembers.txt");
+            t = new File("files/member files/temp.txt");
+        }
+        t.createNewFile();
+        BufferedReader reader = new BufferedReader(new FileReader(f));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(t));
+        String lineToRemove = Integer.toString(id);
+        String currentLine;
+        for(int i = 0;(currentLine = reader.readLine())!= null; i++){
+            //if the line equals the one to remove skip iteration
+            if (currentLine.equals(lineToRemove)) 
+                continue;
+            //if it's not the first line print newLine
+            if (i>0)
+                writer.newLine();
+            writer.write(currentLine);
+        }
+        writer.close(); 
+        reader.close(); 
+        Files.deleteIfExists(Paths.get("src/files/member files/allMembers.txt"));
+        t.renameTo(f);
 	}
 	
 	/**
