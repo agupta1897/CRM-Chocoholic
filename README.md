@@ -21,7 +21,7 @@ Once you have installed Ant you can run the following commands in the root proje
 ```
 #!Java
 
-      $ ant doc
+      $ ant javadoc
 ```
 
 * Build a runnable jar file
@@ -29,7 +29,7 @@ Once you have installed Ant you can run the following commands in the root proje
 ```
 #!Java
 
-      $ ant jar
+      $ ant create_run_jar
 ```
 
 * Buid documentation and build the runnable jar
@@ -37,7 +37,7 @@ Once you have installed Ant you can run the following commands in the root proje
 ```
 #!Java
 
-      $ ant all
+      $ ant build
 ```
 
 ## Running the Simulation
