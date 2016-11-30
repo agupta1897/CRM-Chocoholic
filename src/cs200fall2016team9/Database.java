@@ -24,8 +24,8 @@ public abstract class Database {
 	/**
 	 * Base abstract function for removing an entry.
 	 * @param id the id
-	 * @throws FileNotFoundException 
-	 * @throws IOException 
+	 * @throws FileNotFoundException throws error
+	 * @throws IOException throws error
 	 */
 	abstract void removeEntry(int id) throws IOException;
 	/**

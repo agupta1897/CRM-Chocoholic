@@ -42,7 +42,7 @@ public class MemberDatabase extends Database {
 	/**
 	 * Removes a member from database.
 	 * @param id // id number of member
-	 * @throws IOException 
+	 * @throws IOException throws error
 	 */
 	@Override
     public void removeEntry(int id) throws IOException {

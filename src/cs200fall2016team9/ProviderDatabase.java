@@ -42,7 +42,7 @@ public class ProviderDatabase extends Database {
 	/**
 	 * Removes a provider from database.
 	 * @param id // id number of provider
-	 * @throws IOException 
+	 * @throws IOException throws error
 	 */
 	@Override
     public void removeEntry(int id) throws IOException {
@@ -58,7 +58,7 @@ public class ProviderDatabase extends Database {
             f = new File("files/Provider files/allProviders.txt");
             t = new File("files/Provider files/temp.txt");
         }
-            t.createNewFile();
+        t.createNewFile();
         BufferedReader reader = new BufferedReader(new FileReader(f));
         BufferedWriter writer = new BufferedWriter(new FileWriter(t));
         String lineToRemove = Integer.toString(id);
