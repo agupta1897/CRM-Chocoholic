@@ -9,7 +9,6 @@ import cs200fall2016team9.ProviderDirectory;
 /**
  * This is a JUnit test case of the provider directory function SearchName 
  * @author Sean Martin
- *
  */
 public class ProviderDirectorySearchNameTest {
 

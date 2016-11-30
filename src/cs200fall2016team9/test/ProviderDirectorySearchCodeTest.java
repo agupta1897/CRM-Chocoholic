@@ -8,9 +8,8 @@ import org.junit.Test;
 import cs200fall2016team9.ProviderDirectory;
 
 /**
- * 
+ * This class test the Provider Directory for the searchCode function
  * @author Jake Mizzell
- *
  */
 public class ProviderDirectorySearchCodeTest {
 

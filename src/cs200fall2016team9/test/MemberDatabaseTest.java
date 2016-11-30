@@ -1,9 +1,5 @@
 package cs200fall2016team9.test;
-/**
- * This is a JUnit testing file for Class MemberDatabase and Class Member.
- * 
- * @author Amber Gupta
- */
+
 import static org.junit.Assert.*;
 
 import java.io.IOException;
@@ -15,6 +11,10 @@ import org.junit.Test;
 import cs200fall2016team9.Member;
 import cs200fall2016team9.MemberDatabase;
 
+/**
+ * This is a JUnit testing file for Class MemberDatabase and Class Member.
+ * @author Amber Gupta
+ */
 public class MemberDatabaseTest {
 
 	MemberDatabase md= new MemberDatabase();
