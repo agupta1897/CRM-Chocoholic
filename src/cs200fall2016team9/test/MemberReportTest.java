@@ -23,6 +23,10 @@ public class MemberReportTest {
 	
 	MemberReport mr;
 
+	/**
+	 * 
+	 * @throws Exception throws error
+	 */
 	@Before
 	public void setUp() throws Exception {
 		mr = new MemberReport();
@@ -40,7 +44,10 @@ public class MemberReportTest {
 		File f = new File("src/files/report files/member report files/123456789"+date+"Report.txt");
 		assertTrue(f.exists());	//File should exist
 	}
-	
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test(expected = FileNotFoundException.class)
 	public void testMemberReportIntForFailureWithBadID() throws IOException{
 		try {
@@ -54,6 +61,10 @@ public class MemberReportTest {
 		assertFalse(f.exists());	//Should never make report file
 	}
 	
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test(expected = FileNotFoundException.class)
 	public void testMemberReportIntForFailureWithGarbage() throws IOException{
 		try {
@@ -67,6 +78,10 @@ public class MemberReportTest {
 		assertFalse(f.exists());	//Should never make report file
 	}
 	
+	/**
+	 * 
+	 * @throws IOException throws error
+	 */
 	@Test(expected = FileNotFoundException.class)
 	public void testMemberReportIntForFailureWithHugeNum() throws IOException{
 		try {

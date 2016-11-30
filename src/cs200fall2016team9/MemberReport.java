@@ -34,8 +34,8 @@ public class MemberReport {
 	}
 	/**
 	 * Creates a single Member Report
-	 * @param numberID
-	 * @throws IOException
+	 * @param numberID the id number
+	 * @throws IOException throws error
 	 */
 	public void memberReport(int numberID) throws IOException{
 		File a = new File("src/files/member files/allMembers.txt");//check if using Jar or Eclipse
