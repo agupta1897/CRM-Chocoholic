@@ -82,7 +82,7 @@ public class ProviderReport {
 			beta.write("999");
 		}
 		else{
-			beta.write(totalConsul);//Otherwise write normal
+			beta.write(Integer.toString(totalConsul));//Otherwise write normal
 		}
 		beta.newLine();
 		if(totalFee>=99999.99){//In the event of large fee, write 99999.99 else normal

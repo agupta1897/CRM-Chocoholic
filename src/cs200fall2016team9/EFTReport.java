@@ -39,32 +39,38 @@ public class EFTReport {
 			if(a.exists()){
 				s="src/"+s;
 			}
-			BufferedReader charlie=new BufferedReader(new FileReader(s+line+".txt")); //Open provider file
-			String delta;//Read in lines from the providers file
-			for(int i=0;i<=1;i++){  //a loop to copy the provider name and number
-				delta = charlie.readLine();
-				beta.write(delta);
-				beta.newLine();
-			}
-			charlie.close(); //close provider file
-			a = new File("src/files/provider files/allProviders.txt");
-			s = "files/visit files/provider visit files/";
+			a= new File(s+line+".txt");
 			if(a.exists()){
-				s="src/"+s;
-			}
-			charlie=new BufferedReader(new FileReader(s+line+"v.txt")); //Open provider visit file
-			String line2; // creates a new string variable
-			Double totalFee=0.0;
-			int lineCounter=0; //While loop to copy fee data from the visit file
-			while((line2=charlie.readLine())!=null){
-				lineCounter++;//add to line counter to find the lines with fee information
-				if(lineCounter%8==6){
-					totalFee+=Double.parseDouble(line2);
+				BufferedReader charlie=new BufferedReader(new FileReader(s+line+".txt")); //Open provider file
+				String delta;//Read in lines from the providers file
+				for(int i=0;i<=1;i++){  //a loop to copy the provider name and number
+					delta = charlie.readLine();
+					beta.write(delta);
+					beta.newLine();
 				}
+				charlie.close(); //close provider file
+				a = new File("src/files/provider files/allProviders.txt");
+				s = "files/visit files/provider visit files/";
+				if(a.exists()){
+					s="src/"+s;
+				}
+				a = new File(s+line+"v.txt");
+				Double totalFee=0.0;
+				if(a.exists()){
+					charlie=new BufferedReader(new FileReader(s+line+"v.txt")); //Open provider visit file
+					String line2; // creates a new string variable
+					int lineCounter=0; //While loop to copy fee data from the visit file
+					while((line2=charlie.readLine())!=null){
+						lineCounter++;//add to line counter to find the lines with fee information
+						if(lineCounter%8==6){
+							totalFee+=Double.parseDouble(line2);
+						}
+					}
+				}
+					charlie.close(); // close the visit file and then write the total fee
+					beta.write(Double.toString(totalFee));
+					beta.newLine();
 			}
-			charlie.close(); // close the visit file and then write the total fee
-			beta.write(Double.toString(totalFee));
-			beta.newLine();
 		}
 		alpha.close();//close the all provider file
 		beta.close();//close the eft report file

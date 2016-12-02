@@ -70,7 +70,7 @@ public class SummaryReport {
 						proConsul++;//add a number to the providers consultation
 					}
 				}
-				fstream.write(proConsul);//Write in number of consultations
+				fstream.write(Integer.toString(proConsul));//Write in number of consultations
 				fstream.newLine();
 				fstream.write(Double.toString(proFee));//Write in fee
 				fstream.newLine();
@@ -80,9 +80,9 @@ public class SummaryReport {
 			}		
 		}
 		provider.close();// close provider directory
-		fstream.write(totalProviders);// Write in total providers and total consultations and overall Fee
+		fstream.write(Integer.toString(totalProviders));// Write in total providers and total consultations and overall Fee
 		fstream.newLine();
-		fstream.write(totalConsul);
+		fstream.write(Integer.toString(totalConsul));
 		fstream.newLine();
 		fstream.write(Double.toString(overAllFee));
 		fstream.close();
