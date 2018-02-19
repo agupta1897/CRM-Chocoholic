@@ -40,6 +40,7 @@ Once you have installed Ant you can run the following commands in the root proje
       $ ant all
 ```
 
+
 ## Running the Simulation
 
 To run the Chocohlics Anonymous data simulation, simply run the command
